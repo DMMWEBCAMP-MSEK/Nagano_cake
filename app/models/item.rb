@@ -1,5 +1,7 @@
 class Item < ApplicationRecord
 
 
+  enum sales_status: { sale: 0, stop_selling: 1 }
+
 
 end
