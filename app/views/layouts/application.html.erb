@@ -5,12 +5,18 @@
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
-
+    <!-- fonawesome導入,非同期処理のときに修正 -->
     <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
 
   <body>
+    <header>
+      <%=render "layouts/header" %>
+    </header>
     <%= yield %>
   </body>
+  <footer class="text-center fixed-bottom">
+    ©NaganoCake,MSEK
+  </footer>
 </html>
