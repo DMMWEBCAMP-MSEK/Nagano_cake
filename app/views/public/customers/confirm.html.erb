@@ -1,0 +1,17 @@
+<div class="">
+    <h2 class="conf">本当に退会しますか？</h2>
+
+    <diV class="conf1">
+        <div class="come">退会すると、会員登録情報や</div> <br>
+        <div class="come">これまでの購入履歴が閲覧できなくなります。</div> <br>
+        <div class="come">退会する場合は、「退会する」をクリックしてください。</div>
+    </diV>
+    <div class="row conf1 mt-3">
+        <div class="no-delete"><%= link_to "　退会しない　", my_page_customers_path, class: "btn btn-primary" %></div>
+        <div class="delete">
+            <% if customer_signed_in? && current_customer %>
+                <%= link_to "　退会する　", withdraw_customers_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+            <% end %>
+        </div>
+    </div>
+</div>
