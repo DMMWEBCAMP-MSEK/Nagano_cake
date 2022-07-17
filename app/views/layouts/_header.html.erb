@@ -34,7 +34,7 @@
           <li class="nav-item nav-link"><%= link_to "カート", cart_items_path, class:"link" %></li>
           <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_customer_session_path, class:"link" %></li>
         <% else %>
-          <li class="nav-item nav-link"><%= link_to "About", about_path, class:"link" %></li>
+          <li class="nav-item nav-link"><%= link_to "About", homes_about_path, class:"link" %></li>
           <li class="nav-item nav-link"><%= link_to "商品一覧", orders_path, class:"link" %></li>
           <li class="nav-item nav-link"><%= link_to "新規登録", new_customer_session_path, class:"link" %></li>
           <li class="nav-item nav-link"><%= link_to "ログイン", customer_session_path, class:"link" %></li>
@@ -44,4 +44,4 @@
     </div>
   </nav>
   <!-- 検索機能は別のブランチで作成 -->
-  <%= render 'public/searches/form' %>
+  <%#= render 'public/searches/form' %>
