@@ -1,0 +1,11 @@
+
+<h2><%= @item.name %></h2>
+
+<div><%= @item.text %></div>
+
+<div><%= @item.price %></div>(税込)
+
+<%= form_with ([model: @item, @order],local: true url: item_order_confirm_path) do |f| %>
+  <%= f.text_field :amount %> <br>
+  <%= f.submit "カートに入れる" %> <br>
+<% end %>
