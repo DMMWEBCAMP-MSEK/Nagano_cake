@@ -45,7 +45,6 @@ Rails.application.routes.draw do
     resources :customers, only: [:show, :index, :edit, :update]
     resources :orders, only: [:show, :update]
     resources :order_items, only: [:update]
-    #delete "items#destroy"
   end
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
