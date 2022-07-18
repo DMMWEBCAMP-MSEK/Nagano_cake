@@ -4,6 +4,7 @@ class Item < ApplicationRecord
   has_many :order_items, dependent: :destroy
 
   enum sales_status: { sale: 0, stop_selling: 1 }
+  enum prdoction_status: { 販売中: true, 販売停止中: false }
   has_one_attached :image
 
   validates :genre_id, :name, :price, presence: true
