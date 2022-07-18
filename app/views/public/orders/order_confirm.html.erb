@@ -1,4 +1,4 @@
-<div>注文情報確認</div>
+<div class="dark">注文情報確認</div>
 
 <table class="table table-bordered">
 
@@ -48,11 +48,13 @@
       送料
      </th>
     </tr>
+
     <tr>
      <th>
       商品合計
      </th>
     </tr>
+
     <tr>
      <th>
       請求金額
@@ -64,19 +66,19 @@
 
     <tr>
      <td>
-        1100
+        800
      </td>
     </tr>
 
     <tr>
      <td>
-        1
+        1760
      </td>
     </tr>
 
     <tr>
       <td>
-        1100
+        2560
       </td>
     </tr>
 
@@ -87,4 +89,4 @@
 
 <h2>お届け先</h2>
 
-<%= link_to '情報入力に進む', edit_book_path(@book), class: "btn btn-sm btn-success edit_book_#{@book.id}" %>
+<%= link_to '注文を確定する', thanks_orders_path(thanks_orders), class: "btn btn-sm btn-success" %>

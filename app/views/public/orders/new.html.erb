@@ -1,0 +1,15 @@
+<div>注文情報入力</div>
+
+<%= form_with model: @orders, url: confirm_orders_url(confirm_orders_url), method: :get,local: true do |f| %>
+
+<%= f.radio_button :payment_method, "credit_card" %>
+<%= f.label :payment_method, "クレジットカード" %>
+
+<%= f.radio_button :payment_method, "transfer" %>
+<%= f.label :payment_method, "銀行振込" %>
+
+お届け先
+
+<% end %>
+
+<%= link_to '確認画面へ進む', confirm_orders_url(confirm_orders_url), class: "btn btn-sm btn-success" %>
