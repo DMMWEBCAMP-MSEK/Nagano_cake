@@ -1,7 +1,33 @@
-<h2>商品一覧</h2>(全x件)
+<div class="container ml-4 mt-5">
+  <div class="row">
+    <!-- ジャンル -->
+    <div class="col-3">
+      <div class="card-header text-white bg-dark ">ジャンル一覧</div>
+        <div class="card-body">
+          <% @genres.each do |genre| %>
+            <p class="card-text"><%= genre.name %></p>
+          <% end %>
+        </div>
+    </div>
+    <!-- 商品 -->
+    <div class = "col-lg-8">
+      <h3>商品一覧<span>(全<%= @items_count %>件)</span></h3>
+        <div class="wrapper grid">
+            <% @items.each do |item|%>
+              <div class="card" style="width: 16rem;">
+                  <% link_to item_path(item) do %>
+                     <%= attachment_image_tag item, :image, size: "250", class: "index-img" %>
+                  <% end %>
+                  <div><%= item.name %></div>
+                  <div>¥<%= item.price %></div>
+              </div>
+        　　　<% end %>
+        </div>
+        　<div class="row justify-content-center">
+            <% paginate @items %>
+        　</div>
+    </div>
+  </div>
+</div>
 
-<% @items.each do |item| %>
-  <%= item.name %>
-  <%= item.price %>
-<% end %>
 
