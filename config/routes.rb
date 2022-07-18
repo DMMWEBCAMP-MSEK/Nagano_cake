@@ -1,13 +1,13 @@
 Rails.application.routes.draw do
 
-    devise_for :customers,skip: [:passwords], controllers: {
-    registrations: "public/registrations",
-    sessions: 'public/sessions'
-  }
+  devise_for :customers,skip: [:passwords], controllers: {
+  registrations: "public/registrations",
+  sessions: 'public/sessions'
+}
 
-   scope module: :public do
-     root to: "homes#top"
-     get "homes/about"
+  scope module: :public do
+    root to: "homes#top"
+    get "homes/about"
 
     resources :items, only: [:show, :index]
     resource :customers, only: [:index, :edit], path_names: { edit: 'information/edit' } do
@@ -32,7 +32,7 @@ Rails.application.routes.draw do
     end
 
     resources :shipping_addresses, only: [:index, :edit, :create, :update, :destroy]
-   end
+  end
 
   devise_for :admin, skip: [:registrations, :passwords] ,controllers: {
   sessions: "admin/sessions"

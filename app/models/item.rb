@@ -5,6 +5,7 @@ class Item < ApplicationRecord
   
   has_one_attached :image
 
+<<<<<<< HEAD
   validates :genre_id, :name, :price, presence: true
   validates :price, numericality: { only_integer: true }
 
@@ -18,5 +19,9 @@ class Item < ApplicationRecord
   # 検索機能使う場合
   def search
   end
+=======
+  enum sales_status: { sale: 0, stop_selling: 1 }
+  has_one_attached :image
+>>>>>>> develop
 
 end
