@@ -1,6 +1,15 @@
+<<<<<<< HEAD
   ja:
     enums:
       order:
         payment_method:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
+=======
+ja:
+  enums:
+    item:
+      sales_status:
+        sale: "販売中"
+        stop_selling: "販売停止中"
+>>>>>>> 6d23fb2109d59e768549ab52a2249ad939bc6b32

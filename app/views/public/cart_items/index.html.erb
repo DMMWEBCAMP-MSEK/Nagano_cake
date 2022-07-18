@@ -2,6 +2,8 @@
 
 <table class="table table-bordered">
 
+  <%= form_with model: cart_item, url: new_order_path do |f| %>
+
   <thead class="thead-dark">
     <tr>
      <th>
@@ -63,8 +65,9 @@
   </tbody>
 </table>
 
-<%= link_to '情報入力に進む', new_order_path(new_order), class: "btn btn-sm btn-success" %>
+<% end %>
 
+<%= f.submit "情報入力へ進む", class: "btn btn-sm btn-success" %>
 
 
 
