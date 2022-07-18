@@ -2,73 +2,109 @@
 
 <%= form_with model: @customer, url: registration_path(resource_name), local: true do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
-
-  <div class="field">
-    名前
-    <%= f.label :first_name, "(姓)" %>
-    <%= f.text_field :first_name, autofocus: true, class: "name" %>
-
-    <%= f.label :last_name, "(名)" %>
-    <%= f.text_field :last_name, autofocus: true, class: "name" %>
-  </div>
-
-  <div class="field">
-    フリガナ
-    <%= f.label :first_name_kana, "(セイ)" %>
-    <%= f.text_field :first_name_kana, autofocus: true, class: "name" %>
-
-    <%= f.label :last_name_kana, "(メイ)" %>
-    <%= f.text_field :last_name_kana, autofocus: true, class: "name" %>
-  </div>
-
-  <div class="field">
-    メールアドレス
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-  </div>
-
-  <div class="field">
-    郵便番号(ハイフンなし)
-    <%= f.label :post_code %><br />
-    <%= f.number_field :post_code, autofocus: true, autocomplete: "post_code" %>
-  </div>
-
-  <div class="field">
-    住所
-    <%= f.label :address %><br />
-    <%= f.number_field :address, autofocus: true, autocomplete: "address" %>
-  </div>
-
-  <div class="field">
-    電話番号(ハイフンなし)
-    <%= f.label :phone_number %><br />
-    <%= f.number_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-  </div>
-
-  <div class="field">
-    パスワード(6文字以上)
-    <%= f.label :password %>
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password" %>
-  </div>
-
-  <div class="field">
-    パスワード(確認用)
-    <%= f.label :password_confirmation %><br />
-    <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit "新規登録" %>
-  </div>
+ <table>
+  <thead>
+    <th></th>
+    <th></th>
+    <th></th>
+  </thead>
+  <tbody>
+  <tr>
+    <td>名前</td>
+    <td>
+    <div class="field">
+      <%= f.label :first_name, "(姓)" %>
+      <%= f.text_field :first_name, autofocus: true, class: "name" %>
+    </td>
+    <td>
+      <%= f.label :last_name, "(名)" %>
+      <%= f.text_field :last_name, autofocus: true, class: "name" %>
+    </div>
+    </td>
+  </tr>
+  <tr>
+    <td>フリガナ</td>
+    <td>
+    <div class="field">
+      <%= f.label :first_name_kana, "(セイ)" %>
+      <%= f.text_field :first_name_kana, autofocus: true, class: "name" %>
+    </td>
+    <td>
+      <%= f.label :last_name_kana, "(メイ)" %>
+      <%= f.text_field :last_name_kana, autofocus: true, class: "name" %>
+    </td>
+    </div>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td>
+    <div class="field">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    </div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>郵便番号(ハイフンなし)</td>
+    <td>
+    <div class="field">
+      <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
+    </div>
+　　</td>
+　　<td></td>
+　</tr>
+　<tr>
+    <td>住所</td>
+    <td>
+    <div class="field">
+      <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
+    </div>
+　　</td>
+　　<td></td>
+　</tr>
+　<tr>
+    <td>電話番号(ハイフンなし)</td>
+    <td>
+    <div class="field">
+      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
+    </div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>パスワード(6文字以上)</td>
+    <td>
+    <div class="field">
+      <%= f.password_field :password, autocomplete: "new-password" %>
+    </div>
+      </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td>パスワード(確認用)</td>
+    <td>
+    <div class="field">
+      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
+    </div>
+    </td>
+    <td></td>
+  </tr>
+  <tr>
+    <td></td>
+    <td>
+    <div class="actions">
+      <%= f.submit "新規登録" %>
+    </div>
+  </td>
+    <td></td>
+  </tbody>
+  </table>
 <% end %>
 
 <h2>既に登録済みの方</h2>
 
 <div>
-<%= link_to 'こちら', new_customer_session_path(customer) %>からログインしてください。
+<%= link_to 'こちら', new_customer_session_path %>からログインしてください。
 </div>
 
-<%= render "publics/shared/links" %>
+<%= render "public/shared/links" %>
