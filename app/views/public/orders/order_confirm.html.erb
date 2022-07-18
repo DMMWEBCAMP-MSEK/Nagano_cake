@@ -1,10 +1,14 @@
 <div class="dark">注文情報確認</div>
 
+<% @cart_items.each do |cart| %>
+
 <table class="table table-bordered">
 
   <thead class="thead-dark">
+
     <tr>
-     <th>
+
+    <th>
       商品名
      </th>
      <th>
@@ -16,28 +20,34 @@
      <th>
       小計
      </th>
+
     </tr>
+
   </thead>
+
   <tbody>
     <tr>
       <td>
+
+        <%= cart.item.name %>
       </td>
       <td>
-        1100
+        <%= (cart.item.price).to_s(:delimited) %>
       </td>
       <td>
-        1
+        <%= cart.amount %>
       </td>
       <td>
-        1100
-      </td>
-      <td>
+        <%= (cart.item.price*cart.amount).to_s(:delimited) %>
       </td>
 
     </tr>
 
   </tbody>
+
 </table>
+
+<% end %>
 
 <table class="table table-bordered">
 
@@ -66,19 +76,19 @@
 
     <tr>
      <td>
-        800
+       800円
      </td>
     </tr>
 
     <tr>
      <td>
-        1760
+       <%= @total.round.to_s(:delimited)%>
      </td>
     </tr>
 
     <tr>
       <td>
-        2560
+        <%= @total.to_s(:delimited) %>
       </td>
     </tr>
 
