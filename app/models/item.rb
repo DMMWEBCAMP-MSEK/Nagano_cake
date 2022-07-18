@@ -1,6 +1,9 @@
 class Item < ApplicationRecord
   belongs_to :genre
-  attachment :image
+  has_many :cart_items, dependent: :destroy
+  has_many :order_items, dependent: :destroy
+  
+  has_one_attached :image
 
   validates :genre_id, :name, :price, presence: true
   validates :price, numericality: { only_integer: true }
@@ -8,7 +11,7 @@ class Item < ApplicationRecord
   enum prdoction_status: { 販売中: true, 販売停止中: false }
 
   def add_tax_price
-    (self.price * 1.1)
+    (self.price * 1.1).floor
     # selfにproductを代入
   end
 
