@@ -6,13 +6,17 @@ class Admin::ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.save
-      redirect_to item_path
+      redirect_to admin_item_path(@item)
     end
+  end
+
+  def show
+    @item = Item.find(params[:id])
   end
 
 
   private
   def item_params
-    params.require(:book).permit(:title, :body)
+    params.require(:item).permit(:name, :introduction, :genre_id, :price, :sales_status, :image)
   end
 end

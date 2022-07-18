@@ -1,0 +1,40 @@
+<h2>商品詳細</h2>
+
+<%= attachment_image_tag @item, :image %>
+
+<table>
+  <thead>
+    <tr>
+      <th>商品名</th>
+      <td><%= @item.name %></td>
+    </tr>
+    <tr>
+      <th>商品説明</th>
+      <td><%= @item.introduction %></td>
+    </tr>
+    <tr>
+      <th>ジャンル</th>
+      <td><%= @item.genre_id %></td>
+    </tr>
+    <tr>
+      <th>
+        税込価格<br>
+        （税抜価格）
+      </th>
+      <td><%= @item.price %></td>
+    </tr>
+    <tr>
+      <th>販売ステータス</th>
+      <td><%= @item.sales_status %></td>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+
+
+
+
+
+    </tr>
+  </tbody>
+</table>
