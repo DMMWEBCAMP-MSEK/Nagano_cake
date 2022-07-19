@@ -17,12 +17,18 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
 
+<<<<<<< HEAD
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true, length: { minimum: 6 }
 
   has_many :cart_items
   has_many :orders
 
+=======
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
+  
+>>>>>>> 48adb6629ec0e14e826456d633933616cbb9d9dc
 end
 
 
