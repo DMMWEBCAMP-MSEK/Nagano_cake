@@ -1,16 +1,13 @@
 class ApplicationController < ActionController::Base
 
-  private
+  #private
 
-  def current_cart
+  #def current_cart_item
 
-    current_cart = Cart.find_by(id: session[:cart_id])
-
-    current_cart = Cart.create unless current_cart
-
-    session[:cart_id] = current_cart.id
-
-    current_cart
-  end
+    #current_cart_item = Item.find_by(id: session[:item_id])
+    #current_cart_item = Item.create unless current_cart_item
+    #session[:item_id] = current_cart_item.id
+    #current_cart_item
+  #end
 
 end

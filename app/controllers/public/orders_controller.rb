@@ -24,7 +24,7 @@ class Public::OrdersController < ApplicationController
       end
   end
 
-  def order_confirm
+  def confirm
     @cost = 800
 
     @order = Order.new(order_params)
