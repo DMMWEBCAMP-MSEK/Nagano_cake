@@ -233,10 +233,7 @@ DEPENDENCIES
   capybara (>= 3.26)
   devise
   enum_help
-<<<<<<< HEAD
-=======
   image_processing (~> 1.2)
->>>>>>> 6d23fb2109d59e768549ab52a2249ad939bc6b32
   jbuilder (~> 2.7)
   listen (~> 3.3)
   puma (~> 5.0)

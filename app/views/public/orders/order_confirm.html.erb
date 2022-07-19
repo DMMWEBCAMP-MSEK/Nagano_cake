@@ -1,13 +1,8 @@
 <div class="dark">注文情報確認</div>
 
-<% @cart_items.each do |cart| %>
-
 <table class="table table-bordered">
-
   <thead class="thead-dark">
-
     <tr>
-
     <th>
       商品名
      </th>
@@ -20,10 +15,9 @@
      <th>
       小計
      </th>
-
     </tr>
-
   </thead>
+  <% @cart_items.each do |cart_item| %>
 
   <tbody>
     <tr>
@@ -32,27 +26,23 @@
         <%= cart.item.name %>
       </td>
       <td>
-        <%= (cart.item.price).to_s(:delimited) %>
+        <%= (cart_item.item.with_tax_price).to_s(:delimited) %>
       </td>
       <td>
         <%= cart.amount %>
       </td>
       <td>
-        <%= (cart.item.price*cart.amount).to_s(:delimited) %>
+        <%= (cart_item.subtotal).to_s(:delimited) %>
       </td>
-
     </tr>
-
   </tbody>
+
+  <% end %>
 
 </table>
 
-<% end %>
-
 <table class="table table-bordered">
-
   <thead  class="thead-dark">
-
     <tr>
      <th>
       送料
@@ -76,19 +66,19 @@
 
     <tr>
      <td>
-       800円
+       <%= @cost %>円
      </td>
     </tr>
 
     <tr>
      <td>
-       <%= @total.round.to_s(:delimited)%>
+       <%= @total.to_s(:delimited, delimiter: ',') %>
      </td>
     </tr>
 
     <tr>
       <td>
-        <%= @total.to_s(:delimited) %>
+        <%= @cost + @total %>
       </td>
     </tr>
 
@@ -97,6 +87,18 @@
 
 <h2>支払方法</h2>
 
+
+
 <h2>お届け先</h2>
 
-<%= link_to '注文を確定する', thanks_orders_path(thanks_orders), class: "btn btn-sm btn-success" %>
+<%= @order.address %>
+
+<%= form_with model: @order, url: thanks_order_path, local: true do |f| %>
+
+  <%= f.hidden_field :name %>
+  <%= f.hidden_field :address %>
+  <%= f.hidden_field :total_price, value: @total %>
+
+<%= f.submit "情報入力へ進む", class: "btn btn-sm btn-success" %>
+
+<% end %>

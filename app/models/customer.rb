@@ -20,6 +20,9 @@ class Customer < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }
   validates :password_confirmation, presence: true, length: { minimum: 6 }
 
+  has_many :cart_items
+  has_many :orders
+
 end
 
 

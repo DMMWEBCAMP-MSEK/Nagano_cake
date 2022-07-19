@@ -4,7 +4,7 @@
   支払方法
 </div>
 
-<%= form_with model: @orders, url: confirm_orders_url(confirm_orders_url), method: :get,local: true do |f| %>
+<%= form_with model: @order, url: confirm_orders_path, local: true do |f| %>
 
 <div>
   <%= f.radio_button :payment_method, "credit_card" %>
@@ -21,16 +21,23 @@
 </div>
 
 <div>
-
-</div>
   <%= f.radio_button :address_number, 1 %>
   <%= f.label :address_number_1, "ご自身の住所" %>
-  <%#= current_customer.customer_address %>
+</div>
+
+  <div>
+    〒<%= current_customer.post_code %>
+    <%= current_customer.address %>
+  </div>
+  <div>
+    <%= current_customer.first_name %>
+    <%= current_customer.last_name %>
+  </div>
+
 <div>
   <%= f.radio_button :address_number, 2 %>
-  <%= f.label :address_number_2, "登録済住所から選択" %>
-
-  <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, current_customer.address, :id, :address_display) %>
+  <%= f.label :address_number_2, "登録済住所から選択" %></br>
+  <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
 </div>
 
 <div>
@@ -55,5 +62,4 @@
 
   <%= f.submit "確認画面へ進む", class: "btn btn-sm btn-primary" %>
 
-
-<% end %>
+  <% end %>
