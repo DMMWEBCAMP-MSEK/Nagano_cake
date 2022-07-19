@@ -13,7 +13,7 @@ class Item < ApplicationRecord
     (price * 1.1).floor
   end
 
-  # 検索機能使う場合
+  ## 検索機能使う場合
   def search
   end
 end
