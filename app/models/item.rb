@@ -9,13 +9,11 @@ class Item < ApplicationRecord
   validates :genre_id, :name, :price, presence: true
   validates :price, numericality: { only_integer: true }
 
-  def add_tax_price
-    (self.price * 1.1).floor
-    # selfにproductを代入
+  def with_tax_price
+    (price * 1.1).floor
   end
 
   # 検索機能使う場合
   def search
   end
-
 end
