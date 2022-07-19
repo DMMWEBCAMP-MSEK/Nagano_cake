@@ -62,6 +62,14 @@ class Public::RegistrationsController < Devise::RegistrationsController
   # def after_inactive_sign_up_path_for(resource)
   #   super(resource)
   # end
+  protected
+  def update_resource(resource, params)
+    resource.update_with_password(params)
+  end
+
+  def after_update_path_for(resource)
+    agmin_customer_path(@customer.id)
+  end
 
     private
   def configure_permitted_parameters
