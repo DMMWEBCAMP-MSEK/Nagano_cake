@@ -1,7 +1,7 @@
-<h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集 </h2>
+<h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集</h2>
 
-<%= form_with model: @customer, url: admin_customer_path(@customer.id),method: :patch, local: true do |f| %>
- <table>
+<%= form_with model: @customer, url: admin_customer_path, method: :patch, local: true do |f| %>
+<table>
   <thead>
     <th></th>
     <th></th>
@@ -14,8 +14,10 @@
     <div class="field">
       <%= f.label :first_name, "(姓)" %>
       <%= f.text_field :first_name, autofocus: true, class: "name" %>
+    </div>
     </td>
     <td>
+    <div class="field">
       <%= f.label :last_name, "(名)" %>
       <%= f.text_field :last_name, autofocus: true, class: "name" %>
     </div>
@@ -27,12 +29,14 @@
     <div class="field">
       <%= f.label :first_name_kana, "(セイ)" %>
       <%= f.text_field :first_name_kana, autofocus: true, class: "name" %>
+    </div>
     </td>
     <td>
+    <div class="field">
       <%= f.label :last_name_kana, "(メイ)" %>
       <%= f.text_field :last_name_kana, autofocus: true, class: "name" %>
-    </td>
     </div>
+    </td>
   </tr>
   <tr>
     <td>メールアドレス</td>
@@ -64,7 +68,7 @@
 　<tr>
     <td>電話番号(ハイフンなし)</td>
     <td>
-    <div class="form-group>
+    <div class="form-group">
       <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
     </div>
     </td>
@@ -85,7 +89,7 @@
   <tr>
     <td></td>
     <td>
-    <div class=form-group">
+    <div class="form-group">
     <%= f.submit "変更を保存" %>
     </div>
     </td>
