@@ -23,7 +23,7 @@ class Customer < ApplicationRecord
   validates :password_confirmation, presence: true, length: { minimum: 6 }
 
   def active_for_authentication?
-    supper && (self.is_deleted == false)
+    super && (self.is_deleted == false)
   end
 
 end
