@@ -13,7 +13,6 @@ class Admin::ItemsController < ApplicationController
 
   def show
     @item = Item.find(params[:id])
-    
   end
 
   def index
@@ -30,7 +29,6 @@ class Admin::ItemsController < ApplicationController
       redirect_to admin_item_path(@item)
     end
   end
-
 
   private
   def item_params
