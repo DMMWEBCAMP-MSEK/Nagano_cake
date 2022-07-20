@@ -5,17 +5,18 @@ class Public::CartItemsController < ApplicationController
   #before_action :set_cart_item
 
   def create
-    @cart_items = current_customer.cart_items.new(cart_item_params)
-
+    @cart_item = current_customer.cart_items.new(cart_item_params)
+    @item = Item.find(params[:id])
+    #@cart_item.customer_id = current_customer.id
+    @cart_item = current_customer.cart_item.build(item_id: params[:item_id])
     @cart_item.save
     redirect_to cart_items_path
   end
 
   def index
-    @cart_items= current_customer.cart_items.all
+    @cart_items = current_customer.cart_items.includes([:item])
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
-
 
   def destroy_all
     @cart_item.destroy_all
