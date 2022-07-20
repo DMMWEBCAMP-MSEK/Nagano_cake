@@ -1,42 +1,44 @@
-<div class="col-md-10 offset-md-1">
-    <h2>会員登録編集</h2>
-    <% form_with model: @customer, url: customer_session_path, method: :patch, local: true do |f| %>
-      <div class="field">
-        <%= f.label :last_name, "氏名         " %>
-        <%= f.text_field :last_name, autofocus: true %>
-        <%= f.text_field :first_name, autofocus: true %>
-      </div>
-      <div class="field">
-        <%= f.label :last_name_kana,"フリガナ      " %>
-        <%= f.text_field :last_name_kana, autofocus: true %>
-        <%= f.text_field :first_name_kana, autofocus: true %>
-      </div>
-      <div class="field">
-        <%= f.label :post_code, "郵便番号      " %>
-        <%= f.text_field :post_code, autofocus: true %>
-      </div>
-      <div class="field">
-        <%= f.label :address, "住所         " %>
-        <%= f.text_field :address, autofocus: true %>
-        <>
-      </div>
-      <div class="field">
-        <%= f.label :phone_number,"電話番号      " %>
-        <%= f.text_field :phone_number, autofocus: true %>
-      </div>
-      <div class="field">
-        <%= f.label :email, "メールアドレス" %>
-        <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-      </div>
+<div class="container">
+    <%= form_with model: @customer, url: information_customers_path, method: :patch, local: true do |f| %>
+    <div class="row">
+        <h3 class="p-3"><span class="header">会員情報編集<span></h3>
+    </div>
 
-      <div class="container">
-        <div class="row">
-          <div class="col-3"></div>
-          <div class="col-3"><%= f.submit "編集内容を保存", class: 'btn btn-success' %></div>
-          <div class="col-1"></div>
-          <div class="col-2"><%= link_to '退会する', withdraw_customers_path, class: "btn btn-danger" %></div>
-          <div class="col-2"></div>
-        <div>
-      </div>
+    <div class="field row">
+        <div class = "col-2"><%#= f.label :氏名 %></div>
+        <div class = "col-5">
+            <%= f.text_field :first_name %>
+            <%= f.text_field :last_name, autofocus: true %>
+        </div>
+    </div>
+    <div class="field row">
+        <div class = "col-2"><#%= f.label :フリガナ %></div>
+        <div class = "col-5">
+            <%= f.text_field :first_name_kana %>
+            <%= f.text_field :last_name_kana, autofocus: true %>
+        </div>
+    </div>
+    <div class="field row">
+        <div class = "col-2"><%= f.label :郵便番号 %></div>
+        <div class = "col-5"><%= f.text_field :post_code %></div>
+    </div>
+    <div class="field row">
+        <div class = "col-2"><%= f.label :住所 %></div>
+        <div class = "col-5"><%= f.text_field :address %></div>
+    </div>
+    <div class="field row">
+        <div class = "col-2"><%= f.label :電話番号 %></div>
+        <div class = "col-5"><%= f.text_field :phone_number %></div>
+    </div>
+    <div class="field row">
+        <div class = "col-2"><%= f.label :メールアドレス %></div>
+        <div class = "col-5"><%= f.email_field :email %></div>
+    </div>
+    <div class="row">
+        <div class="col-10 p-3 form-inline" >
+            <div class="mr-5"><%= f.submit "編集内容を保存", class: 'btn btn-success btn-md ml-5' %></div>
+            <div class="mr-5"><%= link_to "退会する", confirm_customers_path, class: 'btn btn-danger ml-5' %></div>
+        </div>
+    </div>
     <% end %>
 </div>

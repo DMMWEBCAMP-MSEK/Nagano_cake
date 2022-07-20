@@ -11,7 +11,7 @@ end
 def update
    @customer = current_customer
    @customer.update(customer_params)
-   redirect_to my_page_customers_path
+   redirect_to my_page_customers_path(current_customer)
 end
 
 def confirm
