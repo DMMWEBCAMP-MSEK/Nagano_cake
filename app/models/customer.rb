@@ -19,7 +19,6 @@ class Customer < ApplicationRecord
 
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
-
 end
 
 

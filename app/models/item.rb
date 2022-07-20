@@ -4,19 +4,19 @@ class Item < ApplicationRecord
   has_many :order_items, dependent: :destroy
 
   enum sales_status: { sale: 0, stop_selling: 1 }
-  enum prdoction_status: { 販売中: true, 販売停止中: false }
   has_one_attached :image
 
-  validates :genre_id, :name, :price, presence: true
-  validates :price, numericality: { only_integer: true }
+  # validates :genre_id, :name, :price, presence: true
+  # validates :price, numericality: { only_integer: true }
+  validates :name, presence: true
+  validates :introduction, presence: true
+  validates :price, presence: true
 
-  def add_tax_price
-    (self.price * 1.1).floor
-    # selfにproductを代入
+  def with_tax_price
+    (price * 1.1).floor
   end
 
   # 検索機能使う場合
   def search
   end
-
 end
