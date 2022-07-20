@@ -5,7 +5,7 @@ class Customer < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
 
-  has_many :shipping_address
+  has_many :shipping_addresses
   has_many :orders
   has_many :cart_items
 
@@ -19,13 +19,12 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   validates :phone_number, presence: true
 
-  validates :password, presence: true, length: { minimum: 6 }
-  validates :password_confirmation, presence: true, length: { minimum: 6 }
+  validates :password, presence: true, length: { minimum: 6 }, on: :create
+  validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
 
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
-
 end
 
 
