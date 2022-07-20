@@ -2,6 +2,8 @@ class Public::OrdersController < ApplicationController
 
   def new
     @order = Order.new
+    @customer = Customer.find(current_customer.id)
+    @addresses = @customer.shipping_addresses.all
   end
 
   def create
@@ -10,10 +12,10 @@ class Public::OrdersController < ApplicationController
       if @order.save
       cart_items.each do |cart_item|
       order_item = OrderItem.new
-      order_item.item_id = cart.item_id
+      order_item.item_id = cart_item_id
       order_item.order_id = @order.id
-      order_item.order_amount = cart.amount
-      order_item.order_price = cart.item.price
+      order_item.order_amount = cart_item.amount
+      order_item.order_price = cart_item.price
       order_item.save
         end
       redirect_to confirm_orders_path
@@ -29,17 +31,19 @@ class Public::OrdersController < ApplicationController
     if params[:order][:address_number] == "1"
     @order.name = current_customer.last_name
     @order.address = current_customer.address
+    @order.post_code = current_customer.post_code
     elsif params[:order][:address_number] == "2"
 
-      if Address.exists?(name: params[:order][:registered])
-      @order.name = Address.find(params[:order][:registered]).name
-      @order.address = Address.find(params[:order][:registered]).address
+      if ShippingAddress.exists?(name: params[:order][:registered])
+      @order.name = ShippingAddress.find(params[:order][:registered]).name
+      @order.address = ShippingAddress.find(params[:order][:registered]).address
+      @order.post_code = ShippingAddress.find(params[:order][:registered]).post_code
       else
       render :new
       end
 
     elsif params[:order][:address_number] == "3"
-    address_new = current_customer.addresses.new(address_params)
+    address_new = current_customer.address.new(address_params)
 
       if address_new.save
 

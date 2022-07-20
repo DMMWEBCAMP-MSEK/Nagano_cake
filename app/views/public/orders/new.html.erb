@@ -37,7 +37,7 @@
 <div>
   <%= f.radio_button :address_number, 2 %>
   <%= f.label :address_number_2, "登録済住所から選択" %></br>
-  <%= f.select :address_id, options_from_collection_for_select(ShippingAddress.all, :id, :address_display) %>
+  <%= f.select :address_id, options_from_collection_for_select(@addresses, :id, :address_display) %>
 </div>
 
 <div>
@@ -73,6 +73,8 @@
   </tbody>
   </table>
 
-  <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+<div class="field col-sm-12 text-center mt-2">
+<%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
+</div>
 
   <% end %>

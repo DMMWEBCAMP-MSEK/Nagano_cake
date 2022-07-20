@@ -1,8 +1,9 @@
 <div>ショッピングカート</div>
 
 
-
-<%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-sm btn-danger" %>
+<div class="field col-sm-12 text-right mt-2">
+  <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
+</div>
 
 <table class="table table-bordered">
   <thead class="thead-dark">
@@ -59,7 +60,7 @@
 
   <%= form_with model: @order, url: new_order_path(@order), method: :get, local:true do |f| %>
 
-  <%= f.submit "情報入力へ進む", class: "btn btn-sm btn-success" %>
+  <%= f.submit "情報入力へ進む", class: "btn btn-success" %>
 
   <% end %>
 
