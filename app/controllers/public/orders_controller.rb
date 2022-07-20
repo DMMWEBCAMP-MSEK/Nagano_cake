@@ -5,8 +5,8 @@ class Public::OrdersController < ApplicationController
   end
 
   def create
+    @order = Order.new(order_params)
     @cart_items = current_customer.cart_items.all
-    @order = current_customer.orders.new(order_params)
       if @order.save
       cart_items.each do |cart_item|
       order_item = OrderItem.new
@@ -25,12 +25,10 @@ class Public::OrdersController < ApplicationController
   end
 
   def confirm
-    @cost = 800
-
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"
-    @order.name = current_customer.name
-    @order.address = current_customer.customer_address
+    @order.name = current_customer.last_name
+    @order.address = current_customer.address
     elsif params[:order][:address_number] == "2"
 
       if Address.exists?(name: params[:order][:registered])
@@ -55,6 +53,7 @@ class Public::OrdersController < ApplicationController
 
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
+    @cost = 800
 
   end
 
