@@ -23,7 +23,6 @@
             　 <%= link_to "カートに入れる", new_customer_session_path, class: " btn btn-primary" %>
             　<% end %>
             　<%= f.hidden_field :item_id, :value => @item.id %>
-            　<%= f.submit "カートに入れる", class: "btn btn-primary" %>
 
             　<!--遷移時に必要だが、ユーザーには見せないから-->
             <% end %>
