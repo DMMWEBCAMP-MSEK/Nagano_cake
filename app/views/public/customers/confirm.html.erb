@@ -12,7 +12,7 @@
         <div class="no-delete"><%= link_to "　退会しない　", my_page_customers_path, class: "btn btn-primary" %></div>
         <div class="delete">
             <% if customer_signed_in? && current_customer %>
-                <%= link_to "　退会する　", withdraw_customers_path(current_customer), method: :put, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
+                <%= link_to "　退会する　", withdraw_customers_path(current_customer), method: :patch, "data-confirm" => "本当に退会しますか？", class: "btn btn-danger" %>
             <% end %>
         </div>
     </div>
