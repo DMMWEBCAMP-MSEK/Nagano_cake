@@ -3,7 +3,8 @@ class Public::OrdersController < ApplicationController
   def new
     @order = Order.new
     @customer = Customer.find(current_customer.id)
-    @addresses = @customer.shipping_addresses.all
+    @addresses = current_customer.shipping_addresses.all
+    #@addresses = @customer.shipping_addresses.all
   end
 
   def create
@@ -29,27 +30,33 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"
-    @order.name = current_customer.last_name
+    @order.name = current_customer.last_name + current_customer.first_name
     @order.address = current_customer.address
     @order.post_code = current_customer.post_code
     elsif params[:order][:address_number] == "2"
 
-      if ShippingAddress.exists?(name: params[:order][:registered])
-      @order.name = ShippingAddress.find(params[:order][:registered]).name
-      @order.address = ShippingAddress.find(params[:order][:registered]).address
-      @order.post_code = ShippingAddress.find(params[:order][:registered]).post_code
-      else
-      render :new
-      end
+      #if ShippingAddress.exists?(name: params[:order][:registered])
+      #@order.name = ShippingAddress.find(params[:order][:registered]).name
+      #@order.address = ShippingAddress.find(params[:order][:registered]).address
+      #@order.post_code = ShippingAddress.find(params[:order][:registered]).post_code
+      #else
+      #render :new
+      #end
+
+      ship = ShippingAddress.find(params[:order][:customer_id])
+      @order.post_code = ship.post_code
+      @order.address = ship.address
+      @order.name = ship.name
 
     elsif params[:order][:address_number] == "3"
-    address_new = current_customer.address.new(address_params)
-
-      if address_new.save
-
-      else
-      render :new
-      end
+    #address_new = current_customer.address.new(address_params)
+      #if address_new.save
+      #else
+      #render :new
+      #end
+    @order.post_code = params[:order][:post_code]
+    @order.address = params[:order][:address]
+    @order.name = params[:order][:name]
 
     else
       redirect_to new_order_path

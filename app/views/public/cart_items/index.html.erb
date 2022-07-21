@@ -26,7 +26,11 @@
           <%= cart_item.item.with_tax_price.to_s(:delimited) %>
         </td>
         <td>
-          <%= cart_item.amount %>
+          <%= form_with model: cart_item, url: cart_item_path(@cart_items), local: true, method: :patch do |f| %>
+          <%= f.number_field :amount, min: 1, max:10, id: "amount_cart" %>
+          <%= f.submit "変更",class: "btn btn-success" %>
+          <% end %>
+          <%#= cart_item.amount %>
           <%#= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
         </td>
         <td>
