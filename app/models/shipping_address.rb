@@ -1,4 +1,5 @@
 class ShippingAddress < ApplicationRecord
+
   belongs_to :customer
 
   def postcode_and_address

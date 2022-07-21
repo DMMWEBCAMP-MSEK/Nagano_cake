@@ -15,6 +15,7 @@ Rails.application.routes.draw do
       patch "/information" => "customers#update"
       get "confirm"
       patch "withdraw"
+      put "/users/:id/hide" => "users#hide", as: 'users_hide'
     end
 
 

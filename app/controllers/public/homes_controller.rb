@@ -1,7 +1,8 @@
 class Public::HomesController < ApplicationController
-
   def top
-    @orders = Order.all
+    @genres = Genre.all
+    # 最新から４つ
+    @items = Item.all.order(created_At: :desc).limit(4)
   end
 
   def about
