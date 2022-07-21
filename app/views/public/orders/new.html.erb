@@ -9,12 +9,12 @@
         <div>支払方法</div>
         <div class="form-group ml-4">
           <div>
-            <%= f.radio_button :payment_method, "credit_card" %>
-            <%= f.label :payment_method, "クレジットカード" %>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(0),{:checked => true} %>
+            <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
           </div>
           <div>
-            <%= f.radio_button :payment_method, "transfer" %>
-            <%= f.label :payment_method, "銀行振込" %>
+            <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
+            <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
           </div>
         </div>
       </div>

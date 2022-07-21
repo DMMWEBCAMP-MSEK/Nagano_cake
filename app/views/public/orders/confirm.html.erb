@@ -27,7 +27,7 @@
     <table class="table table-bordered col-3 ml-5">
       <tr>
         <th class="table-dark">送料</th>
-        <td><%= @cost %>円</td>
+        <td><%= @order.shipping_cost %>円</td>
       </tr>
       <tr>
         <th class="table-dark">商品合計</th>
@@ -35,21 +35,27 @@
       </tr>
       <tr>
         <th class="table-dark">請求金額</th>
-        <td><%= @order.total_payment %>円</td>
+        <td><%= @order.total_payment.to_s(:delimited, delimiter: ',') %>円</td>
       </tr>
     </table>
-    <div class="col-12">
-      <h5>支払方法</h5>
+  </div>
+  <div class="">
+    <div class="ml-5">
+      <div>支払方法 <%= @order.payment_method_i18n %></div>
     </div>
-    <div class="col-12">
-      <h5 class="inlin-clock">お届け先</h5>
-      〒<%= @order.post_code %> <%= @order.address %>
-      <%= @order.name %>
+    <div class="ml-5">
+      <div>
+        お届け先
+        〒<%= @order.post_code %> <%= @order.address %>
+          <%= @order.name %>
+      </div>
     </div>
-    <%= form_with model: @order, url: thanks_orders_path, method: :get, local: true do |f| %>
-      <%= f.hidden_field :name %>
-      <%= f.hidden_field :address %>
-      <%= f.hidden_field :total_price, value: @total %>
+    <%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
+      <%= f.hidden_field :name, value: @order.name %>
+      <%= f.hidden_field :post_code, value: @order.post_code %>
+      <%= f.hidden_field :address, value: @order.address %>
+      <%= f.hidden_field :total_payment, value: @order.total_payment %>
+      <%= f.hidden_field :shipping_cost, value: 800 %>
       <div class="field col-sm-12 text-center mt-2">
         <%= f.submit "注文を確定する", class: "btn btn-success center-block" %>
       </div>
