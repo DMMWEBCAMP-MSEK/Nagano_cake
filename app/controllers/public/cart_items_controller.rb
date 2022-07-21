@@ -7,14 +7,16 @@ class Public::CartItemsController < ApplicationController
   def create
     @cart_item = CartItem.new(cart_item_params)
     @cart_item.customer_id = current_customer.id
-    @item = Item.find(params[:id])
-    @cart_item = current_customer.cart_item.build(item_id: params[:item_id])
-    @cart_item.save
-    redirect_to cart_items_path
+    @item = Item
+    if @cart_item.save
+      redirect_to cart_items_path
+    else
+      redirect_to request.referer, notice: '数量を変更してください'
+    end
   end
 
   def index
-    @cart_items = current_customer.cart_items.includes([:item])
+    @cart_items = CartItem.where(customer_id: current_customer.id)
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
   end
 
@@ -30,6 +32,6 @@ class Public::CartItemsController < ApplicationController
 
   private
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :amount)
+    params.require(:cart_item).permit(:item_id, :amount, :image)
   end
 end

@@ -1,56 +1,57 @@
-<div>ショッピングカート</div>
+<div class="col-2 ml-5 mt-3 mb-3 pl-2 pr-2 bg-light">ショッピングカート</div>
+<div class="container">
+  <div class="row">
+    <table class="table table-bordered">
+      <thead class="thead-dark">
+          <th>商品名</th>
+          <th>単価(税込)</th>
+          <th>数量</th>
+          <th>小計</th>
+          <th></th>
+      </thead>
+      <% @cart_items.each do |cart_item| %>
+      <tbody>
+          <tr>
+            <td>
+              <%= cart_item.item.name %>
+            </td>
+            <td>
+              <%= cart_item.item.with_tax_price.to_s(:delimited) %>
+            </td>
+            <td>
+              <%= cart_item.amount %>
+            </td>
+            <td>
+              <%= cart_item.subtotal.to_s(:delimited) %>
+            </td>
+            <td>
+              <%= link_to "削除する", cart_item_path(cart_item), methd: :delete, class: "btn btn-danjer" %>
+            </td>
+          </tr>
+      </tbody>
 
-<table class="table table-bordered">
-  <thead class="thead-dark">
-      <th>商品名</th>
-      <th>単価(税込)</th>
-      <th>数量</th>
-      <th>小計</th>
-      <th></th>
-  </thead>
-  <% @cart_items.each do |cart_item| %>
+      <% end %>
 
-  <tbody>
-      <tr>
-        <td>
-          <%= cart.item.name %>
-        </td>
-        <td>
-          <%= cart_item.item.with_tax_price.to_s(:delimited) %>
-        </td>
-        <td>
-          <%= cart_item.amount %>
-        </td>
-        <td>
-          <%= cart_item.subtotal.to_s(:delimited) %>
-        </td>
-        <td>
+    </table>
+    <div class="ml-5 mt-3">
+      <%= link_to "買い物を続ける", items_path, class:"btn btn-primary" %>
+    </div>
+    <div class="col-md-3 offset-md-7">
+      <table class="table table-bordered">
+        <tr class="">
+          <th class="table-dark">合計金額</th>
+          <td><%= @total.to_s(:delimited, delimiter: ',') %></td>
+        </tr>
+      </table>
+    </div>
 
-        </td>
-      </tr>
-  </tbody>
+    <div>
+      <%= form_with model: @order, url: new_order_path(@order), method: :get, local:true do |f| %>
+        <%= f.submit "情報入力へ進む", class: "btn btn-sm btn-success" %>
+      <% end %>
+    </div>
 
-  <% end %>
 
-</table>
+  </div>
 
-<table class="table table-bordered">
-  <thead class="thead-dark">
-    <tr>
-     <th>
-      合計金額
-     </th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-     <td>
-       <%= @total.to_s(:delimited, delimiter: ',') %>
-     </td>
-    </tr>
-  </tbody>
-</table>
-
-  <%= form_with model: cart_item, url: new_order_path, method: :post do |f| %>
-  <%= f.submit "情報入力へ進む", class: "btn btn-sm btn-success" %>
-  <% end %>
+</div>

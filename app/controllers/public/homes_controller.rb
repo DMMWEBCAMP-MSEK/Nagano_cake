@@ -1,6 +1,7 @@
 class Public::HomesController < ApplicationController
-  def top
 
+  def top
+    @orders = Order.all
   end
 
   def about
