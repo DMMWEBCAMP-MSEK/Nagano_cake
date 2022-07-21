@@ -47,8 +47,8 @@
           <tr>
             <td class="align-middle"><%= order_items.item.name %></td>
             <td class="align-middle"><%= order_items.tax_price.to_s(:delimited) %>円</td>
-            <td class="align-middle"><%= order_items.quantity %></td>
-            <td class="align-middle"><%= (order_items.tax_price*order_items.quantity).to_s(:delimited) %>円</td>
+            <td class="align-middle"><%= order_items.amount %></td>
+            <td class="align-middle"><%= (order_items.tax_price*order_items.amount).to_s(:delimited) %>円</td>
           </tr>
           <% end %>
         </tbody>
@@ -65,7 +65,7 @@
           <tbody>
             <tr>
               <td>商品合計</td>
-              <td><%= (@order.total_price-@order.postage).to_s(:delimited)  %> 円</td>
+              <td><%= (@order.total_payment-@order.shipping_cost).to_s(:delimited)  %> 円</td>
             </tr>
             <tr>
               <td>送料</td>
@@ -73,7 +73,7 @@
             </tr>
             <tr>
               <td><strong>ご請求額</strong></td>
-              <td><strong><%= @order.total_price.to_s(:delimited) %> 円</strong></td>
+              <td><strong><%= @order.total_payment.to_s(:delimited) %> 円</strong></td>
             </tr>
           </tbody>
         </thead>
