@@ -1,6 +1,16 @@
 class CartItem < ApplicationRecord
 
+  has_one_attached :image
+
   belongs_to :item
   belongs_to :customer
+
+  def subtotal
+    item.with_tax_price * amount
+  end
+
+  def update_item(item_id:, amount:)
+    cart_items.find_by(item_id: item_id).update(amount: amount.to_i)
+  end
 
 end

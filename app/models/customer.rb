@@ -22,9 +22,12 @@ class Customer < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
 
+<<<<<<< HEAD
+=======
   def active_for_authentication?
     super && (self.is_deleted == false)
   end
+>>>>>>> 531b6b82195e4c4a1663617ff5a52b87ffe727cf
 end
 
 

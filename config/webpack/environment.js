@@ -11,3 +11,4 @@ module.exports = environment
       Popper: 'popper.js'
     })
   )
+
