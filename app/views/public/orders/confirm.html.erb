@@ -1,5 +1,10 @@
 <div class="dark">注文情報確認</div>
 
+<div class="container-fluid">
+<div class="row">
+
+  <div class="float-left">
+    <div class="col-xs-12 col-md-6">
 <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>
@@ -40,7 +45,11 @@
   <% end %>
 
 </table>
+</div>
+</div>
 
+<div class="float-right">
+  <div class="col-xs-12 col-md-6">
 <table class="table table-bordered">
   <thead  class="thead-dark">
     <tr>
@@ -73,22 +82,42 @@
   </thead>
 
 </table>
+</div>
+</div>
 
-<h2>支払方法</h2>
+</div>
 
+<table>
+  <thead>
+    <tr>
+      <th>
+        支払方法
+      </th>
+      <td>
+        <%= @order.payment_method_i18n %>
+      </td>
+    </tr>
+    <tr>
+      <th>
+        お届け先
+      </th>
+      <td>
+        <%= @order.post_code %>
+        <%= @order.address %></br>
+        <%= @order.name %>
+      </td>
+    </tr>
+  </thead>
+</table>
 
-
-<h2>お届け先</h2>
-
-<%= @order.post_code %>
-<%= @order.address %>
-<%= @order.name %>
-
-<%= form_with model: @order, url: thanks_orders_path, method: :get, local: true do |f| %>
+<%= form_with model: @order, url: orders_path, method: :post, local: true do |f| %>
 
   <%= f.hidden_field :name %>
   <%= f.hidden_field :address %>
-  <%= f.hidden_field :total_price, value: @total %>
+  <%= f.hidden_field :post_code %>
+  <%= f.hidden_field :total_payment, value: @total %>
+  <%= f.hidden_field :shipping_cost, value: 800 %>
+  <%= f.hidden_field :payment_method %>
 
 <div class="field col-sm-12 text-center mt-2">
   <%= f.submit "注文を確定する", class: "btn btn-success center-block" %>

@@ -6,8 +6,6 @@ ja:
           transfer: "銀行振込"
 
 
-ja:
-  enums:
     item:
       sales_status:
         sale: "販売中"
