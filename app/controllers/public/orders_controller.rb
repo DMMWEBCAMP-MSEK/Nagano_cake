@@ -5,7 +5,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order=current_customer.orders.find(params[:id])
+    @customer=Customer.find(params[:id])
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   def new
@@ -18,11 +20,12 @@ class Public::OrdersController < ApplicationController
   def index
     @orders = current_customer.orders.page(params[:page])
   end
-  
+
   def create
     @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
-    @order.save
+  　@order.save
+      #flash[:notice] = "注文を受け付けました"
 
       @cart_items.each do |cart_item|
       @order_item = @order.order_items.new
@@ -33,6 +36,7 @@ class Public::OrdersController < ApplicationController
       @order_item.save
     # end
       end
+
       redirect_to thanks_orders_path
       @cart_items.destroy_all
     # else
@@ -72,6 +76,7 @@ class Public::OrdersController < ApplicationController
     @order.name = params[:order][:name]
 
     else
+      flash[:notice] = "配送先を選択してください"
       redirect_to new_order_path
     end
 
@@ -89,7 +94,7 @@ class Public::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:payment_method, :post_code, :address, :name, :total_payment, :shipping_cost)
   end
-  
+
   # def order_items_params
   #   params.require(:order_items).permit(:price, :amount)
   # end

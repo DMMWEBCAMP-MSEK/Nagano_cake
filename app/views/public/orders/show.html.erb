@@ -15,15 +15,20 @@
 　<div class="form-group row">
     <div class="col-2"><strong>配送先</strong></div>
     <div class="col-5">
-      〒<%= @order.post_code.to_s.insert(3, "-") %></br>
+      〒<%= @order.customer.post_code%></br>
       <%= @order.address %></br>
-      <%= @order.name %>
+      <%= @customer.last_name %><%= @customer.first_name %>
     </div>
   </div>
 
 　<div class="form-group row">
     <div class="col-2"><strong>支払い方法</strong></div>
-    <div class="col-5"><%= @order.payment_method_i18n %></div>
+    <div class="col-5">
+        <% if @order.payment_method == 0 %>
+            クレジットカード
+        <% else %>
+            銀行振込
+        <% end %></div>
   </div>
 
 　<div class="form-group row">
@@ -43,12 +48,12 @@
           </tr>
         </thead>
         <tbody>
-          <% @order.order_items.each do |order_items|%>
+          <% @order_items.each do |order_item|%>
           <tr>
-            <td class="align-middle"><%= order_items.item.name %></td>
-            <td class="align-middle"><%= order_items.tax_price.to_s(:delimited) %>円</td>
-            <td class="align-middle"><%= order_items.amount %></td>
-            <td class="align-middle"><%= (order_items.tax_price*order_items.amount).to_s(:delimited) %>円</td>
+            <td class="align-middle"><%= order_item.item.name %></td>
+            <td class="align-middle"><%= order_item.price.to_s(:delimited) %>円</td>
+            <td class="align-middle"><%= order_item.amount %></td>
+            <td class="align-middle"><%= (order_item.price*order_item.amount).to_s(:delimited) %>円</td>
           </tr>
           <% end %>
         </tbody>
@@ -69,7 +74,7 @@
             </tr>
             <tr>
               <td>送料</td>
-              <td><%= @order.postage %> 円</td>
+              <td><%= @order.shipping_cost %> 円</td>
             </tr>
             <tr>
               <td><strong>ご請求額</strong></td>
