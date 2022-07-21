@@ -15,24 +15,29 @@ class Public::OrdersController < ApplicationController
     #@addresses = @customer.shipping_addresses.all
   end
 
+  def index
+    @orders = current_customer.orders.page(params[:page])
+  end
+  
   def create
-    @order = Order.new(order_params)
+    @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
-      if @order.save
-      cart_items.each do |cart_item|
-      order_item = OrderItem.new
-      order_item.item_id = cart_item_id
-      order_item.order_id = @order.id
-      order_item.order_amount = cart_item.amount
-      order_item.order_price = cart_item.price
-      order_item.save
-        end
-      redirect_to confirm_orders_path
-      cart_items.destroy_all
-      else
-      @order = Order.new(order_params)
-      render :new
+    @order.save
+
+      @cart_items.each do |cart_item|
+      @order_item = @order.order_items.new
+      @order_item.item_id = cart_item.item.id
+      # @order_item.name = cart_item.item.name
+      @order_item.amount = cart_item.amount
+      @order_item.price = cart_item.item.price
+      @order_item.save
+    # end
       end
+      redirect_to thanks_orders_path
+      @cart_items.destroy_all
+    # else
+    #   @order = Order.new(order_params)
+    #   render :new
   end
 
   def confirm
@@ -82,8 +87,12 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :post_code, :address, :name, :total_price)
+    params.require(:order).permit(:payment_method, :post_code, :address, :name, :total_payment, :shipping_cost)
   end
+  
+  # def order_items_params
+  #   params.require(:order_items).permit(:price, :amount)
+  # end
 
   def address_params
   params.require(:order).permit(:name, :address, :post_code)
