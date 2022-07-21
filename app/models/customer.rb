@@ -1,14 +1,13 @@
 class Customer < ApplicationRecord
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  has_many :shipping_addresses
-
-  has_many :cart_items
-  has_many :orders
-
 
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable
+
+  has_many :shipping_addresses
+  has_many :orders
+  has_many :cart_items
 
   validates :first_name, presence: true
   validates :last_name, presence: true
@@ -23,6 +22,12 @@ class Customer < ApplicationRecord
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
 
+<<<<<<< HEAD
+=======
+  def active_for_authentication?
+    super && (self.is_deleted == false)
+  end
+>>>>>>> 531b6b82195e4c4a1663617ff5a52b87ffe727cf
 end
 
 

@@ -1,100 +1,104 @@
-<h2>新規会員登録</h2>
+<div class="container"></br>
+
+ <h3><span class="px-3" style="background-color:lightgray">新規会員登録</span></h3>
 
 <%= form_with model: @customer, url: registration_path(resource_name), local: true do |f| %>
   <%= render "public/shared/error_messages", resource: resource %>
- <table>
-  <thead>
-    <th></th>
-    <th></th>
-    <th></th>
-  </thead>
-  <tbody>
-  <tr>
-    <td>名前</td>
-    <td><%= f.label :first_name, "(姓)" %></td>
-    <td>
-      <%= f.text_field :first_name, autofocus: true, class: "name" %>
-    </td>
-    <td><%= f.label :last_name, "(名)" %></td>
-    <td>
-      <%= f.text_field :last_name, autofocus: true, class: "name" %>
-    </td>
-  </tr>
-  <tr>
-    <td>フリガナ</td>
-    <td><%= f.label :first_name_kana, "(セイ)" %></td>
-    <td>
-      <%= f.text_field :first_name_kana, autofocus: true, class: "name" %>
-    </td>
-    <td><%= f.label :last_name_kana, "(メイ)" %></td>
-    <td>
-      <%= f.text_field :last_name_kana, autofocus: true, class: "name" %>
-    </td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td></td>
-    <td>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>郵便番号(ハイフンなし)</td>
-    <td></td>
-    <td>
-      <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
-　　</td>
-　　<td></td>
-　</tr>
-　<tr>
-    <td>住所</td>
-    <td></td>
-    <td>
-      <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-　　</td>
-　　<td></td>
-　</tr>
-　<tr>
-    <td>電話番号(ハイフンなし)</td>
-    <td></td>
-    <td>
-      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-    </td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>パスワード(6文字以上)</td>
-    <td></td>
-    <td>
-      <%= f.password_field :password, autocomplete: "new-password" %>
+
+  <table class="table table-borderless align-middle">
+    <tbody>
+      <tr>
+        <td>名前</td>
+        <td class="text-right">
+          <%= f.label :first_name, "(姓)" %>
+        </td>
+        <td>
+          <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
+        </td>
+        <td class="text-right">
+          <%= f.label :last_name, "(名)" %>
+        </td>
+        <td>
+          <%= f.text_field :last_name, autofocus: true, class: "form-control"  %>
+        </td>
+      </tr>
+    <tr>
+      <td>フリガナ</td>
+      <td class="text-right">
+        <%= f.label :first_name_kana, "(セイ)" %>
       </td>
-    <td></td>
-  </tr>
-  <tr>
-    <td>パスワード(確認用)</td>
-    <td></td>
-    <td>
-      <%= f.password_field :password_confirmation, autocomplete: "new-password" %>
-    </td>
-    <td></td>
-  </tr>
-  <tr>
-    <td></td>
-    <td></td>
-    <td>
-      <%= f.submit "新規登録" %>
-  </td>
-    <td></td>
-  </tr>
-  </tbody>
+      <td>
+        <%= f.text_field :first_name_kana, autofocus: true,class: "form-control"  %>
+      </td>
+      <td class="text-right">
+        <%= f.label :last_name_kana, "(メイ)" %>
+      </td>
+      <td>
+        <%= f.text_field :last_name_kana, autofocus: true,class: "form-control"  %>
+      </td>
+    </tr>
+    <tr>
+      <td>メールアドレス</td>
+      <td></td>
+      <td>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control"  %>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>郵便番号(ハイフンなし)</td>
+      <td></td>
+      <td>
+        <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code",class: "form-control"  %>
+  　　</td>
+  　</tr>
+  　<tr>
+      <td>住所</td>
+      <td></td>
+      <td colspan=3>
+        <%= f.text_field :address, autofocus: true, autocomplete: "address",class: "form-control"  %>
+  　　</td>
+  　</tr>
+  　<tr>
+      <td>電話番号(ハイフンなし)</td>
+      <td></td>
+      <td>
+        <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",class: "form-control"  %>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>パスワード(6文字以上)</td>
+      <td></td>
+      <td>
+        <%= f.password_field :password, autocomplete: "new-password",class: "form-control"  %>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td>パスワード(確認用)</td>
+      <td></td>
+      <td>
+        <%= f.password_field :password_confirmation, autocomplete: "new-password",class: "form-control"  %>
+      </td>
+      <td></td>
+    </tr>
+    <tr>
+      <td></td>
+      <td></td>
+      <td>
+        <%= f.submit "新規登録" ,class: "btn btn-success px-5" %>
+      </td>
+      <td></td>
+    </tr>
+    </tbody>
   </table>
-<% end %>
+  <% end %>
 
-<h2>既に登録済みの方</h2>
+<h3><h3><span class="px-3" style="background-color:lightgray">既に登録済みの方</span></h3>
 
-<div>
-<%= link_to 'こちら', new_customer_session_path %>からログインしてください。
+  <div>
+  <%= link_to 'こちら', new_customer_session_path %>からログインしてください。
+  </div>
+</br>
 </div>
-
-<%= render "public/shared/links" %>

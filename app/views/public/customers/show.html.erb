@@ -1,0 +1,57 @@
+<div class="container">
+    <div class="row">
+        <h3 class="p-3"><span class="header">マイページ<span></h3>
+    </div>
+    <div class="row">
+        <div class="col-10 form-inline">
+        <!-- 登録情報 -->
+            <div class = "mr-3"><h4>登録情報</h4></div>
+            <div class = "mr-3">
+                <%= link_to "編集する", edit_customers_path(current_customer), class: 'btn btn-primary btn-sm' %>
+            </div>
+        </div>
+        <div class="col-10">
+            <table class="table table-bordered">
+                <tr>
+                    <td>氏名</td>
+                    <td><%= @customer.first_name %> <%= @customer.last_name %></td>
+                </tr>
+                <tr>
+                    <td>カナ</td>
+                    <td><%= @customer.first_name_kana %> <%= @customer.last_name_kana %></td>
+                </tr>
+                <tr>
+                   <!-- 文字列のハイフンと文字数を指定 -->
+                    <td>郵便番号</td>
+                    <td><%= @customer.post_code %></td>
+                </tr>
+                <tr>
+                    <td>住所</td>
+                    <td><%= @customer.address %></td>
+                </tr>
+                <tr>
+                    <td>電話番号</td>
+                    <td><%= @customer.phone_number %></td>
+                </tr>
+                <tr>
+                    <td>メールアドレス</td>
+                    <td><%= @customer.email %></td>
+                </tr>
+            </table>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-10 form-inline">
+            <div class = "mr-3"><h4>配送先　</h4></div>
+            <div class = "mr-3">
+                <%= link_to "一覧を見る", shipping_addresses_path, class: 'btn btn-primary btn-sm' %>
+            </div>
+        </div>
+        <div class="col-10 form-inline">
+            <div class = "mr-3"><h4>注文履歴</h4></div>
+            <div class = "mr-3">
+                <%= link_to "一覧を見る", orders_path, class: 'btn btn-primary btn-sm' %>
+            </div>
+        </div>
+    </div>
+</div>
