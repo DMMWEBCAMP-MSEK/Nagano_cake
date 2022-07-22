@@ -5,23 +5,40 @@ class Order < ApplicationRecord
 
   with_options presence: true do
      validates :payment_method
+     validates :post_code
      validates :address
      validates :name
   end
 
   enum payment_method: { credit_card: 0, transfer: 1 }
   enum status: {
-     "入金待ち":0,
-     "入金確認":1,
-     "製作中":2,
-     "発送準備中":3,
-     "発送済み":4
+     waiting_for_payment: 0,
+     payment_confirmation: 1,
+     in_production: 2,
+     preparing_to_ship: 3,
+     shipped: 4
   }
 
   def items_amount
     array = []
-    OrderItem.all.each do |order_item|
+    order_items.all.each do |order_item|
       array << order_item.amount
+    end
+    array.sum
+  end
+
+  def items_price
+    array = []
+    order_items.all.each do |order_item|
+      array << order_item.amount*order_item.price
+    end
+    array.sum
+  end
+
+  def cart_items_price
+    array = []
+    cart_items.all.each do |cart_item|
+      array << cart_item.amount*cart_item.price
     end
     array.sum
   end
