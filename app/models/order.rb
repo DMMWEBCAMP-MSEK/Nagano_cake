@@ -18,6 +18,14 @@ class Order < ApplicationRecord
      "発送済み":4
   }
 
+  def items_amount
+    array = []
+    OrderItem.all.each do |order_item|
+      array << order_item.amount
+    end
+    array.sum
+  end
+
 
   def postcode_and_address
     self.post_code + '(' + self.address.to_s + ')'
