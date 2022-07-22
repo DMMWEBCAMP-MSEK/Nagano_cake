@@ -5,7 +5,7 @@
 
   <div class="row">
     <div class="col-10 offset-1">
-      <table class="table table-hover table-inverse admin_customers_table">
+      <table class="table table-hover table-bordered admin_customers_table">
         <thead class="thead-dark">
           <tr>
             <th>注文日</th>
@@ -27,12 +27,12 @@
               </td>
               <td class="align-middle">
                 <% order.order_items.each do |order_items|%>
-                 ・ <%= order_items.item.name %></br>
+                  <%= order_items.item.name %></br>
                 <% end %>
               </td>
               <td class="align-middle"><%= (order.total_payment).to_s(:delimited) %>円</td>
               <td class="align-middle"><%= order.status_i18n %></td>
-              <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn btn-ex"%></td>
+              <td class="align-middle"><%= link_to "表示する", order_path(order), class: "btn-sm btn-primary"%></td>
             </tr>
           <% end %>
         </tbody>

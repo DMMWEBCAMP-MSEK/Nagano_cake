@@ -22,8 +22,10 @@ class Order < ApplicationRecord
 
   validates :post_code, presence: true
   validates :address, presence: true
-  validates :address_name, presence: true
+  # validates :address_name, presence: true
   validates :post_code, length: {is: 7}, numericality: { only_integer: true }
+
+  scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
 
   def postcode_and_address
     self.post_code + '(' + self.address.to_s + ')'

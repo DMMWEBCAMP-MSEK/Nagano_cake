@@ -1,15 +1,5 @@
 class Public::OrdersController < ApplicationController
 
-  def index
-    @orders = current_customer.orders.page(params[:page])
-  end
-
-  def show
-    @customer=Customer.find(params[:id])
-    @order = Order.find(params[:id])
-    @order_items = @order.order_items
-  end
-
   def new
     @order = Order.new
     @customer = Customer.find(current_customer.id)
@@ -21,7 +11,9 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-
+    @customer=Customer.find(params[:id])
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items
   end
 
   def index
@@ -82,7 +74,7 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :post_code, :address, :name, :total_payment, :shipping_cost)
+    params.require(:order).permit(:payment_method, :status, :post_code, :address, :name, :total_payment, :shipping_cost, :customer_id)
   end
 
   # def order_item_params
@@ -91,6 +83,12 @@ class Public::OrdersController < ApplicationController
 
   def address_params
   params.require(:order).permit(:name, :address, :post_code, :customer_id)
+  end
+
+  def params_check
+    	if params[:id].nil?
+    		redirect_to root_path
+    	end
   end
 
   # def shipping_address_params

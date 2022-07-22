@@ -1,3 +1,4 @@
+<div class="container mt-5">
 <h3>配送先登録／一覧</h3>
 
 <%= form_with model:@shipping_address, url: shipping_addresses_path, method: :post do |f| %>
@@ -42,8 +43,14 @@
             <td><%= shipping_address.post_code %></td>
             <td><%= shipping_address.address %></td>
             <td><%= shipping_address.name %></td>
-            <td><%= link_to "編集する", edit_shipping_address_path(shipping_address) %><%= link_to "削除する", shipping_address_path(shipping_address), method: :delete %></td>
+            <td>
+              <% if current_customer %>
+                <%= link_to "編集する", edit_shipping_address_path(shipping_address), class:"btn-sm btn-success text-white" %>
+                <%= link_to "削除する", shipping_address_path(shipping_address), method: :delete, data: {confirm: "削除しますか？"}, class:"btn-sm btn-danger text-white" %>
+              <% end %>
+            </td>
           </tr>
         <% end %>
       </tbody>
-    </table>
+  </table>
+  </div>
