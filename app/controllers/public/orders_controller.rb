@@ -22,7 +22,9 @@ class Public::OrdersController < ApplicationController
       @order_item.price = cart_item.item.price
       @order_item.save
     end
-    @shipping_address.save
+    if params[:order][:address_number] == "3"
+      @shipping_address.save
+    end
     @cart_items.destroy_all
     redirect_to thanks_orders_path
     # else

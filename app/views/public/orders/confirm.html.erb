@@ -56,6 +56,7 @@
       <%= f.hidden_field :address, value: @order.address %>
       <%= f.hidden_field :total_payment, value: @order.total_payment %>
       <%= f.hidden_field :shipping_cost, value: 800 %>
+      <%= f.hidden_field :address_number, value: params[:order][:address_number] %>
       <div class="field col-sm-12 text-center mt-2">
         <%= f.submit "注文を確定する", class: "btn btn-success center-block" %>
       </div>
