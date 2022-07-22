@@ -25,7 +25,6 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
   　@order.save
-      #flash[:notice] = "注文を受け付けました"
 
       @cart_items.each do |cart_item|
       @order_item = @order.order_items.new

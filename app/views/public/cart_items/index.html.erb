@@ -45,6 +45,8 @@
 
 </table>
 
+<div class="container">
+<%= link_to '買い物を続ける', items_path, class: "btn btn-primary" %>
 <table class="table table-bordered">
   <thead class="thead-dark">
     <tr>
@@ -61,14 +63,12 @@
     </tr>
   </tbody>
 </table>
-
+<div>
   <%= form_with model: @order, url: new_order_path(@order), method: :get, local:true do |f| %>
-
-  <%= f.submit "情報入力へ進む", class: "btn btn-success" %>
-
+  <div>
+    <%= f.submit "情報入力へ進む", class: "btn btn-success" %>
+  </div>
   <% end %>
-
-<%= link_to '買い物を続ける', items_path, class: "btn btn-primary" %>
 
 
 
