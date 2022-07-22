@@ -1,17 +1,17 @@
 <div class="dark">注文情報入力</div>
 
+<%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
+
 <div>
   支払方法
 </div>
 
-<%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
-
-<div>
+<div class="ml-3">
 <%= f.radio_button :payment_method, Order.payment_methods.key(0),{:checked => true} %>
 <%= f.label :payment_method, Order.payment_methods_i18n[:credit_card] %>
 </div>
 
-<div>
+<div class="ml-3">
 <%= f.radio_button :payment_method, Order.payment_methods.key(1) %>
 <%= f.label :payment_method, Order.payment_methods_i18n[:transfer] %>
 </div>
@@ -20,38 +20,33 @@
   お届け先
 </div>
 
-<div>
+<div class="ml-3">
   <%= f.radio_button :address_number, 1 %>
   <%= f.label :address_number_1, "ご自身の住所" %>
 </div>
 
-  <div>
+  <div class="ml-3">
     〒<%= current_customer.post_code %>
     <%= current_customer.address %>
   </div>
-  <div>
+  <div class="ml-3">
     <%= current_customer.first_name %>
     <%= current_customer.last_name %>
   </div>
 
-<div>
+<div class="ml-3">
   <%= f.radio_button :address_number, 2 %>
   <%= f.label :address_number_2, "登録済住所から選択" %></br>
   <%= f.collection_select :customer_id, @addresses, :id, :postcode_and_address,{prompt: "選択してください"} %>
 </div>
 
-<div>
+<div class="ml-3">
   <%= f.radio_button :address_number, 3 %>
   <%= f.label :address_number_3, "新しいお届け先" %>
 </div>
 
- <table>
+ <table class="ml-3">
   <thead>
-    <th></th>
-    <th></th>
-    <th></th>
-  </thead>
-  <tbody>
   <tr>
     <td><%= f.label :post_code, "郵便番号(ハイフンなし)" %></td>
     <td>
@@ -70,7 +65,7 @@
       <%= f.text_field :name %>
     </td>
   </tr>
-  </tbody>
+  </thead>
   </table>
 
 <div class="field col-sm-12 text-center mt-2">
