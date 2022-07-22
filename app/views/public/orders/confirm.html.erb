@@ -27,15 +27,15 @@
     <table class="table table-bordered col-3 ml-5">
       <tr>
         <th class="table-dark">送料</th>
-        <td><%= @order.shipping_cost %>円</td>
+        <td><%= @cost %>円</td>
       </tr>
       <tr>
         <th class="table-dark">商品合計</th>
-        <td><%= @order.items_price.to_s(:delimited, delimiter: ',') %>円</td>
+        <td><%= @total.to_s(:delimited, delimiter: ',') %>円</td>
       </tr>
       <tr>
         <th class="table-dark">請求金額</th>
-        <td><%= @order.total_payment.to_s(:delimited, delimiter: ',') %>円</td>
+        <td><%= (@total + @cost).to_s(:delimited, delimiter: ',') %>円</td>
       </tr>
     </table>
   </div>

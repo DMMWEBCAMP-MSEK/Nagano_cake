@@ -38,7 +38,7 @@ class Public::OrdersController < ApplicationController
       @cart_items.destroy_all
       redirect_to thanks_orders_path
     else
-      render :new
+       render 'new'
     end
   end
 
@@ -64,7 +64,7 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    # @order.total_payment = @cart_items.inject(800) { |sum, item| sum + item.subtotal}
+    # @order.total_payment = @cart_items.inject(0) { |sum, item| sum + item.subtotal}
     @cost = 800
   end
 
