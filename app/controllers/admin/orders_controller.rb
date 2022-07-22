@@ -6,23 +6,17 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_items = @order.order_items.all
+    @order_item = OrderItem.find(params[:id])
   end
 
   def update
     @order = Order.find(params[:id])
-    # 入金状態になったら全て製作待ちに
-    if @order.update(order_params)
-      if order_params[:status] == "confirm_deposit"
-        @order.order_items.update_all(production_status: 1)
-      end
-      redirect_to admin_order_path(@order)
-    else
-      render :show
-    end
+    @order.update(order_params)
+    redirect_to admin_order_path(@order)
   end
 
   private
+
   def order_params
     params.require(:order).permit(:status)
   end

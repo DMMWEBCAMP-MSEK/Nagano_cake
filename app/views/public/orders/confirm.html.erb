@@ -31,7 +31,7 @@
       </tr>
       <tr>
         <th class="table-dark">商品合計</th>
-        <td><%= @total.to_s(:delimited, delimiter: ',') %>円</td>
+        <td><%= @order.items_price.to_s(:delimited, delimiter: ',') %>円</td>
       </tr>
       <tr>
         <th class="table-dark">請求金額</th>
