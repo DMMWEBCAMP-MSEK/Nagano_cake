@@ -5,7 +5,6 @@ ja:
           credit_card: "クレジットカード"
           transfer: "銀行振込"
 
-
     item:
       sales_status:
         sale: "販売中"
