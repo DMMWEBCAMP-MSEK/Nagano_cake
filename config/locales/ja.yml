@@ -11,6 +11,11 @@ ja:
           ready_ship: "発送準備中"
           complete_ship: "発送済み"
 
+      item:
+        sales_status:
+          sale: "販売中"
+          stop_selling: "販売停止中"
+
       order_item:
         production_status:
           not_yet: "製作不可"

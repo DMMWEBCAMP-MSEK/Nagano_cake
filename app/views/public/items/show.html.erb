@@ -16,7 +16,6 @@
         　<div><strong>¥<%= @item.with_tax_price.to_s(:delimited) %></strong><small>（税込）</small></div>
         　<div class="text-danger"><%= notice %></div>
         　　<%= form_with model: @cart_item, url: cart_items_path, method: :post, local:true do |f| %>
-
             　<%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
             　<% if customer_signed_in? %>
             　 <%= f.submit "カートに入れる", class: " btn btn-primary" %>

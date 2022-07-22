@@ -11,6 +11,7 @@ class Item < ApplicationRecord
   validates :name, presence: true
   validates :introduction, presence: true
   validates :price, presence: true
+  validates :amount, numericality: {only_integer: true, greater_than_or_equal_to: 1}
 
   def with_tax_price
     (price * 1.1).floor
