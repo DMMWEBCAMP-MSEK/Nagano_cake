@@ -23,7 +23,7 @@ class Public::OrdersController < ApplicationController
         @order_item = @order.order_items.new
         @order_item.item_id = cart_item.item.id
         @order_item.amount = cart_item.amount
-        @order_item.price = cart_item.item.price
+        @order_item.price = cart_item.item.price*1.1
         @order_item.save
       end
       if params[:order][:address_number] == "3"
@@ -70,15 +70,7 @@ class Public::OrdersController < ApplicationController
     params.require(:order).permit(:payment_method, :post_code, :address, :name, :total_payment, :shipping_cost)
   end
 
-  # def order_item_params
-  #   params.require(:order_item).permit(:item_id, :order_id, :amount, :price)
-  # end
-
   def address_params
   params.require(:order).permit(:name, :address, :post_code, :customer_id)
   end
-
-  # def shipping_address_params
-  #   params.require(:shipping_address).permit(:post_code, :address, :name)
-  # end
 end
