@@ -64,8 +64,8 @@ class Public::OrdersController < ApplicationController
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    @order.total_payment = @cart_items.inject(800) { |sum, item| sum + item.subtotal}
-    @order.shipping_cost = 800
+    # @order.total_payment = @cart_items.inject(800) { |sum, item| sum + item.subtotal}
+    @cost = 800
   end
 
   def thanks
