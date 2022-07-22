@@ -1,9 +1,5 @@
 class Public::CartItemsController < ApplicationController
 
-  #before_action :set_line_item, only: [:add_item, :destroy]
-  #before_action :set_customer
-  #before_action :set_cart_item
-
   before_action :authenticate_customer!
 
   def create
@@ -25,10 +21,11 @@ class Public::CartItemsController < ApplicationController
   end
 
   def index
+    @cart_items = current_customer.cart_items.all
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order = Order.new
-    @cart_items = current_customer.cart_items.all
+
   end
 
   def update

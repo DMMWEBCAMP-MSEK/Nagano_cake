@@ -1,5 +1,4 @@
 class Order < ApplicationRecord
-  #include ActiveModel::Model
 
   has_many :order_items
   belongs_to :customer
@@ -8,7 +7,7 @@ class Order < ApplicationRecord
      validates :payment_method
      validates :address
      validates :name
-   end
+  end
 
   enum payment_method: { credit_card: 0, transfer: 1 }
   enum status: {
@@ -19,10 +18,9 @@ class Order < ApplicationRecord
      "発送済み":4
   }
 
-  #enum payment_method: ["クレジットカード", "銀行振込"]
 
   def postcode_and_address
     self.post_code + '(' + self.address.to_s + ')'
-   end
+  end
 
 end

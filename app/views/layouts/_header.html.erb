@@ -1,48 +1,44 @@
-<% if customer_signed_in? %>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark ">
-    <div class="container">
-      <a class="navbar-brand" href="/">NaganoCake</a>
-      <!--<button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">-->
-      <!--  <span class="navbar-toggler-icon"></span>-->
-      <!--</button>-->
-      <p class="navbar-nav offset-1 text-white bg-dark">
-        <h7>ようこそ、<%= current_customer.last_name %>さん！</h7>
-      </p>
-    </div>
-  </nav>
-<% end %>
-  <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <div class="container px-5">
-      <!-- 仮の画像を配置 -->
-      <a class="navbar-brand p-3" href="/">
-        <img  src="/assets/logo3.png" alt="..." width="120px" height="80px" />
-         <%#= link_to image_tag("logo1.png"), "/", class:"text-left" %>
-      </a>
-      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-        <span class="navbar-toggler-icon"></span>
-      </button>
-      <div class="collapse navbar-collapse" id="navbarNavDropdown">
-        <ul class="navbar-nav ml-auto">
-        <% if admin_signed_in? %>
-          <li class="nav-item nav-link"><%= link_to "商品一覧", admin_items_path, class:"link" %></li>
-          <li class="nav-item nav-link"><%= link_to "会員一覧", admin_customers_path, class:"link" %></li>
-          <li class="nav-item nav-link"><%= link_to "注文履歴一覧", admin_root_path, class:"link" %></li>
-          <li class="nav-item nav-link"><%= link_to "ジャンル一覧", admin_genres_path, class:"link" %></li>
-          <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"link" %></li>
-        <% elsif customer_signed_in? %>
-          <li class="nav-item nav-link"><%= link_to "マイページ", my_page_customers_path, class:"link" %></li>
-          <li class="nav-item nav-link"><%= link_to "商品一覧", items_path, class:"link" %></li>
-          <li class="nav-item nav-link"><%= link_to "カート", cart_items_path, class:"link" %></li>
-          <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"link" %></li>
-        <% else %>
-          <li class="nav-item nav-link"><%= link_to "About", homes_about_path, class:"link" %></li>
-          <li class="nav-item nav-link"><%= link_to "商品一覧", items_path, class:"link" %></li>
-          <li class="nav-item nav-link"><%= link_to "新規登録", new_customer_registration_path, class:"link" %></li>
-          <li class="nav-item nav-link"><%= link_to "ログイン", new_customer_session_path, class:"link" %></li>
-        <% end %>
-       </ul>
-      </div>
-    </div>
-  </nav>
-  <!-- 検索機能は別のブランチで作成 -->
-  <%#= render 'public/searches/form' %>
+<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+   <div class="container px-5">
+     <!-- navbarの左側 -->
+     <div class="row">
+         <!-- 仮の画像を配置 -->
+         <a class="navbar-brand p-3" href="/">NaganoCake<br>
+           <img  src="/assets/logo3.png" alt="..." width="120px" height="80px" />
+         </a>
+     </div>
+         <% if customer_signed_in? %>
+           <span class="navbar-text offset-1 text-white bg-dark">
+             ようこそ、<%= current_customer.last_name %>さん！
+           </span>
+         <% end%>
+
+     <!-- navbarの右側-->
+     <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+       <span class="navbar-toggler-icon"></span>
+     </button>
+     <div class="collapse navbar-collapse" id="navbarNavDropdown">
+       <ul class="navbar-nav ml-auto mb-2 mb-lg-0">
+       <% if admin_signed_in? %>
+         <li class="nav-item nav-link"><%= link_to "商品一覧", admin_items_path, class:"link" %></li>
+         <li class="nav-item nav-link"><%= link_to "会員一覧", admin_customers_path, class:"link" %></li>
+         <li class="nav-item nav-link"><%= link_to "注文履歴一覧", admin_root_path, class:"link" %></li>
+         <li class="nav-item nav-link"><%= link_to "ジャンル一覧", admin_genres_path, class:"link" %></li>
+         <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_admin_session_path, method: :delete, class:"link" %></li>
+       <% elsif customer_signed_in? %>
+         <li class="nav-item nav-link"><%= link_to "マイページ", my_page_customers_path, class:"link" %></li>
+         <li class="nav-item nav-link"><%= link_to "商品一覧", items_path, class:"link" %></li>
+         <li class="nav-item nav-link"><%= link_to "カート", cart_items_path, class:"link" %></li>
+         <li class="nav-item nav-link"><%= link_to "ログアウト", destroy_customer_session_path, method: :delete, class:"link" %></li>
+       <% else %>
+         <li class="nav-item nav-link"><%= link_to "About", homes_about_path, class:"link" %></li>
+         <li class="nav-item nav-link"><%= link_to "商品一覧", items_path, class:"link" %></li>
+         <li class="nav-item nav-link"><%= link_to "新規登録", new_customer_registration_path, class:"link" %></li>
+         <li class="nav-item nav-link"><%= link_to "ログイン", new_customer_session_path, class:"link" %></li>
+       <% end %>
+      </ul>
+     </div>
+   </div>
+ </nav>
+ <!-- 検索機能は別のブランチで作成 -->
+ <%#= render 'public/searches/form' %>
