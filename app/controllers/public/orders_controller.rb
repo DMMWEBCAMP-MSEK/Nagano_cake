@@ -46,7 +46,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_number] == "2"
 
         if    params[:order][:customer_id] == ""
-              flash[:notice] = "お届け先を選択してください"
+              flash[:notice] = "お届け先の登録済住所を選択してください"
               redirect_to new_order_path
         else
 
@@ -72,7 +72,7 @@ class Public::OrdersController < ApplicationController
 
     else
       redirect_to new_order_path
-      flash[:notice] = "お届け先ボタンを押してください"
+      flash[:notice] = "お届け先のボタンを押してください"
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
