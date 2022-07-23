@@ -11,6 +11,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+     @order = Order.find(params[:id])
   end
 
   def create
@@ -70,7 +71,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order.total_payment = @cart_items.inject(800) { |sum, item| sum + item.subtotal}
-    @order.shipping_cost = 800
+    @cost = 800
   end
 
   def thanks

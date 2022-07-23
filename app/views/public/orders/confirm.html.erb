@@ -35,7 +35,7 @@
       </tr>
       <tr>
         <th class="table-dark">請求金額</th>
-        <td><%= (@total + @cost).to_s(:delimited, delimiter: ',') %>円</td>
+        <td><%= @order.total_payment.to_s(:delimited, delimiter: ',') %>円</td>
       </tr>
     </table>
   </div>

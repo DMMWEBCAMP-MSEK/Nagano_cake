@@ -1,4 +1,5 @@
 class Admin::ItemsController < ApplicationController
+  before_action :authenticate_admin!
   def new
     @item = Item.new
   end
@@ -8,7 +9,7 @@ class Admin::ItemsController < ApplicationController
     @genres = Genre.all
     if @item.save
       flash[:notice] = "登録に成功しました"
-      redirect_to admin_items_path
+      redirect_to admin_item_path(@item)
     else
       flash[:notice] = "入力内容を確認してください"
       render :new

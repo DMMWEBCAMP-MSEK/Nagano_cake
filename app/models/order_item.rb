@@ -5,13 +5,13 @@ class OrderItem < ApplicationRecord
 
   enum payment_method:{ credit_card: 0, transfer: 1 }
   enum production_status: {
-     not_yet: 0,
-     waiting_production: 1,
+     not_startable: 0,
+     waiting_for_production: 1,
      in_production: 2,
      production_completed: 3
   }
 
   validates :item_id, :order_id, :amount, :price, presence: true
-  validates :price, :quantity, numericality: { only_integer: true }
+  validates :price, :amount, numericality: { only_integer: true }
 
 end
