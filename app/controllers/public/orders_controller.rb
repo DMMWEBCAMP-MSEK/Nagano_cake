@@ -4,10 +4,6 @@ class Public::OrdersController < ApplicationController
     @order = Order.new
     @customer = Customer.find(current_customer.id)
     @addresses = current_customer.shipping_addresses.all
-    if @order.post
-    else
-      render :new
-    end
   end
 
   def index
