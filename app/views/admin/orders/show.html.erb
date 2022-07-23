@@ -1,5 +1,6 @@
-    <div class="d-block p-2">注文履歴詳細</div>
-    <table class="d-block p-2">
+    <div class="d-block p-2 ml-5">注文履歴詳細</div>
+    <table class="d-block p-2 ml-5">
+      <%= render "layouts/errors", obj: @order %>
       <tr>
         <th>購入者</th>
         <td><%= @order.name %></td>
@@ -17,13 +18,13 @@
       </tr>
       <tr>
         <th>支払方法</th>
-        <td><%= @order.payment_method %></td>
+        <td><%= @order.payment_method_i18n %></td>
       </tr>
       <tr>
         <th>注文ステータス</th>
         <td>
           <%= form_with model:@order, url: admin_order_path, method: :patch do |f| %>
-            <%= f.select :status, Order.statuses_i18n.invert.keys.to_a, class: "prefecture-select" %>
+            <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
             <%= f.submit "更新" %>
           <% end %>
         </td>
@@ -32,7 +33,7 @@
 
     <div class="conteiner">
       <div class="row">
-        <div class="col-8">
+        <div class="col-7 ml-5">
           <table class="table">
             <thead class="table-dark">
               <tr>
@@ -51,8 +52,10 @@
                 <td><%= order_item.amount %></td>
                 <td><%= order_item.item.name %></td>
                 <td>
-                  <%= form_with model:@order_item, url: admin_order_item_path(@order_item.id), method: :patch do |f| %>
-                    <%= f.select :production_status, OrderItem.production_statuses_i18n.invert.keys.to_a, class: "prefecture-select" %>
+                  <%= form_with model:order_item, url: admin_order_item_path(order_item), method: :patch do |f| %>
+                    <%#= f.select :production_status, OrderItem.production_statuses_i18n.invert.keys.to_a, class: "prefecture-select" %>
+                    <%#= f.select :production_status, OrderItem.production_statuses_i18n.invert.map{|key, value| [key, OrderItem.production_statuses[value]]} %>
+                    <%= f.select :production_status, OrderItem.production_statuses.keys.map {|k| [I18n.t("enums.order_item.production_status.#{k}"), k]} %>
                     <%= f.submit "更新" %>
                   <% end %>
                 </td>

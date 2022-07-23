@@ -6,13 +6,16 @@ class Admin::OrdersController < ApplicationController
 
   def show
     @order = Order.find(params[:id])
-    @order_item = OrderItem.find(params[:id])
+    @order_item = OrderItem.update(order_item_params)
   end
 
   def update
     @order = Order.find(params[:id])
-    @order.update(order_params)
-    redirect_to admin_order_path(@order)
+    if @order.update(order_params)
+      redirect_to admin_order_path(@order)
+    else
+      render :show
+    end
   end
 
   private
@@ -20,7 +23,9 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:status)
   end
-  def order_item_params
-    params.require(:order_item).permit(:price)
-  end
+
+  # def order_item_params
+  #   params.require(:order).permit(:price)
+  # end
+
 end

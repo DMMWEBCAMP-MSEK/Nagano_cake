@@ -16,10 +16,6 @@ class Public::OrdersController < ApplicationController
     @order_items = @order.order_items
   end
 
-  def index
-    @orders = current_customer.orders.page(params[:page])
-  end
-
   def create
     @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
@@ -38,7 +34,7 @@ class Public::OrdersController < ApplicationController
       @cart_items.destroy_all
       redirect_to thanks_orders_path
     else
-       render :new
+      render :new
     end
   end
 
@@ -64,7 +60,7 @@ class Public::OrdersController < ApplicationController
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order.total_payment = @cart_items.inject(800) { |sum, item| sum + item.subtotal}
-    @cost = 800
+    @order.shipping_cost = 800
   end
 
   def thanks
@@ -73,24 +69,10 @@ class Public::OrdersController < ApplicationController
   private
 
   def order_params
-    params.require(:order).permit(:payment_method, :status, :post_code, :address, :name, :total_payment, :shipping_cost, :customer_id)
+    params.require(:order).permit(:payment_method, :post_code, :address, :name, :total_payment, :shipping_cost)
   end
-
-  # def order_item_params
-  #   params.require(:order_item).permit(:item_id, :order_id, :amount, :price)
-  # end
 
   def address_params
-  params.require(:order).permit(:name, :address, :post_code, :customer_id)
+    params.require(:order).permit(:name, :address, :post_code, :customer_id)
   end
-
-  def params_check
-    	if params[:id].nil?
-    		redirect_to root_path
-    	end
-  end
-
-  # def shipping_address_params
-  #   params.require(:shipping_address).permit(:post_code, :address, :name)
-  # end
 end
