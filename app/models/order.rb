@@ -5,6 +5,7 @@ class Order < ApplicationRecord
 
   with_options presence: true do
      validates :payment_method
+     validates :post_code, length: { is: 7 }
      validates :address
      validates :name
      validates :total_payment

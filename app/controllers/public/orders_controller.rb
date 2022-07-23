@@ -11,9 +11,6 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @customer=Customer.find(params[:id])
-    @order = Order.find(params[:id])
-    @order_items = @order.order_items
   end
 
   def create
@@ -41,8 +38,7 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"
-    #@order.name = current_customer.last_name + current_customer.first_name
-    @order.name = current_customer.first_name + current_customer.last_name
+    @order.name = current_customer.last_name + current_customer.first_name
     @order.address = current_customer.address
     @order.post_code = current_customer.post_code
     elsif params[:order][:address_number] == "2"
