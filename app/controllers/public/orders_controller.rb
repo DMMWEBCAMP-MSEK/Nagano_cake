@@ -29,7 +29,7 @@ class Public::OrdersController < ApplicationController
         @order_item = @order.order_items.new
         @order_item.item_id = cart_item.item.id
         @order_item.amount = cart_item.amount
-        @order_item.price = cart_item.item.price
+        @order_item.price = cart_item.item.price*1.1
         @order_item.save
       end
       if params[:order][:address_number] == "3"
@@ -38,7 +38,7 @@ class Public::OrdersController < ApplicationController
       @cart_items.destroy_all
       redirect_to thanks_orders_path
     else
-       render 'new'
+       render :new
     end
   end
 
@@ -59,12 +59,11 @@ class Public::OrdersController < ApplicationController
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
     else
-      flash[:notice] = "配送先を選択してください"
       redirect_to new_order_path
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
-    # @order.total_payment = @cart_items.inject(0) { |sum, item| sum + item.subtotal}
+    @order.total_payment = @cart_items.inject(800) { |sum, item| sum + item.subtotal}
     @cost = 800
   end
 
