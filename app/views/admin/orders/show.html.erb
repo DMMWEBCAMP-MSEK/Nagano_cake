@@ -52,7 +52,7 @@
                 <td><%= order_item.amount %></td>
                 <td><%= order_item.item.name %></td>
                 <td>
-                  <%= form_with model:@order_item, url: admin_order_item_path(@order_item), method: :patch do |f| %>
+                  <%= form_with model: order_item, url: admin_order_item_path(order_item), method: :patch do |f| %>
                     <%#= f.select :production_status, OrderItem.production_statuses_i18n.invert.keys.to_a, class: "prefecture-select" %>
                     <%#= f.select :production_status, OrderItem.production_statuses_i18n.invert.map{|key, value| [key, OrderItem.production_statuses[value]]} %>
                     <%= f.select :production_status, OrderItem.production_statuses.keys.map {|k| [I18n.t("enums.order_item.production_status.#{k}"), k]} %>
