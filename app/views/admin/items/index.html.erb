@@ -1,9 +1,16 @@
-<div class="conteiner">
-  <h2 class="row">商品一覧</h2>
-    <div class="row">
-      <%= link_to "+", new_admin_item_path, class: "btn btn-primary rounded-circle p-0" %>
+<div class="container">
+  <div class="row">
+    <div class="col-md-2">
+      <h2 class="bg-light">商品一覧</h2>
     </div>
-    <table>
+    <div class="offset-md-8 col-md-1">
+      <%= link_to new_admin_item_path do %>
+        <i class="fas fa-plus fa-2x fa-kage" style="color: black;"></i>
+      <% end %>
+    </div>
+  </div>
+    <div class="row">
+    <table class="table">
       <thead>
         <tr>
           <th>商品ID</th>
@@ -26,4 +33,10 @@
         <% end %>
       </tbody>
     </table>
+    </div>
+    <div class="row">
+      <div class="mx-auto">
+        <%= paginate @items %>
+      </div>
+    </div>
 </div>

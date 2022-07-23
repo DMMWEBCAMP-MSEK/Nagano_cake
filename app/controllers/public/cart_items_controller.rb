@@ -1,6 +1,7 @@
 class Public::CartItemsController < ApplicationController
 
-  before_action :authenticate_customer!
+  before_action :authenticate_customer!, except: [:top, :about]
+  before_action :customer_is_deleted
 
   def create
     @cart_item = current_customer.cart_items.build(cart_item_params)

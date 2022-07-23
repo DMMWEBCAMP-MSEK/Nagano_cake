@@ -7,7 +7,11 @@ class Admin::ItemsController < ApplicationController
     @item = Item.new(item_params)
     @genres = Genre.all
     if @item.save
-      redirect_to admin_item_path(@item)
+      flash[:notice] = "登録に成功しました"
+      redirect_to admin_items_path
+    else
+      flash[:notice] = "入力内容を確認してください"
+      render :new
     end
   end
 
@@ -16,7 +20,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.all
+    @items = Item.page(params[:page]).order(created_at: :asc)
   end
 
   def edit
@@ -27,6 +31,8 @@ class Admin::ItemsController < ApplicationController
     @item = Item.find(params[:id])
     if @item.update(item_params)
       redirect_to admin_item_path(@item)
+    else
+      render :edit
     end
   end
 
