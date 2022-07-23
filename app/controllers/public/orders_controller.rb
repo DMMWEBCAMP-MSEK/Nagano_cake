@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-     @order = Order.find(params[:id])
+     @order = current_customer.orders.find(params[:id])
   end
 
   def create
@@ -22,6 +22,7 @@ class Public::OrdersController < ApplicationController
       @cart_items.each do |cart_item|
         @order_item = @order.order_items.new
         @order_item.item_id = cart_item.item.id
+        @order_item.item.name = cart_item.item.name
         @order_item.amount = cart_item.amount
         @order_item.price = cart_item.item.price*1.1
         @order_item.save
