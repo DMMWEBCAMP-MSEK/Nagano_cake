@@ -3,10 +3,12 @@
 
 
 <div class="h5 m-4 float-left bg-secondary text-light">  ショッピングカート  </div>
+
+<% if current_customer.cart_items.present? %>
+
 <div class="m-4 float-right">
   <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
 </div>
-
 
 <div>
   <table class="table table-bordered">
@@ -44,9 +46,15 @@
     <% end %>
   </table>
 </div>
+
+<% end %>
+
 <div class="row">
 <div class="container">
-  <%= link_to '買い物を続ける', items_path, class: "btn btn-primary" %>
+  <%= link_to '買い物を続ける', items_path, class: "mt-4 btn btn-primary" %>
+
+  <% if current_customer.cart_items.present? %>
+
   <div class="float-right">
     <table class="table table-bordered">
       <thead class="thead-dark">
@@ -61,8 +69,13 @@
       </thead>
     </table>
   </div>
+
+  <% end %>
+
 </div>
 </div>
+
+<% if current_customer.cart_items.present? %>
 
 <%= form_with model: @order, url: new_order_path(@order), method: :get, local:true do |f| %>
   <div class="field col-sm-12 text-center mt-2">
@@ -70,7 +83,7 @@
   </div>
 <% end %>
 
-
+<% end %>
 
 </div>
 </div>
