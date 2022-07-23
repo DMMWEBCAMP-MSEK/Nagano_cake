@@ -72,7 +72,7 @@ class Public::OrdersController < ApplicationController
 
     else
       redirect_to new_order_path
-      flash[:notice] = "お届け先のボタンを押してください"
+      flash[:notice] = "お届け先のボタンを選んで押してください"
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
