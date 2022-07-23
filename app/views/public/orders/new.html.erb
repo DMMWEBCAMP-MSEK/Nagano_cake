@@ -1,3 +1,5 @@
+
+
 <div class="container">
   <div class="row">
     <div class="h5 m-4 float-left bg-secondary text-light">  注文情報入力  </div>
@@ -6,6 +8,7 @@
     <div class="col-12">
       <%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
       <div>
+        <div class="h4 font-weight-bold"><%= notice %></div>
         <div class="font-weight-bold">支払方法</div>
         <div class="form-group ml-4">
           <div>
@@ -37,9 +40,6 @@
         </div>
       </div>
       <div>
-
-        <div class="font-weight-bold"><%= notice %></div>
-
 
         <div class="ml-4">
           <%= f.radio_button :address_number, 3 %>
