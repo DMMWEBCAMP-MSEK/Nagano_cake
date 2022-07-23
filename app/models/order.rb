@@ -27,12 +27,12 @@ class Order < ApplicationRecord
     array.sum
   end
 
-  def items_price
+  def order_price
     array = []
     order_items.all.each do |order_item|
       array << order_item.amount*order_item.price
     end
-    array.sum
+    array.sum.to_s(:delimited)
   end
 
   def cart_items_price
@@ -40,7 +40,7 @@ class Order < ApplicationRecord
     cart_items.all.each do |cart_item|
       array << cart_item.amount*cart_item.price
     end
-    array.sum
+    array.sum.sum.to_s(:delimited)
   end
 
 

@@ -27,7 +27,7 @@ class Public::OrdersController < ApplicationController
         @order_item.save
       end
       if params[:order][:address_number] == "3"
-        @shipping_address.save
+      @shipping_address.save
       end
       @cart_items.destroy_all
       redirect_to thanks_orders_path
@@ -44,14 +44,31 @@ class Public::OrdersController < ApplicationController
     @order.address = current_customer.address
     @order.post_code = current_customer.post_code
     elsif params[:order][:address_number] == "2"
+
+        if    params[:order][:customer_id] == ""
+              redirect_to new_order_path
+        else
+
       ship = ShippingAddress.find(params[:order][:customer_id])
       @order.post_code = ship.post_code
       @order.address = ship.address
       @order.name = ship.name
+        end
+
     elsif params[:order][:address_number] == "3"
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+
+        if    params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
+              flash[:notice] = "新しいお届け先を全て入力してください"
+              redirect_to new_order_path
+        else
+            @order.post_code = params[:order][:post_code]
+            @order.address = params[:order][:address]
+            @order.name = params[:order][:name]
+        end
+
     else
       redirect_to new_order_path
     end
