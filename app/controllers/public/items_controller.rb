@@ -13,9 +13,5 @@ def show
    @cart_item = CartItem.new
 end
 
- private
- def item_params
-  params.require(:items).permit(:genre_id,:name,:image_id,:price)
- end
-
+#ストロングパラメータ削除(publicのitemでは保存しないため)
 end
