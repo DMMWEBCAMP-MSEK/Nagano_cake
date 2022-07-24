@@ -1,4 +1,5 @@
 class Admin::OrdersController < ApplicationController
+
   def index
     @orders = Order.page(params[:page])
   end
@@ -18,6 +19,7 @@ class Admin::OrdersController < ApplicationController
     else
       render :show
     end
+
   end
 
   private

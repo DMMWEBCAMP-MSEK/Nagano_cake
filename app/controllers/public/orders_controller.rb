@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = current_customer.orders.find(params[:id])
+     @order = current_customer.orders.find(params[:id])
   end
 
   def create
@@ -58,7 +58,7 @@ class Public::OrdersController < ApplicationController
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-　    if  params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
+      if  params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
           flash[:notice] = "新しいお届け先を全て入力してください"
           redirect_to new_order_path
       end
@@ -84,5 +84,4 @@ class Public::OrdersController < ApplicationController
   def address_params
     params.require(:order).permit(:name, :address, :post_code, :customer_id)
   end
-
 end
