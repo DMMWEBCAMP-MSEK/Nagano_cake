@@ -58,7 +58,7 @@ class Public::OrdersController < ApplicationController
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-　    if  params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
+      if  params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
           flash[:notice] = "新しいお届け先を全て入力してください"
           redirect_to new_order_path
       end
