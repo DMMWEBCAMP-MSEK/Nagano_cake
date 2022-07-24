@@ -3,6 +3,7 @@
   <div class="field col-sm-12 text-right mt-2">
     <% if current_customer.cart_items.present? %>
     <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger ml-auto" %>
+    <% end %>
   </div>
   <div>
     <table class="table table-bordered">
@@ -57,7 +58,6 @@
           </thead>
         </table>
       </div>
-    <% end %>
     <% end %>
     <div class="row">
       <div class="col-sm-12 text-center mt-2">
