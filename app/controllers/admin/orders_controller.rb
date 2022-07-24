@@ -1,5 +1,5 @@
 class Admin::OrdersController < ApplicationController
-  before_action :authenticate_admin!
+
   def index
     @orders = Order.page(params[:page])
   end
@@ -11,8 +11,15 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
+    #production_status_change_to_1 = @order.status_was == "waiting_for_payment" and @order.status == "payment_confirmation"
     if @order.update(order_params)
-      redirect_to admin_order_path(@order_item.order_id)
+      # if production_status_change_to_1
+      #   @order.order_items.update_all(production_status: 1)
+      # end
+      if order_params[:status] == "payment_confirmation"
+        @order.order_items.update_all(production_status:1)
+      end
+      redirect_to admin_order_path(@order)
     else
       render :show
     end
