@@ -20,12 +20,6 @@ class Admin::OrdersController < ApplicationController
       render :show
     end
 
-
-    # if @order.update(order_params)
-    #   redirect_to admin_order_path(@order)
-    # else
-    #   render :show
-    # end
   end
 
   private
