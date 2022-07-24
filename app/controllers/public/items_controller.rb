@@ -1,4 +1,5 @@
 class Public::ItemsController < ApplicationController
+  before_action :authenticate_customer!, except: [:show, :index]
 
 def index
    @items = Item.all.page(params[:page]).reverse_order

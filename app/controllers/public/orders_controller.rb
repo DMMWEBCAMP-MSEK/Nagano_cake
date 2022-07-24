@@ -1,3 +1,4 @@
+
 class Public::OrdersController < ApplicationController
 
   def new
@@ -11,6 +12,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
+    @order = current_customer.orders.find(params[:id])
   end
 
   def create
@@ -22,11 +24,11 @@ class Public::OrdersController < ApplicationController
         @order_item = @order.order_items.new
         @order_item.item_id = cart_item.item.id
         @order_item.amount = cart_item.amount
-        @order_item.price = cart_item.item.price*1.1
+        @order_item.price = (cart_item.item.price * 1.1).floor
         @order_item.save
       end
       if params[:order][:address_number] == "3"
-        @shipping_address.save
+      @shipping_address.save
       end
       @cart_items.destroy_all
       redirect_to thanks_orders_path
@@ -38,20 +40,30 @@ class Public::OrdersController < ApplicationController
   def confirm
     @order = Order.new(order_params)
     if params[:order][:address_number] == "1"
-    @order.name = current_customer.last_name + current_customer.first_name
-    @order.address = current_customer.address
-    @order.post_code = current_customer.post_code
+      @order.name = current_customer.last_name + current_customer.first_name
+      @order.address = current_customer.address
+      @order.post_code = current_customer.post_code
     elsif params[:order][:address_number] == "2"
-      ship = ShippingAddress.find(params[:order][:customer_id])
-      @order.post_code = ship.post_code
-      @order.address = ship.address
-      @order.name = ship.name
+      if params[:order][:customer_id] == ""
+        flash[:notice] = "お届け先の登録済住所を選択してください"
+        redirect_to new_order_path
+      else
+        ship = ShippingAddress.find(params[:order][:customer_id])
+        @order.post_code = ship.post_code
+        @order.address = ship.address
+        @order.name = ship.name
+      end
     elsif params[:order][:address_number] == "3"
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
+      if params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
+        flash[:notice] = "新しいお届け先を全て入力してください"
+        redirect_to new_order_path
+      end
     else
       redirect_to new_order_path
+      flash[:notice] = "お届け先のボタンを選んで押してください"
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
@@ -71,4 +83,5 @@ class Public::OrdersController < ApplicationController
   def address_params
   params.require(:order).permit(:name, :address, :post_code, :customer_id)
   end
+
 end

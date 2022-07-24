@@ -3,7 +3,8 @@ class OrderItem < ApplicationRecord
   belongs_to :item
   belongs_to :order
 
-  enum payment_method:{ credit_card: 0, transfer: 1 }
+  validates :amount, numericality: {only_integer: true, greater_than_or_equal_to: 1}
+
   enum production_status: {
      not_startable: 0,
      waiting_for_production: 1,

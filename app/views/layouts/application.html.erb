@@ -14,9 +14,14 @@
     <header>
       <%=render "layouts/header" %>
     </header>
-    <%= yield %>
+    <main>
+      <%= yield %>
+    </main>
+    <footer class="text-center fixed-bottom">
+      <div>
+        ©NaganoCake,MSEK
+      </div>
+    </footer>
   </body>
-  <footer class="text-center fixed-bottom">
-    ©NaganoCake,MSEK
-  </footer>
+
 </html>
