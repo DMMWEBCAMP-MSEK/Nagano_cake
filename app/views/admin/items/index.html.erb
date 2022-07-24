@@ -1,17 +1,13 @@
 <div class="container">
   <div class="row">
-    <div class="col-md-2">
-      <h2 class="bg-light">商品一覧</h2>
+    <div class="col-10 mx-auto mt-3 mb-3">
+      <h2 class="d-inline">商品一覧</h2>
+      <div class="d-inline">
+        <%= link_to "+", new_admin_item_path, class: "btn btn-white shadow rounded-circle text-secondary ml-5" %>
+      </div>
     </div>
-    <div class="offset-md-8 col-md-1">
-      <%= link_to new_admin_item_path do %>
-        <i class="fas fa-plus fa-2x fa-kage" style="color: black;"></i>
-      <% end %>
-    </div>
-  </div>
-    <div class="row">
-    <table class="table">
-      <thead>
+    <table class="table col-10 mx-auto">
+      <thead class="table-dark">
         <tr>
           <th>商品ID</th>
           <th>商品名</th>
