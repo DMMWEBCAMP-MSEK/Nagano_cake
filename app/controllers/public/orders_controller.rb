@@ -18,17 +18,18 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
     @shipping_address = current_customer.shipping_addresses.new(address_params)
+
+
     if @order.save
       @cart_items.each do |cart_item|
         @order_item = @order.order_items.new
         @order_item.item_id = cart_item.item.id
-        @order_item.item.name = cart_item.item.name
         @order_item.amount = cart_item.amount
-        @order_item.price = cart_item.item.price*1.1
+        @order_item.price = (cart_item.item.price * 1.1).floor
         @order_item.save
       end
       if params[:order][:address_number] == "3"
-        @shipping_address.save
+      @shipping_address.save
       end
       @cart_items.destroy_all
       redirect_to thanks_orders_path
