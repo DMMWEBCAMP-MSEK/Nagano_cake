@@ -1,6 +1,8 @@
-<div>ショッピングカート</div>
+<div class="container">
+  <h3 class="p-3"><span class="header">ショッピングカート</span></h3>
 <div class="field col-sm-12 text-right mt-2">
-  <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger" %>
+  <% if current_customer.cart_items.present? %>
+  <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger ml-auto" %>
 </div>
 
 <div>
@@ -39,8 +41,10 @@
     <% end %>
   </table>
 </div>
+<% end %>
 <div class="container">
-  <%= link_to '買い物を続ける', items_path, class: "btn btn-primary" %>
+  <%= link_to '買い物を続ける', items_path, class: "mt-4 btn btn-primary" %>
+  <% if current_customer.cart_items.present? %>
   <div class="float-right">
     <table class="table table-bordered">
       <thead class="thead-dark">
@@ -55,10 +59,23 @@
       </thead>
     </table>
   </div>
-</div>
+  <% end %>
 
-<%= form_with model: @order, url: new_order_path(@order), method: :get, local:true do |f| %>
-  <div class="field col-sm-12 text-center mt-2">
-    <%= f.submit "情報入力へ進む", class: "btn btn-success" %>
+
+<!--<%# if current_customer.cart_items.present? %>-->
+<!--<%#= form_with model: @order, url: new_order_path(@order), method: :get, local:true do |f| %>-->
+<!--  <div class="field col-sm-12 text-center mt-2">-->
+<!--    <%#= f.submit "情報入力へ進む", class: "btn btn-success" %>-->
+<!--  </div>-->
+<!--<%# end %>-->
+<!--<%# end %>-->
+  <div class="row">
+    <div class="col-sm-12 text-center mt-2">
+      <% if @cart_items.count > 0 %>
+        <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
+      <% end %>
+    </div>
   </div>
-<% end %>
+
+</div>
+</div>

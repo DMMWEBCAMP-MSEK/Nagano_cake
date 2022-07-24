@@ -1,7 +1,5 @@
 class Public::CartItemsController < ApplicationController
 
-  before_action :authenticate_customer!
-
   def create
     @cart_item = current_customer.cart_items.build(cart_item_params)
     @cart_items = current_customer.cart_items.all
@@ -21,12 +19,14 @@ class Public::CartItemsController < ApplicationController
   end
 
   def index
+    # @cart_items = current_customer.cart_items.includes([:item])
     @cart_items = current_customer.cart_items.all
     @cart_items = CartItem.where(customer_id: current_customer.id)
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order = Order.new
 
   end
+
 
   def update
     @cart_item = CartItem.find(params[:id])
@@ -48,6 +48,6 @@ class Public::CartItemsController < ApplicationController
 
   private
   def cart_item_params
-    params.require(:cart_item).permit(:item_id, :price, :amount, :image)
+    params.require(:cart_item).permit(:item_id, :price, :amount)
   end
 end
