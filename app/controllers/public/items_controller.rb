@@ -2,9 +2,9 @@ class Public::ItemsController < ApplicationController
   before_action :authenticate_customer!, except: [:show, :index]
 
 def index
-   @items = Item.all.page(params[:page]).reverse_order
+   @selling_items = Item.where(sales_status:"sale").page(params[:page]).reverse_order.per(8)
    @genres = Genre.all
-   @items_count = Item.count
+   @items_count = Item.where(sales_status:"sale").count
 end
 
 def show
@@ -13,5 +13,4 @@ def show
    @cart_item = CartItem.new
 end
 
-#ストロングパラメータ削除(publicのitemでは保存しないため)
 end
