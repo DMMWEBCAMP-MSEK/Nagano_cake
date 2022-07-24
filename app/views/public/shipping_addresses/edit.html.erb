@@ -1,3 +1,4 @@
+<div class="container mt-5">
 <h3>配送先編集</h3>
 <%= form_with model:@shipping_address, url: shipping_address_path, method: :patch do |f| %>
 <table>
@@ -24,3 +25,4 @@
   <%= f.submit "変更内容を保存" %>
 </div>
 <% end %>
+</div>

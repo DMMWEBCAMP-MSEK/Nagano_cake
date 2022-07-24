@@ -1,4 +1,3 @@
-
 class Public::OrdersController < ApplicationController
 
   def new
@@ -19,6 +18,8 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
     @shipping_address = current_customer.shipping_addresses.new(address_params)
+
+
     if @order.save
       @cart_items.each do |cart_item|
         @order_item = @order.order_items.new
@@ -44,31 +45,31 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.post_code = current_customer.post_code
     elsif params[:order][:address_number] == "2"
-      if params[:order][:customer_id] == ""
-        flash[:notice] = "お届け先の登録済住所を選択してください"
-        redirect_to new_order_path
+      if  params[:order][:customer_id] == ""
+            flash[:notice] = "お届け先の登録済住所を選択してください"
+            redirect_to new_order_path
       else
-        ship = ShippingAddress.find(params[:order][:customer_id])
-        @order.post_code = ship.post_code
-        @order.address = ship.address
-        @order.name = ship.name
+          ship = ShippingAddress.find(params[:order][:customer_id])
+          @order.post_code = ship.post_code
+          @order.address = ship.address
+          @order.name = ship.name
       end
     elsif params[:order][:address_number] == "3"
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-      if params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
-        flash[:notice] = "新しいお届け先を全て入力してください"
-        redirect_to new_order_path
+　    if  params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
+          flash[:notice] = "新しいお届け先を全て入力してください"
+          redirect_to new_order_path
       end
     else
       redirect_to new_order_path
-      flash[:notice] = "お届け先のボタンを選んで押してください"
+      flash[:notice] = "お届け先のボタンを押してください"
     end
     @cart_items = current_customer.cart_items.all
     @total = @cart_items.inject(0) { |sum, item| sum + item.subtotal }
     @order.total_payment = @cart_items.inject(800) { |sum, item| sum + item.subtotal}
-    @order.shipping_cost = 800
+    @cost = 800
   end
 
   def thanks
@@ -81,7 +82,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def address_params
-  params.require(:order).permit(:name, :address, :post_code, :customer_id)
+    params.require(:order).permit(:name, :address, :post_code, :customer_id)
   end
 
 end

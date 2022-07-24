@@ -22,3 +22,9 @@ ja:
         sales_status:
           sale: "販売中"
           stop_selling: "販売停止中"
+
+      time:
+        formats:
+          default: "%Y/%m/%d %H:%M:%S"
+          order: "%Y年%m月%d日(%a) %H時%M分"
+
