@@ -18,7 +18,15 @@
       </tr>
       <tr>
         <th>支払方法</th>
-        <td><%= @order.payment_method_i18n %></td>
+        <td>
+          <%# if @order.payment_method == 0 %>
+          <!-- クレジットカード -->
+          <%# elsif @order.payment_method == 1 %>
+          <!--  銀行振込 -->
+          <%# else %>
+          <%# end %>
+          <%= @order.payment_method_i18n %>
+          </td>
       </tr>
       <tr>
         <th>注文ステータス</th>
