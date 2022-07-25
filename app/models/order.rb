@@ -1,6 +1,6 @@
 class Order < ApplicationRecord
 
-  has_many :order_items
+  has_many :order_items,dependent: :destroy
   belongs_to :customer
 
   with_options presence: true do
@@ -20,6 +20,8 @@ class Order < ApplicationRecord
      shipped: 4
   }
 
+  #enum status: { waiting_deposit: 0, confirm_deposit: 1, in_production: 2, ready_ship: 3, complete_ship: 4 }
+  scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
   def items_amount
     array = []
     order_items.all.each do |order_item|
@@ -28,7 +30,7 @@ class Order < ApplicationRecord
     array.sum
   end
 
-  def order_price
+  def items_price
     array = []
     order_items.all.each do |order_item|
       array << order_item.amount*order_item.price
@@ -41,7 +43,7 @@ class Order < ApplicationRecord
     cart_items.all.each do |cart_item|
       array << cart_item.amount*cart_item.price
     end
-    array.sum.sum.to_s(:delimited)
+    array.sum.to_s(:delimited)
   end
 
 
