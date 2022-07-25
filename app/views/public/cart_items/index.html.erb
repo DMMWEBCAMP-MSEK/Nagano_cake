@@ -33,7 +33,7 @@
               <td>
                 <%= cart_item.subtotal.to_s(:delimited) %>
               </td>
-              <td>
+              <td class="d-flex align-items-center justify-content-center">
                 <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-sm btn-danger" %>
               </td>
             </tr>
