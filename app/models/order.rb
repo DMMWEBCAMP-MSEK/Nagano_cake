@@ -46,7 +46,6 @@ class Order < ApplicationRecord
     array.sum.to_s(:delimited)
   end
 
-
   def postcode_and_address
     self.post_code + '(' + self.address.to_s + ')'
   end

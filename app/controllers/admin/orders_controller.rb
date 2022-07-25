@@ -5,6 +5,11 @@ class Admin::OrdersController < ApplicationController
     @orders = Order.page(params[:page])
   end
 
+  def show
+    @order = Order.find(params[:id])
+    @order_items = @order.order_items.all
+  end
+
   def update
     @order = Order.find(params[:id])
     if @order.update(order_params)
