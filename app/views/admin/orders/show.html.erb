@@ -49,7 +49,7 @@
               <% @order.order_items.each do |order_item| %>
               <tr>
                 <td><%= order_item.item.name %></td>
-                <td><%= order_item.item.with_tax_price.to_s(:delimited) %>円</td>
+                <td><%= order_item.price.to_s(:delimited) %></td>
                 <td><%= order_item.amount %></td>
                 <td><%= order_item.subtotal.to_s(:delimited) %></td>
                 <td>

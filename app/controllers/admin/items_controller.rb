@@ -21,7 +21,6 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    #@selling_items = Item.where(sales_status="sale").page(params[:page]).reverse_order.per(8)
     @items = Item.page(params[:page]).order(created_at: :desc)
     @items_count = Item.where(sales_status:"sale").count
   end
