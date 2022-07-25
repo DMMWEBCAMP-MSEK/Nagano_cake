@@ -48,7 +48,7 @@
               <% @order.order_items.each do |order_item| %>
               <tr>
                 <td><%= order_item.item.name %></td>
-                <td><%= order_item.price.to_s(:delimited) %>円</td>
+                <td><%= order_item.item.with_tax_price.to_s(:delimited) %>円</td>
                 <td><%= order_item.amount %></td>
                 <td><%= order_item.item.name %></td>
                 <td>
@@ -68,7 +68,7 @@
           <table>
             <tr>
               <th>商品合計</th>
-              <td><%= @order.items_price %>円</td>
+              <td><%= @order.total_payment.to_s(:delimited) %>円</td>
             </tr>
             <tr>
               <th>送料</th>
@@ -76,7 +76,7 @@
             </tr>
             <tr>
               <th>請求金額合計</th>
-              <td><%= @order.total_payment.to_s(:delimited) %>円</td>
+              <td><%= (@order.total_payment + @order.shipping_cost).to_s(:delimited) %>円</td>
             </tr>
           </table>
 
