@@ -24,12 +24,7 @@
 　<div class="form-group row">
     <div class="col-2"><strong>支払い方法</strong></div>
     <div class="col-5">
-      <%= @order.payment_method_i18n %>
-        <%# if @order.payment_method == 0 %>
-            <!--クレジットカード-->
-        <%# else %>
-            <!--銀行振込-->
-        <%# end %></div>
+       <%= @order.payment_method_i18n %></div>
   </div>
 
 　<div class="form-group row">
@@ -42,9 +37,9 @@
       <table class="table table-borderless">
         <thead class="thead-dark">
           <tr>
-            <th>商品名</th>
+            <th>商品</th>
             <th>単価（税込）</th>
-            <th>数量</th>
+            <th>個数</th>
             <th>小計</th>
           </tr>
         </thead>
@@ -52,9 +47,9 @@
           <% @order.order_items.each do |order_item|%>
           <tr>
             <td class="align-middle"><%= order_item.item.name %></td>
-            <td class="align-middle"><%= order_item.price.to_s(:delimited) %>円</td>
+            <td class="align-middle"><%= order_item.price.to_s(:delimited) %></td>
             <td class="align-middle"><%= order_item.amount %></td>
-            <td class="align-middle"><%= (order_item.price*order_item.amount).to_s(:delimited) %>円</td>
+            <td class="align-middle"><%= (order_item.price*order_item.amount).to_s(:delimited) %></td>
           </tr>
           <% end %>
         </tbody>
@@ -74,12 +69,12 @@
               <td><%= @order.items_price %></td>
             </tr>
             <tr>
-              <td>送料</td>
-              <td><%= @order.shipping_cost %> 円</td>
+              <td>配送料</td>
+              <td><%= @order.shipping_cost %></td>
             </tr>
             <tr>
               <td><strong>ご請求額</strong></td>
-              <td><strong><%= @order.total_payment.to_s(:delimited) %> 円</strong></td>
+              <td><strong><%= @order.total_payment.to_s(:delimited) %></strong></td>
             </tr>
           </tbody>
         </thead>

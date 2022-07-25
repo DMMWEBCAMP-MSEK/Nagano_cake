@@ -13,8 +13,8 @@ class OrderItem < ApplicationRecord
   validates :item_id, :order_id, :amount, :price, presence: true
   validates :price, :amount, numericality: { only_integer: true }
 
-    #def sum_of_price
-    #item.with_tax_price * amount
-    #end
+  def subtotal
+    amount*price
+  end
 
 end

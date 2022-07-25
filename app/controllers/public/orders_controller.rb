@@ -1,7 +1,5 @@
 class Public::OrdersController < ApplicationController
 
-  before_action :authenticate_customer!
-
   def new
     @order = Order.new
     @customer = Customer.find(current_customer.id)
@@ -47,18 +45,15 @@ class Public::OrdersController < ApplicationController
       @order.address = current_customer.address
       @order.post_code = current_customer.post_code
     elsif params[:order][:address_number] == "2"
-
-        if    params[:order][:customer_id] == ""
-              flash[:notice] = "お届け先の登録済住所を選択してください"
-              redirect_to new_order_path
-        else
-
-      ship = ShippingAddress.find(params[:order][:customer_id])
-      @order.post_code = ship.post_code
-      @order.address = ship.address
-      @order.name = ship.name
-        end
-
+      if  params[:order][:customer_id] == ""
+            flash[:notice] = "お届け先の登録済住所を選択してください"
+            redirect_to new_order_path
+      else
+          ship = ShippingAddress.find(params[:order][:customer_id])
+          @order.post_code = ship.post_code
+          @order.address = ship.address
+          @order.name = ship.name
+      end
     elsif params[:order][:address_number] == "3"
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]

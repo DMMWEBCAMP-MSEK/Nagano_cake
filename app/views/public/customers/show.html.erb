@@ -1,56 +1,60 @@
-<div class="container">
-    <div class="row">
-        <h3 class="p-3"><span class="header">マイページ<span></h3>
+<div class="container mt-4" style="mb: 15vh;">
+    <div class="row" style="margin-left :12vh;">
+        <h2 class="p-3"><span class="header" style="background-color:#EEEEEE">
+        <strong>　マイページ　</strong><span></h2>
     </div>
     <div class="row">
-        <div class="col-10 form-inline">
+        <div class="col-10 form-inline mb-3">
         <!-- 登録情報 -->
-            <div class = "mr-3"><h4>登録情報</h4></div>
-            <div class = "mr-3">
-                <%= link_to "編集する", edit_customers_path(current_customer), class: 'btn btn-success btn-sm' %>
+            <div class = "mr-3 "><h4><strong>登録情報</strong></h4></div>
+            <div class = "mr-3 ml-3">
+                <%= link_to "　編集する　", edit_customers_path(current_customer), class: 'btn btn-success btn' %>
             </div>
         </div>
-        <div class="col-10">
+        <div class="col-8">
             <table class="table table-bordered">
                 <tr>
-                    <td>氏名</td>
-                    <td><%= @customer.last_name %> <%= @customer.first_name %></td>
+                    <td style= "width:25%", td bgcolor="#EEEEEE">氏名</td>
+                    <td style="width:75%"><%= @customer.last_name %> <%= @customer.first_name %></td>
                 </tr>
                 <tr>
-                    <td>カナ</td>
+                    <td bgcolor="#EEEEEE">カナ</td>
                     <td><%= @customer.last_name_kana %> <%= @customer.first_name_kana %></td>
                 </tr>
                 <tr>
                    <!-- 文字列のハイフンと文字数を指定 -->
-                    <td>郵便番号</td>
+                    <td bgcolor="#EEEEEE">郵便番号</td>
                     <td><%= @customer.post_code %></td>
                 </tr>
                 <tr>
-                    <td>住所</td>
+                    <td bgcolor="#EEEEEE">住所</td>
                     <td><%= @customer.address %></td>
                 </tr>
                 <tr>
-                    <td>電話番号</td>
+                    <td bgcolor="#EEEEEE">電話番号</td>
                     <td><%= @customer.phone_number %></td>
                 </tr>
                 <tr>
-                    <td>メールアドレス</td>
+                    <td bgcolor="#EEEEEE">メールアドレス</td>
                     <td><%= @customer.email %></td>
                 </tr>
             </table>
         </div>
     </div>
-    <div class="row">
-        <div class="col-10 form-inline">
-            <div class = "mr-3"><h4>配送先　</h4></div>
-            <div class = "mr-3">
-                <%= link_to "一覧を見る", shipping_addresses_path, class: 'btn btn-primary btn-sm' %>
+    <div class="row" style="margin-bottom: 2vh;">
+        <div class="col-10 form-inline mt-3">
+            <div class = "mr-3"><h4><strong>配送先　</strong></h4></div>
+            <div class = "mr-3 ml-3">
+                <%= link_to "　一覧を見る　", shipping_addresses_path, class: 'btn btn-primary' %>
             </div>
         </div>
-        <div class="col-10 form-inline">
-            <div class = "mr-3"><h4>注文履歴</h4></div>
+    </div>
+    <div class="row mt-2">
+        <div class="col-10 form-inline mb-4">
             <div class = "mr-3">
-                <%= link_to "一覧を見る", orders_path, class: 'btn btn-primary btn-sm' %>
+                <h4><strong>注文履歴</strong></h4></div>
+            <div class = "mr-3 ml-3">
+                <%= link_to "　一覧を見る　", orders_path, class: 'btn btn-primary' %>
             </div>
         </div>
     </div>
