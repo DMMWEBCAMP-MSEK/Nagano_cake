@@ -1,12 +1,14 @@
 <div class="container">
   <div class="row">
-    <div class="col-12 dark">注文情報入力</div>
+    <h3 class="mt-4">
+    <span class="px-3" style="background-color:lightgray">注文情報入力</span>
+    </h3>
     <%= render "layouts/errors", obj: @order %>
 
     <div class="col-12">
       <%= form_with model: @order, url: confirm_orders_path, method: :post, local: true do |f| %>
       <div>
-        <div>支払方法</div>
+        <div class="font-weight-bold">支払方法</div>
         <div class="form-group ml-4">
           <div>
             <%= f.radio_button :payment_method, Order.payment_methods.key(0),{:checked => true} %>
@@ -19,7 +21,7 @@
         </div>
       </div>
       <div>
-        <div>お届け先</div>
+        <div class="font-weight-bold">お届け先</div>
         <div class="ml-4">
           <%= f.radio_button :address_number, 1 %>
           <%= f.label :address, "ご自身の住所" %>

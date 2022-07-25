@@ -1,10 +1,18 @@
 <div class="container">
-  <h3 class="p-3"><span class="header">ショッピングカート</span></h3>
+  <h3 class="mt-4">
+    <span class="px-3" style="background-color:lightgray">ショッピングカート</span>
+  </h3>
+
+  　<% if current_customer.cart_items.present? %>
+  　<% else %>
+  　　<h1 class="font-weight-bold text-danger text-center">カートの中身は空です</h1>
+  　<% end %>
+
+  　<% if current_customer.cart_items.present? %>
   <div class="field col-sm-12 text-right mb-4">
-    <% if current_customer.cart_items.present? %>
     <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger ml-auto" %>
-    <% end %>
   </div>
+    <% end %>
 
   <% if current_customer.cart_items.present? %>
   <div>
@@ -20,8 +28,8 @@
       <% @cart_items.each do |cart_item| %>
         <tbody>
             <tr>
-              <td>
-                <%= image_tag cart_item.item.image, size: "50x50" %>
+              <td class:="align-middle">
+                <%= image_tag cart_item.item.image, size: "50x50", class: "m-2"  %>
                 <%= cart_item.item.name %>
               </td>
               <td class="align-middle">
@@ -65,12 +73,12 @@
         </table>
       </div>
     <% end %>
+    <% if @cart_items.count > 0 %>
     <div class="row">
       <div class="col-sm-12 text-center mt-2">
-        <% if @cart_items.count > 0 %>
           <%= link_to "情報入力に進む", new_order_path, class: "btn btn-success" %>
-        <% end %>
       </div>
     </div>
+    <% end %>
   </div>
 </div>
