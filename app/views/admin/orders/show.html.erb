@@ -76,8 +76,8 @@
           <table>
             <tr>
               <th>商品合計</th>
-              <td><%#= @total.to_s(:delimited)%>
-                  <%= @order.items_price.to_s(:delimited) %>円</td>
+              <td><%= @total.to_s(:delimited)%>
+                  <%#= @order.items_price.to_s(:delimited) %>円</td>
             </tr>
             <tr>
               <th>送料</th>
