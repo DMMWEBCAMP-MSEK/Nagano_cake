@@ -20,7 +20,6 @@ class Order < ApplicationRecord
      shipped: 4
   }
 
-  #enum status: { waiting_deposit: 0, confirm_deposit: 1, in_production: 2, ready_ship: 3, complete_ship: 4 }
   scope :created_today, -> { where(created_at: Time.zone.now.all_day) }
   def items_amount
     array = []
@@ -45,7 +44,6 @@ class Order < ApplicationRecord
     end
     array.sum.to_s(:delimited)
   end
-
 
   def postcode_and_address
     self.post_code + '(' + self.address.to_s + ')'

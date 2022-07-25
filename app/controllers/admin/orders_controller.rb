@@ -17,7 +17,7 @@ class Admin::OrdersController < ApplicationController
       #   @order.order_items.update_all(production_status: 1)
       # end
       if order_params[:status] == "payment_confirmation"
-        @order.order_items.update_all(production_status:1)
+         @order.order_items.update_all(production_status:1)
       end
       redirect_to admin_order_path(@order)
     else
@@ -30,5 +30,6 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:status)
   end
+
 
 end

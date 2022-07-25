@@ -1,7 +1,8 @@
 class Admin::HomesController < ApplicationController
 
+
   def top
-    @orders = Order.page(params[:page])
+    @orders = Order.all.page(params[:page]).reverse_order
   end
 
 end

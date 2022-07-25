@@ -21,7 +21,7 @@
 
 
 
-            <% @items.each do |item| %>
+            <% @selling_items.each do |item| %>
         　　　<div class="item">
             　　　   <div class="img-area">
                     <%= link_to item_path(item.id) do %>
@@ -38,7 +38,7 @@
         　　　<% end %>
         　　</div>
         　　<div class="justify-content-center">
-              <%= paginate @items %>
+              <%= paginate @selling_items %>
         　　</div>
         </div>
     </div>
