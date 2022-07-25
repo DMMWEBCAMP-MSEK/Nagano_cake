@@ -18,7 +18,13 @@
       </tr>
       <tr>
         <th>支払方法</th>
-        <td><%= @order.payment_method_i18n %></td>
+        <td>
+          <% if @order.payment_method == 0 %>
+            クレジットカード
+        <% else @order.payment_method != 0 %>
+            銀行振込
+        <% end %>
+          <%#= @order.payment_method_i18n %></td>
       </tr>
       <tr>
         <th>注文ステータス</th>
@@ -46,15 +52,15 @@
             </thead>
             <tbody>
               <% @order.order_items.each do |order_item| %>
-              <tr>
+              <tr>               <!-- each文に計算式を入れる事で、各order_itemのtotalの値を回収する-->
+                <% @total = 0 %> <!-- 空にして、数字のみ入る設定で計算スタート。-->
+                <% @total += order_item.price * order_item.amount %><!-- @totalに入れたい情報を代入。-->
                 <td><%= order_item.item.name %></td>
                 <td><%= order_item.item.with_tax_price.to_s(:delimited) %>円</td>
                 <td><%= order_item.amount %></td>
                 <td><%= order_item.item.name %></td>
                 <td>
                   <%= form_with model: order_item, url: admin_order_item_path(order_item), method: :patch do |f| %>
-                    <%#= f.select :production_status, OrderItem.production_statuses_i18n.invert.keys.to_a, class: "prefecture-select" %>
-                    <%#= f.select :production_status, OrderItem.production_statuses_i18n.invert.map{|key, value| [key, OrderItem.production_statuses[value]]} %>
                     <%= f.select :production_status, OrderItem.production_statuses.keys.map {|k| [I18n.t("enums.order_item.production_status.#{k}"), k]} %>
                     <%= f.submit "更新" %>
                   <% end %>
@@ -68,7 +74,8 @@
           <table>
             <tr>
               <th>商品合計</th>
-              <td><%= @order.total_payment.to_s(:delimited) %>円</td>
+              <td><%= @total.to_s(:delimited)%>円
+                  <%#= @order.itema_price.to_s(:delimited) %></td>
             </tr>
             <tr>
               <th>送料</th>
