@@ -2,7 +2,7 @@
   <div class="row"><h1>配送先登録/一覧</h1>
   </div>
   <div class="row">
-    <%= form_with model:@shipping_address, url: '/shipping_address', method: :post, local:true do |f| %>
+    <%= form_with model:@shipping_address, url: '/shipping_addresses', method: :post, local:true do |f| %>
       <p>郵便番号(ハイフンなし) 　　<%= f.text_field :post_code %></p>
       <p>住所　　　　　　　　　　　<%= f.text_field :address, size: 50 %></p>
       <p>宛名　　　　　　　　　　　<%= f.text_field :name %>

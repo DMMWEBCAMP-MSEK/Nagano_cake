@@ -25,39 +25,39 @@
           <%= f.radio_button :address_number, 1 %>
           <%= f.label :address, "ご自身の住所" %>
         </div>
-        <div class="mb-2 ml-4">
+        <div class="mb-2 ml-5">
           〒<%= current_customer.post_code %> <%= current_customer.address %><br>
             <%= current_customer.last_name %><%= current_customer.first_name %>
         </div>
       </div>
       <div>
-        <div>
+        <div class="ml-4">
           <%= f.radio_button :address_number, 2 %>
           <%= f.label :address, "登録済住所から選択" %>
         </div>
-        <div class="form-group ml-4">
+        <div class="form-group ml-5">
           <%= f.collection_select :customer_id, @addresses, :id, :postcode_and_address,{prompt: "選択してください"} %>
         </div>
       </div>
       <div>
-        <div>
+        <div class="ml-4">
           <%= f.radio_button :address_number, 3 %>
           <%= f.label :address, "新しいお届け先" %>
         </div>
-        <div>
+        <div class="ml-4">
           <%= f.label :post_code, "郵便番号(ハイフンなし)", class: "col-3 ml-2" %>
           <%= f.text_field :post_code %>
         </div>
-        <div>
+        <div class="ml-4">
           <%= f.label :address, "住所", class: "col-3 ml-2" %>
           <%= f.text_field :address %>
         </div>
-        <div>
+        <div class="ml-4">
           <%= f.label :name, "宛名", class: "col-3 ml-2" %>
           <%= f.text_field :name %>
         </div>
       </div>
-      <div class="mx-auto">
+      <div class="col-sm-12 text-center mt-2">
         <%= f.submit "確認画面へ進む", class: "btn btn-primary" %>
       </div>
       <% end %>

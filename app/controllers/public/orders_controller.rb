@@ -11,7 +11,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def show
-    @order = current_customer.orders.find(params[:id])
+     @order = current_customer.orders.find(params[:id])
   end
 
   def create
@@ -47,7 +47,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_number] == "2"
       if  params[:order][:customer_id] == ""
             flash[:notice] = "お届け先の登録済住所を選択してください"
-            redirect_to new_order_path(@order)
+            redirect_to new_order_path
       else
           ship = ShippingAddress.find(params[:order][:customer_id])
           @order.post_code = ship.post_code
@@ -84,5 +84,4 @@ class Public::OrdersController < ApplicationController
   def address_params
     params.require(:order).permit(:name, :address, :post_code, :customer_id)
   end
-
 end

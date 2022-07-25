@@ -1,11 +1,14 @@
 <div class="container">
   <h3 class="p-3"><span class="header">ショッピングカート</span></h3>
-  <div class="field col-sm-12 text-right mt-2">
+  <div class="field col-sm-12 text-right mb-4">
     <% if current_customer.cart_items.present? %>
       <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger ml-auto" %>
     <% end %>
   </div>
+
+  <% if current_customer.cart_items.present? %>
   <div>
+
     <table class="table table-bordered">
       <thead class="thead-dark">
           <th>商品名</th>
@@ -21,26 +24,29 @@
                 <%= image_tag cart_item.item.image, size: "50x50" %>
                 <%= cart_item.item.name %>
               </td>
-              <td>
+              <td class="align-middle">
                 <%= cart_item.item.with_tax_price.to_s(:delimited) %>
               </td>
-              <td>
+              <td class="align-middle text-center">
                 <%= form_with model: cart_item, url: cart_item_path(cart_item), local: true, method: :patch do |f| %>
-                  <%= f.number_field :amount, min: 1, max:10, id: "amount_cart" %>
-                  <%= f.submit "変更",class: "btn btn-success" %>
+                  <%= f.number_field :amount, min: 1, max:10, id: "amount_cart",class: "m-2" %>
+                  <%= f.submit "変更",class: "btn btn-success m-2" %>
                 <% end %>
               </td>
-              <td>
+              <td class="align-middle">
                 <%= cart_item.subtotal.to_s(:delimited) %>
               </td>
-              <td class="d-flex align-items-center justify-content-center">
+              <td class="align-middle text-center">
                 <%= link_to "削除する", cart_item_path(cart_item.id), method: :delete, class: "btn btn-sm btn-danger" %>
               </td>
             </tr>
         </tbody>
       <% end %>
     </table>
+
   </div>
+  <% end %>
+
   <div class="container">
     <%= link_to '買い物を続ける', root_path, class: "mt-4 btn btn-primary" %>
     <% if current_customer.cart_items.present? %>
