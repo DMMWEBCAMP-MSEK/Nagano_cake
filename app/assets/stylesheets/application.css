@@ -14,8 +14,3 @@
  *= require_self
  */
 
-
-.container table td.table_text_center {
-  vertical-align: middle;
-  text-align: center;
-}
