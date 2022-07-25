@@ -48,13 +48,11 @@
               <% @order.order_items.each do |order_item| %>
               <tr>
                 <td><%= order_item.item.name %></td>
-                <td><%= order_item.price.to_s(:delimited) %>円</td>
+                <td><%= order_item.price.to_s(:delimited) %></td>
                 <td><%= order_item.amount %></td>
-                <td><%= order_item.item.name %></td>
+                <td><%= order_item.subtotal.to_s(:delimited) %></td>
                 <td>
                   <%= form_with model: order_item, url: admin_order_item_path(order_item), method: :patch do |f| %>
-                    <%#= f.select :production_status, OrderItem.production_statuses_i18n.invert.keys.to_a, class: "prefecture-select" %>
-                    <%#= f.select :production_status, OrderItem.production_statuses_i18n.invert.map{|key, value| [key, OrderItem.production_statuses[value]]} %>
                     <%= f.select :production_status, OrderItem.production_statuses.keys.map {|k| [I18n.t("enums.order_item.production_status.#{k}"), k]} %>
                     <%= f.submit "更新" %>
                   <% end %>

@@ -47,7 +47,7 @@ class Public::OrdersController < ApplicationController
     elsif params[:order][:address_number] == "2"
       if  params[:order][:customer_id] == ""
             flash[:notice] = "お届け先の登録済住所を選択してください"
-            redirect_to new_order_path
+            redirect_to new_order_path(@order)
       else
           ship = ShippingAddress.find(params[:order][:customer_id])
           @order.post_code = ship.post_code
