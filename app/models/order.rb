@@ -5,9 +5,10 @@ class Order < ApplicationRecord
 
   with_options presence: true do
      validates :payment_method
-     validates :post_code
+     validates :post_code, length: { is: 7 }
      validates :address
      validates :name
+     validates :total_payment
   end
 
   enum payment_method: { credit_card: 0, transfer: 1 }
