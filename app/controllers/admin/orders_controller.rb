@@ -11,11 +11,7 @@ class Admin::OrdersController < ApplicationController
 
   def update
     @order = Order.find(params[:id])
-    #production_status_change_to_1 = @order.status_was == "waiting_for_payment" and @order.status == "payment_confirmation"
     if @order.update(order_params)
-      # if production_status_change_to_1
-      #   @order.order_items.update_all(production_status: 1)
-      # end
       if order_params[:status] == "payment_confirmation"
         @order.order_items.update_all(production_status:1)
       end
