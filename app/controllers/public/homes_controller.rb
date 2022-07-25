@@ -4,7 +4,8 @@ class Public::HomesController < ApplicationController
   def top
     @genres = Genre.all
     # 最新から４つ
-    @items = Item.all.order(created_At: :desc).limit(4)
+    #@items = Item.all.order(created_At: :desc).limit(4)
+    @items = Item.where(sales_status: 0).order(created_At: :desc).limit(4)
   end
 
   def about

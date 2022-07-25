@@ -18,8 +18,6 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
     @shipping_address = current_customer.shipping_addresses.new(address_params)
-
-
     if @order.save
       @cart_items.each do |cart_item|
         @order_item = @order.order_items.new
@@ -58,7 +56,7 @@ class Public::OrdersController < ApplicationController
       @order.post_code = params[:order][:post_code]
       @order.address = params[:order][:address]
       @order.name = params[:order][:name]
-　    if  params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
+      if  params[:order][:post_code] == "" || params[:order][:address] == "" || params[:order][:name] == ""
           flash[:notice] = "新しいお届け先を全て入力してください"
           redirect_to new_order_path
       end
@@ -84,5 +82,4 @@ class Public::OrdersController < ApplicationController
   def address_params
     params.require(:order).permit(:name, :address, :post_code, :customer_id)
   end
-
 end
