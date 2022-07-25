@@ -3,73 +3,40 @@
     <!-- ジャンル -->
     <div class="col-md-2">
       <table class="table table-bordered ml-3">
-                <thead>
-                    <th>ジャンル一覧</th>
-                </thead>
-                <tbody>
-                    <% @genres.each do |genre| %>
-                    　　<tr>
-                          <th><%= genre.name %></th>
-                         </tr>
-                    <% end %>
-                </tbody>
-            </table>
-        </div>
-        <div class="col-lg-10">
-            <h2>商品一覧（全<%= @items_count %>件）</h2>
-            <div id="container">
-
-
-
-            <% @selling_items.each do |item| %>
-        　　　<div class="item">
-            　　　   <div class="img-area">
-                    <%= link_to item_path(item.id) do %>
-                     <%= image_tag item.image, size: "250", class: "index-img" %>
-                    <% end %>
-                  </div>
-                  <div>
-                    <%= item.name%>
-                  </div>
-                  <div>
-                     ¥<%= item.price %>
-                  </div>
-                </div>
-        　　　<% end %>
-        　　</div>
-        　　<div class="justify-content-center">
-              <%= paginate @selling_items %>
-        　　</div>
-        </div>
+        <thead>
+          <th>ジャンル一覧</th>
+        </thead>
+        <tbody>
+          <% @genres.each do |genre| %>
+            <tr>
+              <th><%= genre.name %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
     </div>
+    <div class="col-lg-10">
+      <h2>商品一覧（全<%= @items_count %>件）</h2>
+      <div id="container">
+        <% @selling_items.each do |item| %>
+        　<div class="item">
+        　   <div class="img-area">
+              <%= link_to item_path(item.id) do %>
+                <%= image_tag item.image, size: "250", class: "index-img" %>
+              <% end %>
+            </div>
+            <div>
+              <%= item.name%>
+            </div>
+            <div>
+              ¥<%= item.price %>
+            </div>
+            </div>
+        <% end %>
+      </div>
+      <div class="justify-content-center">
+        <%= paginate @selling_items %>
+      </div>
+    </div>
+  </div>
 </div>
-
-<!--      <div class="card-header text-white bg-dark ">ジャンル一覧</div>-->
-<!--        <div class="card-body">-->
-<!--          <%# @genres.each do |genre| %>-->
-<!--            <p class="card-text"><%#= genre.name %></p>-->
-<!--          <%# end %>-->
-<!--        </div>-->
-<!--    </div>-->
-    <!-- 商品 -->
-<!--    <div class = "col-10">-->
-<!--      <h3>商品一覧<span>(全<%#= @items_count %>件)</span></h3>-->
-<!--        <div class="wrapper grid">-->
-<!--            <%# @items.each do |item|%>-->
-<!--              <div class="card" style="width: 16rem;">-->
-<!--                  <%# link_to item_path(item) do %>-->
-<!--                     <div class="card-img"><%#= image_tag item.image, size: "250×250" %></div>-->
-<!--                  <%# end %>-->
-<!--                  <div><%#= item.name %></div>-->
-<!--                  <p class="text-right lead">¥<%#= item.price.to_s(:delimited) %></p>-->
-<!--              </div>-->
-<!--        　　　<%# end %>-->
-<!--        </div>-->
-<!--        　<div class="row justify-content-center">-->
-<!--            <%# paginate @items %>-->
-<!--        　</div>-->
-<!--    </div>-->
-<!--  </div>-->
-<!--</div>-->
-
-

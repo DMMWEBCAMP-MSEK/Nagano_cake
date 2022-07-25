@@ -2,7 +2,7 @@
   <h3 class="p-3"><span class="header">ショッピングカート</span></h3>
   <div class="field col-sm-12 text-right mb-4">
     <% if current_customer.cart_items.present? %>
-    <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger ml-auto" %>
+      <%= link_to "カートを空にする", destroy_all_cart_items_path, method: :delete, class: "btn btn-danger ml-auto" %>
     <% end %>
   </div>
 
