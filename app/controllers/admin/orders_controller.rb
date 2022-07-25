@@ -1,5 +1,6 @@
 class Admin::OrdersController < ApplicationController
 
+
   def index
     @orders = Order.page(params[:page])
   end
@@ -13,13 +14,12 @@ class Admin::OrdersController < ApplicationController
     @order = Order.find(params[:id])
     if @order.update(order_params)
       if order_params[:status] == "payment_confirmation"
-        @order.order_items.update_all(production_status:1)
+         @order.order_items.update_all(production_status:1)
       end
       redirect_to admin_order_path(@order)
     else
       render :show
     end
-
   end
 
   private
@@ -27,5 +27,6 @@ class Admin::OrdersController < ApplicationController
   def order_params
     params.require(:order).permit(:status)
   end
+
 
 end
