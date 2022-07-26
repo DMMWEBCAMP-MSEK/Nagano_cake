@@ -32,8 +32,8 @@ ja:
       pagination:
         first: "≪"
         previous: "<"
-        next: ">"
-        last: "≫"
+        next: "Next >"
+        last: "Last ≫"
         truncate: "..."
 
     activerecord:

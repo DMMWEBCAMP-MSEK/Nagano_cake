@@ -1,34 +1,48 @@
 <div class="container">
-  <div class:"row">
-    <h2>商品詳細</h2>
-    <%= image_tag @item.image, size: "200x200" %>
-    <table>
-      <tr>
-        <th>商品名</th>
-        <td><%= @item.name %></td>
+  <div class="row">
+    <div class="float-left">
+    <div>
+      <h3 class="mt-4">
+        <span class="px-3" style="background-color:lightgray">商品詳細</span>
+      </h3>
+    </div>
+    <div class="mt-4">
+    <%= image_tag @item.image, size: "200x200"%>
+    </div>
+    </div>
+    <div class="mt-4">
+    <table class="h-100 m-5 float-right">
+      <tr class="w-100">
+        <th class="h-15">商品名</th>
+        <td class="w-50 h5"><%= @item.name %></td>
       </tr>
-      <tr>
-        <th>商品説明</th>
-        <td><%= @item.introduction %></td>
+      <tr class="w-100">
+        <th class="h-15">商品説明</th>
+        <td class="w-50 h5"><%= @item.introduction %></td>
       </tr>
-      <tr>
-        <th>ジャンル</th>
-        <td><%= @item.genre.name %></td>
+      <tr class="w-100">
+        <th class="h-15">ジャンル</th>
+        <td class="w-50 h5"><%= @item.genre.name %></td>
       </tr>
-      <tr>
-        <th>
+      <tr class="w-100">
+        <th class="h-15">
           税込価格<br>
           （税抜価格）
         </th>
-        <td><%= @item.with_tax_price.to_s(:delimited) %>
-          <%#= number_with_delimiter(@item.with_tax_price) %>円<br>
-          （<%= number_with_delimiter(@item.price) %>円）</td>
+        <td class="w-50 h5 align-middle"><%= @item.with_tax_price.to_s(:delimited) %>
+          <%#= number_with_delimiter(@item.with_tax_price) %>円（<%= number_with_delimiter(@item.price) %>円）</td>
       </tr>
-      <tr>
-        <th>販売ステータス</th>
-        <td><%= @item.sales_status_i18n %></td>
+      <tr class="w-100">
+        <th class="h-15">販売ステータス</th>
+        <td class="w-10 h5 font-weight-bold text-success"><%= @item.sales_status_i18n %></td>
       </tr>
     </table>
+    </div>
+
+    <div class="footer container mt-5">
+      <div class="text-center">
     <%= link_to "編集する", edit_admin_item_path(@item), class: 'btn btn-secondary' %>
+    </div>
+    </div>
   </div>
 </div>
