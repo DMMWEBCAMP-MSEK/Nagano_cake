@@ -1,9 +1,9 @@
 <div class="container bg">
   <div class="row">
-    <div class="col-md-2">
+    <div class="col-md-3 mt-5">
         <table class="table table-bordered ml-1">
             <thead>
-                <th>ジャンル検索</th>
+                <th>ジャンル一覧</th>
             </thead>
             <tbody>
                 <% @genres.each do |genre| %>
@@ -14,46 +14,56 @@
             </tbody>
         </table>
     </div>
-    <div class="col-md-10">
+
+    <div class="col-md-9">
         <% if flash[:notice] %>
           <p class="text-active"><%= flash[:notice] %></p>
         <% end %>
-        <div id="about">
-              <div id="theTarget">
-                <div class="image1">
-                    <div class="top-text">
-                        ようこそ、ながのCAKEへ！<br>
-                        このサイトは、ケーキ販売のECサイトになります。<br>
-                        会員でない方も商品の閲覧はできますが、<br>
-                        購入には会員登録が必要になります。<br>
-                    </div>
-                </div>
-                <div class="image2"></div>
-                <div class="image3"></div>
-                <div class="image4"></div>
-                <div class="image5"></div>
-              </div>
+
+        <div class="card m-5" style="max-height: 400px; width: 400px;"><%= image_tag 'gallet1' %>
+          <div class="card-img-overlay">
+            <p class="font-weight-bold text-danger">
+              ようこそ、ながのCAKEへ！<br>
+              このサイトは、ケーキ販売のECサイトになります。<br>
+              会員でない方も商品の閲覧はできますが、<br>
+              購入には会員登録が必要になります。<br>
+            </p>
+          </div>
         </div>
 
-        <div class="toppage">
-            <h2>新着商品</h2>
+          <div class="m-5">
+            <h2 class="font-weight-bold">新着商品</h2>
               <div class="row wrapper-grid">
                 <% @items. each do |item| %>
-                   <div class="card" style="width: 16rem;">
+                   <div class="m-1 card" style="width: 8rem;">
                         <div class="img">
                             <%= link_to item_path(item.id) do %>
-                              <%= image_tag item.image, :size=> "250" %>
+                              <%= image_tag item.image, :size=> "125" %>
                             <% end %>
                         </div>
-                        <div><%= item.name %></div>
-                        <div>¥<%= item.price %></div>
+                        <div class="font-weight-bold"><%= item.name %></div>
+                        <div class="font-weight-bold">¥<%= item.price %></div>
                    </div>
                 <% end %>
               </div>
-            <div class="text-right mb-4">
+            <div class="text-right mb-4 mt-4">
               <%= link_to "全ての商品を見る＞",  items_path %>
             </div>
         </div>
-    </div>
-  </div>
+      </div>
+      </div>
+
+        <!--<div id="about">-->
+        <!--      <div id="theTarget">-->
+        <!--        <div class="image1">-->
+        <!--            <div class="top-text">-->
+
+        <!--            </div>-->
+        <!--        </div>-->
+        <!--        <div class="image2"></div>-->
+        <!--        <div class="image3"></div>-->
+        <!--        <div class="image4"></div>-->
+        <!--        <div class="image5"></div>-->
+        <!--      </div>-->
+        <!--</div>-->
 </div>
