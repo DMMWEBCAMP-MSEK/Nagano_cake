@@ -3,7 +3,7 @@
 
   <div class="row">
       <div class="offset-md-1 col-md-6">
-      <%= form_with model:@item, url: admin_items_path, local:true do |f| %>
+      <%= form_with model:@item, url: admin_items_path, method: :post, local:true do |f| %>
         <table class="table table-borderless mt-3" >
           <tbody>
             <tr>
@@ -30,9 +30,9 @@
               <td><%= f.label :販売ステータス %></td>
               <td>
                 <%= f.radio_button :sales_status, :sale %>
-                <%= f.label :sales_status_draft, '販売中' %>&emsp;
+                <%= f.label :sales_status_sale, '販売中' %>&emsp;
                 <%= f.radio_button :sales_status, :stop_selling %>
-                <%= f.label :sales_status_on_sale, '販売停止中' %>
+                <%= f.label :sales_status_stop_selling, '販売停止中' %>
               </td>
             </tr>
           </tbody>
