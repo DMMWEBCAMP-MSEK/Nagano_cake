@@ -21,7 +21,7 @@ class Admin::ItemsController < ApplicationController
   end
 
   def index
-    @items = Item.page(params[:page]).order(created_at: :desc)
+    @items = Item.page(params[:page])
     @items_count = Item.where(sales_status:"sale").count
   end
 
