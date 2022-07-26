@@ -1,6 +1,6 @@
 <div class="d-block p-2 ml-5">注文履歴詳細</div>
   <table class="d-block p-2 ml-5">
-    <%= render "layouts/errors", obj: @order,  %>
+    <%= render "layouts/errors", obj: @order %>
       <tr>
         <th>購入者</th>
         <td><%= @order.customer.last_name %> <%= @order.customer.first_name %></td>
