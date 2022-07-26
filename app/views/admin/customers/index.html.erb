@@ -1,34 +1,38 @@
-<div class = "container">
-  <h3 class="mt-4">
-    <span class="px-3" style="background-color:lightgray">会員一覧</span>
-  </h3>
+<div class="container mt-3" style="margin-bottom: 2vh;">
+  <h3>
+    <span class="px-3" style="background-color:#EEEEEE">
+      <strong>&emsp;会員一覧&emsp;</strong>
+    </span>
+  </h3><br>
   <table class="table table-reflow table-hover">
-    <thead class ="table-dark mb-5 pb-5">
-      <tr>
-        <th>会員ID</th>
-        <th>氏名</th>
-        <th>メールアドレス</th>
-        <th>ステータス</th>
-      </tr>
-    </thead>
-    <tbody class="table table-borderless">
-      <% @customers.each do |customer| %>
+    <div class="col-md-9">
+      <thead class ="table mb-5 pb-5"style="background-color:#EEEEEE" >
         <tr>
-          <td><%= customer.id %></td>
-          <td>
-            <%= link_to admin_customer_path(customer.id) do %>
-              <%= customer.last_name %><%= customer.first_name %>
-            <% end %>
-          </td>
-          <td><%= customer.email %></td>
-          <td><%= customer.is_deleted ? '退会' : '有効'  %></td>
+          <th>会員ID</th>
+          <th>氏名</th>
+          <th>メールアドレス</th>
+          <th>ステータス</th>
         </tr>
-      <% end %>
-    </tbody>
-  </table>
-  <div class="footer container col-md-6 offset-md-3 py-2">
-    <div class="pagination justify-content-center">
-      <%= paginate @customers, class: "text-decoration-underline" %>
+      </thead>
+      <tbody class="table table-borderless">
+        <% @customers.each do |customer| %>
+        <tr>
+           <td><%= customer.id %></td>
+           <td>
+             <%= link_to admin_customer_path(customer.id) do %>
+              <%= customer.first_name %><%= customer.last_name %>
+             <% end %>
+           </td>
+           <td><%= customer.email %></td>
+           <td><%= customer.is_deleted ? '退会' : '有効'  %></td>
+        </tr>
+        <% end %>
+      </tbody>
+    </div>
+  </table><br>
+  <div class="row justify-content-center">
+    <div class="mb-5">
+      <%= paginate @customers %>
     </div>
   </div>
 </div>
