@@ -3,7 +3,10 @@
     <%= render "layouts/errors", obj: @order %>
       <tr>
         <th>購入者</th>
-        <td><%= @order.customer.last_name %> <%= @order.customer.first_name %></td>
+          <td>
+            <%= link_to @order.full_name, admin_order_path(@order) %>
+          </td>
+
       </tr>
       <tr>
         <th>注文日</th>
