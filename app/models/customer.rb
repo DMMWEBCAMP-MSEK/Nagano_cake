@@ -14,12 +14,13 @@ class Customer < ApplicationRecord
   validates :last_name, presence: true
   validates :first_name_kana, presence: true
   validates :last_name_kana, presence: true
-
-  validates :email, presence: true
-  validates :post_code, presence: true
+  #VALID_EMAIL_REGEX = /\A[\w+-.]+@[a-z\d-]+(.[a-z\d-]+)*.[a-z]+\z/i
+  validates :email, presence: true#, format: { with: VALID_EMAIL_REGEX }
+  VALID_POSTAL_CODE_REGEX = /\A\d{7}\z/
+  validates :post_code, presence: true, format: { with: VALID_POSTAL_CODE_REGEX }
   validates :address, presence: true
-  validates :phone_number, presence: true
-
+  VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
+  validates :phone_number, presence: true, format: { with: VALID_PHONE_NUMBER_REGEX }
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
 
