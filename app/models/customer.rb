@@ -21,7 +21,6 @@ class Customer < ApplicationRecord
   validates :address, presence: true
   VALID_PHONE_NUMBER_REGEX = /\A\d{10,11}\z/
   validates :phone_number, presence: true, format: { with: VALID_PHONE_NUMBER_REGEX }
-
   validates :password, presence: true, length: { minimum: 6 }, on: :create
   validates :password_confirmation, presence: true, length: { minimum: 6 }, on: :create
 
