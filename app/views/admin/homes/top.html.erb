@@ -1,8 +1,10 @@
 <div class="container">
   <div class="row">
     <div class="col-10 mx-auto mt-3 mb-3">
-      <h2 class="d-inline">注文履歴一覧</h2>
-      <table class="table col-10 mx-auto ">
+      <h3 class="px-3">
+        <span class="px-3" style="background-color:lightgray">注文履歴一覧</span>
+      </h3>
+      <table class="table col-10 mx-auto mt-3">
         <thead class="table-dark mb-5 pb-5">
 
 
@@ -13,31 +15,31 @@
 <!--      <table class="table">-->
 <!--        <thead class="table-dark mb-5 pb-5">-->
           <tr>
-            <th>購入日時</th>
-            <th>購入者</th>
-            <th>注文個数</th>
-            <th>注文ステータス</th>
+            <th class="align-middle">購入日時</th>
+            <th class="align-middle">購入者</th>
+            <th class="align-middle text-center">注文個数</th>
+            <th class="align-middle">注文ステータス</th>
           </tr>
         </thead>
         <tbody>
           <% @orders.each do |order| %>
             <tr>
-              <td>
+              <td class="align-middle">
                 <%= link_to order.created_at.strftime("%Y-%m-%d %H:%M:%S"), admin_order_path(order) %>
               </td>
-              <td><%= order.customer.last_name %> <%= order.customer.first_name %></td>
-              <td><%= order.items_amount %></td>
-              <td><%= order.status_i18n %></td>
+              <td class="align-middle"><%= order.customer.last_name %> <%= order.customer.first_name %></td>
+              <td class="align-middle text-center"><%= order.items_amount %></td>
+              <td class="align-middle"><%= order.status_i18n %></td>
             </tr>
           <% end %>
           <%= paginate @orders %>
         </tbody>
       </table>
     </div>
-    <div class="row justify-content-center">
-    <div>
-     <%= paginate @orders %>
+    <div class="footer container col-md-6 offset-md-3 py-2">
+      <div class="pagination justify-content-center">
+        <%= paginate @orders, class: "text-decoration-underline" %>
+      </div>
     </div>
-  </div>
   </div>
 </div>

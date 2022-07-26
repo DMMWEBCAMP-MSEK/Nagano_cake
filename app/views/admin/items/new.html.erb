@@ -1,8 +1,8 @@
 <div class="container" style="margin-bottom: 7vh"></br>
   <h3><span class="px-3" style="background-color:#EEEEEE">商品新規登録</span></h3>
-  <div class="row">
-    <div class="offset-md-1 col-md-6">
-      <%= form_with model:@item, url: admin_items_path, method: :post, local:true do |f| %>
+  <%= form_with model:@item, url: admin_items_path, method: :post, local:true do |f| %>
+    <div class="row">
+      <div class="offset-md-1 col-md-6">
         <table class="table table-borderless mt-3" >
           <tbody>
             <tr>
@@ -36,12 +36,12 @@
             </tr>
           </tbody>
         </table>
-      <% end %>
+      </div>
     </div>
-  </div>
-  <div class="row">
-    <div class="mx-auto">
-      <%= f.submit '　新規登録　', class: 'btn btn-lg btn-success' %>
+    <div class="row">
+      <div class="mx-auto">
+        <%= f.submit '　新規登録　', class: 'btn btn-lg btn-success' %>
+      </div>
     </div>
-  </div>
+  <% end %>
 </div>
