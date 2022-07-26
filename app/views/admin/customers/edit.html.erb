@@ -1,7 +1,7 @@
 <div class="container"></br>
 <h3>
   <span class="px-3" style="background-color:lightgray">
-    <strong><%= @customer.last_name %><%= @customer.first_name %></strong>さんの<strong>会員情報編集</strong>
+    <strong><%= @customer.first_name %> <%= @customer.last_name %></strong>さんの<strong>会員情報編集</strong>
   </span>
 </h3>
 <div  class="text-danger p-3">
@@ -18,19 +18,19 @@
   <tr>
     <td>名前</td>
     <td>
-      <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
+      <%= f.text_field :first_name, autofocus: true,class: "form-control" %>
     </td>
     <td>
-      <%= f.text_field :first_name, autofocus: true,class: "form-control" %>
+      <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
     </td>
   </tr>
   <tr>
     <td>フリガナ</td>
     <td>
-      <%= f.text_field :last_name_kana, autofocus: true, class: "form-control" %>
+      <%= f.text_field :first_name_kana, autofocus: true, class: "form-control" %>
     </td>
     <td>
-      <%= f.text_field :first_name_kana, autofocus: true, class: "form-control" %>
+      <%= f.text_field :last_name_kana, autofocus: true, class: "form-control" %>
     </td>
   </tr>
   <tr>
