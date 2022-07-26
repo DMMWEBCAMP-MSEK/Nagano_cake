@@ -49,4 +49,8 @@ class Order < ApplicationRecord
     self.post_code + '(' + self.address.to_s + ')'
   end
 
+  def full_name
+    customer.last_name + ' ' + customer.first_name
+  end
+
 end
