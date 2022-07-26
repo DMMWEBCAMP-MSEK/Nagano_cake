@@ -1,4 +1,7 @@
 <div class="container">
+    <div  class="text-danger">
+        <%= render 'layouts/errors', obj: @customer %>
+    </div>
     <%= form_with model: @customer, url: information_customers_path, method: :patch, local: true do |f| %>
     <div class="row">
         <h3 class="p-3"><span class="header">会員情報編集<span></h3>
