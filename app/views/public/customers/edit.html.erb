@@ -1,44 +1,67 @@
-<div class="container">
-    <%= form_with model: @customer, url: information_customers_path, method: :patch, local: true do |f| %>
-    <div class="row">
-        <h3 class="p-3"><span class="header">会員情報編集<span></h3>
-    </div>
+ <div class="col-md-10"  style="margin-left: 8vh"></br>
 
-    <div class="field row">
-        <div class = "col-2"><%= f.label :氏名 %></div>
-        <div class = "col-5">
-            <%= f.text_field :last_name %>
-            <%= f.text_field :first_name, autofocus: true %>
-        </div>
-    </div>
-    <div class="field row">
-        <div class = "col-2"><%= f.label :フリガナ %></div>
-        <div class = "col-5">
-            <%= f.text_field :last_name_kana %>
-            <%= f.text_field :first_name_kana, autofocus: true %>
-        </div>
-    </div>
-    <div class="field row">
-        <div class = "col-2"><%= f.label :郵便番号 %></div>
-        <div class = "col-5"><%= f.text_field :post_code %></div>
-    </div>
-    <div class="field row">
-        <div class = "col-2"><%= f.label :住所 %></div>
-        <div class = "col-5"><%= f.text_field :address %></div>
-    </div>
-    <div class="field row">
-        <div class = "col-2"><%= f.label :電話番号 %></div>
-        <div class = "col-5"><%= f.text_field :phone_number %></div>
-    </div>
-    <div class="field row">
-        <div class = "col-2"><%= f.label :メールアドレス %></div>
-        <div class = "col-5"><%= f.email_field :email %></div>
-    </div>
-    <div class="row">
-        <div class="col-10 p-3 form-inline" >
-            <div class="mr-5"><%= f.submit "編集内容を保存", class: 'btn btn-success btn-md ml-5' %></div>
-            <div class="mr-5"><%= link_to "退会する", confirm_customers_path, class: 'btn btn-danger ml-5' %></div>
-        </div>
-    </div>
-    <% end %>
+   <h3 class="p-3"><span class="px-3" style="background-color:lightgray">会員情報編集<span></h3>
+
+  <%= form_with model: @customer, url: information_customers_path, method: :patch, local: true do |f| %>
+
+
+    <table class="table table-borderless align-middle" style="margin-bottom: 10vh">
+    <tbody>
+      <tr>
+        <td style="width :20%"><%= f.label  "氏名　　　　　　" %></td>
+        </td>
+        <td style="width :25%">
+          <%= f.text_field :last_name, autofocus: true,class: "form-control" %>
+        </td>
+        <td style="width :25%">
+          <%= f.text_field :first_name, autofocus: true,class: "form-control" %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.label  "フリガナ　　　　" %></td>
+        <td>
+          <%= f.text_field :last_name_kana, autofocus: true,class: "form-control" %>
+        </td>
+        <td>
+          <%= f.text_field :first_name_kana, autofocus: true,class: "form-control" %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.label  "郵便番号　　　　" %></td>
+        <td>
+          <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code",class: "form-control" %>
+        </td>
+      </tr>
+      <tr>
+        <td><%= f.label  "住所　　　　　　" %></td>
+        <td colspan=3>
+          <%= f.text_field :address, autofocus: true, autocomplete: "address",class: "form-control"  %>
+      　</td>
+      </tr>
+      <tr>
+        <td><%= f.label  "電話番号　　　　" %></td>
+        <td>
+          <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number",class: "form-control"  %>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td><%= f.label  "メールアドレス　" %></td>
+        <td>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email",class: "form-control"  %>
+        </td>
+        <td></td>
+      </tr>
+      <tr>
+        <td></td>
+        <td>
+            <%= f.submit "　編集内容を保存　", class: 'btn btn-success btn-md' %>
+        </td>
+        <td>
+            <%= link_to "退会する", confirm_customers_path, class: 'btn btn-danger ml-5' %>
+        </td>
+      </tr>
+    </tbody>
+    </table>
+  <% end %>
 </div>

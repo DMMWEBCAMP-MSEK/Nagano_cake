@@ -34,3 +34,4 @@ ja:
         previous: "<"
         next: ">"
         last: "≫"
+        truncate: "..."
