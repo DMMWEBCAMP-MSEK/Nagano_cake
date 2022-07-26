@@ -9,9 +9,12 @@ def edit
 end
 
 def update
-   @customer = current_customer
-   @customer.update(customer_params)
-   redirect_to my_page_customers_path(current_customer)
+  @customer = current_customer
+  if @customer.update(customer_params)
+    redirect_to my_page_customers_path(current_customer)
+  else
+    render :edit
+  end
 end
 
 def confirm

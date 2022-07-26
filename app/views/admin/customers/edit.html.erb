@@ -27,15 +27,8 @@
   <tr>
     <td>フリガナ</td>
     <td>
-      <%= f.text_field :first_name_kana, autofocus: true, class: "form-control" %>
-    </div>
-    </td>
-    <td>
       <%= f.text_field :last_name_kana, autofocus: true, class: "form-control" %>
     </td>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
     <td>
       <%= f.text_field :first_name_kana, autofocus: true, class: "form-control" %>
     </td>
@@ -56,6 +49,12 @@
     <td>電話番号(ハイフンなし)</td>
     <td>
       <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
+    </td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
     </td>
   </tr>
   <tr>
