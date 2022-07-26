@@ -39,6 +39,3 @@
 yarn-debug.log*
 .yarn-integrity
 
-# files
-/app/views/admin/items/new.html.erb
-/app/views/admin/items/edit.html.erb
