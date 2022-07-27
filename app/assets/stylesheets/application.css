@@ -19,3 +19,13 @@
   padding: 0;
   box-sizing: border-box;
 }
+
+.bg_top {
+  width:790px;
+  height:250px;
+  margin-top: 20px;
+  background-image: url(gallet1.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 50px 200px;
+}
