@@ -1,9 +1,9 @@
 <div class="container" style="margin-bottom: 7vh"></br>
  <h3><span class="px-3" style="background-color:#EEEEEE">商品編集</span></h3>
-
+ <%= render 'layouts/errors', obj: @item %>
   <div class="row">
-      <div class="offset-md-1 col-md-6">
-      <%= form_with model:@item, url: admin_items_path, method: :post, local:true do |f| %>
+    <div class="offset-md-1 col-md-6">
+      <%= form_with model:@item, url: admin_item_path, method: :patch, local:true do |f| %>
         <table class="table table-borderless mt-3" >
           <tbody>
             <tr>
@@ -37,12 +37,12 @@
             </tr>
           </tbody>
         </table>
-      </div>
-    </div>
     <div class="row">
       <div class="mx-auto">
         <%= f.submit '　変更を保存  ', class: 'btn btn-lg btn-success' %>
       <% end %>
       </div>
     </div>
-</div>
+　　</div>
+   </div>
+ </div>

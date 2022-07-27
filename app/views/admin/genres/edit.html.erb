@@ -5,6 +5,7 @@
     </div><br>
 
     <%= form_with model: @genre, url: admin_genre_path(@genre.id), method: :patch do |f| %>
+    <%= render 'layouts/errors', obj: @genre %>
         <div class="form-group">
           <p>ジャンル名&emsp;&emsp;
           <%= f.text_field :name , size:"30% " %>&emsp;&emsp;

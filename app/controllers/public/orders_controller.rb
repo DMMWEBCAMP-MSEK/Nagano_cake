@@ -7,7 +7,7 @@ class Public::OrdersController < ApplicationController
   end
 
   def index
-    @orders = current_customer.orders.page(params[:page])
+    @orders = current_customer.orders.page(params[:page]).reverse_order
   end
 
   def show
@@ -18,8 +18,6 @@ class Public::OrdersController < ApplicationController
     @order = current_customer.orders.new(order_params)
     @cart_items = current_customer.cart_items.all
     @shipping_address = current_customer.shipping_addresses.new(address_params)
-
-
     if @order.save
       @cart_items.each do |cart_item|
         @order_item = @order.order_items.new

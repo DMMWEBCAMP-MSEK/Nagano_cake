@@ -1,10 +1,10 @@
 <div class="container"></br>
 <h3>
   <span class="px-3" style="background-color:lightgray">
-    <strong><%= @customer.last_name %><%= @customer.first_name %></strong>さんの<strong>会員情報編集</strong>
+    <strong><%= @customer.last_name %> <%= @customer.first_name %></strong>さんの<strong>会員情報編集</strong>
   </span>
 </h3>
-<div  class="text-danger p-3">
+<div  class="p-3">
   <%= render 'layouts/errors', obj: @customer %>
 </div>
 
@@ -18,10 +18,10 @@
   <tr>
     <td>名前</td>
     <td>
-      <%= f.text_field :last_name, autofocus: true, class: "form-control" %>
+      <%= f.text_field :last_name, autofocus: true,class: "form-control" %>
     </td>
     <td>
-      <%= f.text_field :first_name, autofocus: true,class: "form-control" %>
+      <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
     </td>
   </tr>
   <tr>

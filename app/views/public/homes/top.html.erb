@@ -18,7 +18,8 @@
         <% if flash[:notice] %>
           <h4 class="font-weight-bold text-danger text-active m-5"><%= flash[:notice] %></h4>
         <% end %>
-        <div class="card m-5" style="max-height: 400px; width: 400px;"><%= image_tag 'gallet1' %>
+
+        <div class="top-image card m-5" style="max-height: 400px; width: 400px;"><%= image_tag 'gallet1' %>
           <div class="card-img-overlay">
             <p class="font-weight-bold text-danger">
               ようこそ、ながのCAKEへ！<br>
@@ -44,7 +45,7 @@
                 <% end %>
               </div>
             <div class="text-right mb-4 mt-4">
-              <%= link_to "全ての商品を見る＞",  items_path %>
+              <u><%= link_to "全ての商品を見る＞",  items_path %></u>
             </div>
           </div>
       </div>

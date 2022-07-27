@@ -16,7 +16,7 @@
       </table>
     </div>
     <div class="col-md-9 mt-3">
-      <p class="h2 font-weight-bold">商品一覧（全<%= @items_count %>件）</p>
+      <strong class="h2 font-weight-bold">商品一覧</strong><small class="h5">（全<%= @items_count %>件）</small>
       <div class="container">
         <div class="row wrapper-grid">
           <% @selling_items.each do |item| %>
@@ -26,10 +26,10 @@
                  <%= image_tag item.image, size: "250", class: "index-img" %>
                 <% end %>
               </div>
-              <div class="ml-3">
+              <div class="font-weight-bold ml-3">
                 <%= item.name%>
               </div>
-              <div class="ml-3">
+              <div class="font-weight-bold ml-3">
                 ¥<%= item.price %>
               </div>
             </div>
@@ -41,6 +41,6 @@
 </div>
 <div class="footer container col-md-6 offset-md-3 py-2">
   <div class="pagination justify-content-center">
-    <%= paginate @selling_items %>
+    <u><%= paginate @selling_items %></u>
   </div>
 </div>
