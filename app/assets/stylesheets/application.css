@@ -20,6 +20,7 @@
   box-sizing: border-box;
 }
 
+
 .bg-top {
   width: 70%;
   margin: 20px auto 0 auto;
@@ -29,8 +30,11 @@
   background-position: center;
   padding: 50px 200px;
   opacity: 0.5;
+  z-index: 1;
 }
 
 .main-text {
   font-size: 20px;
+  color: RGBa(0,0,0,1);
+  z-index: 2;
 }
