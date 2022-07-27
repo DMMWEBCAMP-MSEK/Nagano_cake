@@ -1,12 +1,12 @@
-<div class="container mt-2" style="mb: 15vh;">
-    <div class="row">
-        <h2 class="p-3"><span class="header" style="background-color:#EEEEEE">
-        &emsp;ジャンル一覧・追加&emsp;<span></h2>
-    </div><br>
+<div class="container" style="mb: 15vh;">
+    <div class="row">&emsp;
+        <h3 class="p-3"><span class="header" style="background-color:lightgray">
+        &emsp;ジャンル一覧・追加&emsp;<span></h3>
+    </div>
     <%= form_with model: @genre, url: admin_genres_path, method: :post do |f| %>
     <%= render 'layouts/errors', obj: @genre %>
-        <div class="form-group">
-          <p>ジャンル名&emsp;&emsp;
+        <div class="form-group" style="margin-top: 1vh;">
+          <p>&emsp;ジャンル名&emsp;&emsp;
           <%= f.text_field :name , size:"30% " %>&emsp;&emsp;
           <%= f.submit '　新規登録　', class:"btn btn-success btn-md" %>
           </p>
@@ -14,7 +14,7 @@
     <% end %><br>
   <div class="col-md-5">
     <table class="table table-bordered-inserve">
-       <thead class="" style="background-color:#EEEEEE">
+       <thead class="thead-dark">
         <tr>
           <th style="margin-left: 1vh">ジャンル</th>
           <th colspan="3"></th>
