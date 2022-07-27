@@ -1,37 +1,43 @@
-<div class="container mt-3" style="margin-bottom: 2vh;">
-  <h3>
-    <span class="px-3" style="background-color:#EEEEEE">
-      <strong>&emsp;会員一覧&emsp;</strong>
-    </span>
-  </h3><br>
-  <table class="table table-reflow table-hover">
-    <div class="col-md-9">
-      <thead class ="table mb-5 pb-5"style="background-color:#EEEEEE" >
+<div class="container mt-3" style="margin-bottom: 6vh;">
+  <div class="row">
+    <h3 class="px-3"style="margin-left: 5vh;">
+      <span class="px-3" style="background-color:lightgray">会員一覧
+      </span>
+    </h3>
+  </div>
+  <div class="row">
+    <table class="table col-10 mx-auto mt-3">
+      <thead class="table-dark" >
         <tr>
-          <th>会員ID</th>
-          <th>氏名</th>
-          <th>メールアドレス</th>
-          <th>ステータス</th>
+          <th class="align-middle">会員ID</th>
+          <th class="align-middle">氏名</th>
+          <th class="align-middle">メールアドレス</th>
+          <th class="align-middle">ステータス</th>
         </tr>
       </thead>
-      <tbody class="table table-borderless">
+      <tbody>
         <% @customers.each do |customer| %>
         <tr>
-           <td><%= customer.id %></td>
+           <td class="align-middle"><%= customer.id %></td>
            <td>
              <%= link_to admin_customer_path(customer.id) do %>
              <u><%= customer.last_name %> <%= customer.first_name %></u>
              <% end %>
            </td>
-           <td><%= customer.email %></td>
-           <td><%= customer.is_deleted ? '退会' : '有効'  %></td>
+           <td class="align-middle"><%= customer.email %></td>
+           <% if customer.is_deleted == false %>
+              <td><h5 class="text-success font-weight-bold">有効</h5></td>
+           <% else %>
+              <td><h5 class="font-weight-bold" style="color: lightgray">退会</h5></td>
+           <% end %>
         </tr>
         <% end %>
       </tbody>
     </div>
   </table><br>
-<div class="footer container col-md-6 offset-md-3 py-2">
-  <div class="pagination justify-content-center">
-    <u><%= paginate @customers %></u>
+  <div class="footer container col-md-6 offset-md-3 py-2">
+    <div class="pagination justify-content-center">
+      <u><%= paginate @customers %></u>
+    </div>
   </div>
 </div>
