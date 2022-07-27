@@ -5,7 +5,7 @@
     </h3>
   </div>
   <%= render 'layouts/errors', obj: @shipping_address %>
-  <div class="row">
+  <div class="row　ml-2">
     <%= form_with model:@shipping_address, url: '/shipping_addresses', method: :post, local:true do |f| %>
       <p>郵便番号(ハイフンなし) 　　<%= f.text_field :post_code %></p>
       <p>住所　　　　　　　　　　　<%= f.text_field :address, size: 50 %></p>
