@@ -7,7 +7,7 @@
       <%= form_with model:@shipping_address, url: shipping_address_path, method: :patch, local:true do |f| %>
         <p>郵便番号(ハイフンなし) 　　<%= f.text_field :post_code %></p>
         <p>住所　　　　　　　　　　　<%= f.text_field :address, size: 50 %></p>
-        <p>宛名　　　　　　　　　　　<%= f.text_field :name %>
+        <p>宛名　　　　　　　　　　　<%= f.text_field :name, class: "mb-1" %>
           &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <%= f.submit ' 変更内容を保存 ', class: "btn btn-success" %>
         </p>

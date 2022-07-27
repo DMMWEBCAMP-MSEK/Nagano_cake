@@ -25,7 +25,7 @@
             <% @items.each do |item| %>
               <tr>
                 <td class="align-middle"><%= item.id %></td>
-                <td class="align-middle"><%= link_to item.name, admin_item_path(item) %></td>
+                <td class="align-middle"><u><%= link_to item.name, admin_item_path(item) %></u></td>
                 <td class="align-middle"><%= item.price.to_s(:delimited) %></td>
                 <td class="align-middle"><%= item.genre.name %></td>
                 <td class="align-middle"><%= item.sales_status_i18n %></td>
