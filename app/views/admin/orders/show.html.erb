@@ -8,16 +8,16 @@
   <table class="ml-3">
     <%= render "layouts/errors", obj: @order %>
       <tr>
-        <th>購入者</th>
-        <td><%= @order.customer.last_name %> <%= @order.customer.first_name %></td>
+        <th class="h5 font-weight-bold">購入者</th>
+        <td class="h5"><%= @order.customer.last_name %> <%= @order.customer.first_name %></td>
       </tr>
       <tr>
-        <th>注文日</th>
-        <td><%= @order.created_at.strftime("%Y/%m/%d") %></td>
+        <th class="h5 font-weight-bold">注文日</th>
+        <td class="h5"><%= @order.created_at.strftime("%Y/%m/%d") %></td>
       </tr>
       <tr>
-        <th>配送先</th>
-        <td>
+        <th class="h5 font-weight-bold">配送先</th>
+        <td class="h5">
           <div>
             〒<%= @order.post_code %> <%= @order.address %>
           </div>
@@ -27,13 +27,13 @@
         </td>
       </tr>
       <tr>
-        <th>支払方法</th>
-        <td>
+        <th class="h5 font-weight-bold">支払方法</th>
+        <td class="h5">
           <%= @order.payment_method_i18n %>
         </td>
       </tr>
       <tr>
-        <th>注文ステータス</th>
+        <th class="h5 font-weight-bold">注文ステータス</th>
         <td>
           <%= form_with model:@order, url: admin_order_path, method: :patch do |f| %>
             <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
@@ -78,16 +78,16 @@
       <div class="col-lg-4 col align-self-end mb-3">
           <table>
             <tr>
-              <th>商品合計</th>
-              <td class="align-middle"><%= @order.items_price %>円</td>
+              <th class="h5 font-weight-bold">商品合計</th>
+              <td class="h5 align-middle"><%= @order.items_price %>円</td>
             </tr>
             <tr>
-              <th>送料</th>
-              <td class="align-middle"><%= @order.shipping_cost.to_s(:delimited) %>円</td>
+              <th class="h5 font-weight-bold">送料</th>
+              <td class="h5 align-middle"><%= @order.shipping_cost.to_s(:delimited) %>円</td>
             </tr>
             <tr>
-              <th>請求金額合計</th>
-              <td class="align-middle"><%= (@order.total_payment).to_s(:delimited) %>円</td>
+              <th class="h5 font-weight-bold">請求金額合計</th>
+              <td class="h5 align-middle"><%= (@order.total_payment).to_s(:delimited) %>円</td>
             </tr>
           </table>
           </div>
