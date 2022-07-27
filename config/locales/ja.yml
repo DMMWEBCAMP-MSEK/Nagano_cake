@@ -39,6 +39,9 @@ ja:
     activerecord:
       models:
         customer: 会員情報
+        shipping_address: 配送先
+        item: 商品
+        genre: ジャンル
 
     attributes:
         last_name: 姓
@@ -49,3 +52,12 @@ ja:
         address: 住所
         phone_number: 電話番号
         email: メールアドレス
+        password: パスワード
+        password_confirmation: パスワード（確認用）
+        name: 名前
+        genre: ジャンル
+        introduction: 商品説明
+        price: 価格
+        image: 画像
+
+

@@ -3,7 +3,8 @@ class ShippingAddress < ApplicationRecord
   belongs_to :customer
 
   validates :name, presence: true
-  validates :post_code, presence: true, format: {with: /\A\d{7}\z/, message: "ハイフンなしの７桁で入力して下さい"}
+  VALID_POSTAL_CODE_REGEX = /\A\d{7}\z/
+  validates :post_code, presence: true, format: { with: VALID_POSTAL_CODE_REGEX }
   validates :address, presence: true
 
   def postcode_and_address
