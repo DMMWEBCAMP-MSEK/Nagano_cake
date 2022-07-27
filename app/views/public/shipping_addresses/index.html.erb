@@ -5,11 +5,11 @@
     </h3>
   </div>
   <%= render 'layouts/errors', obj: @shipping_address %>
-  <div class="row">
+  <div class="row ml-2">
     <%= form_with model:@shipping_address, url: '/shipping_addresses', method: :post, local:true do |f| %>
       <p>郵便番号(ハイフンなし) 　　<%= f.text_field :post_code %></p>
       <p>住所　　　　　　　　　　　<%= f.text_field :address, size: 50 %></p>
-      <p>宛名　　　　　　　　　　　<%= f.text_field :name %>
+      <p>宛名　　　　　　　　　　　<%= f.text_field :name, class: "mb-1" %>
         &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
         <%= f.submit '　 新規登録 　', class: "btn btn-success" %>
       </p>
@@ -33,8 +33,8 @@
               <td><%= shipping_address.address %></td>
               <td><%= shipping_address.name %></td>
               <td class="table-center">
-                <%= link_to "　編集する　", edit_shipping_address_path(shipping_address.id), class:"btn btn-success btn-sm" %>&nbsp;
-                <%= link_to "　削除する　", shipping_address_path(shipping_address.id), class:"btn btn-danger btn-sm ml-2", method: :delete %>
+                <%= link_to "　編集する　", edit_shipping_address_path(shipping_address.id), class:"btn btn-success btn-sm m-1" %>&nbsp;
+                <%= link_to "　削除する　", shipping_address_path(shipping_address.id), class:"btn btn-danger btn-sm m-1", method: :delete %>
               </td>
             </tr>
           <% end %>
