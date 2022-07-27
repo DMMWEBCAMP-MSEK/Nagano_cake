@@ -20,7 +20,7 @@
       <div class="container">
         <div class="row wrapper-grid">
           <% @selling_items.each do |item| %>
-            <div>
+            <div class="m-3">
              <div class="thumbnail">
                <%= link_to item_path(item.id) do %>
                   <%= image_tag item.image, size: "150", class: "index-img" %>

@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-9">
         <% if flash[:notice] %>
-          <p class="text-active"><%= flash[:notice] %></p>
+          <h4 class="font-weight-bold text-danger text-active m-5"><%= flash[:notice] %></h4>
         <% end %>
 
         <div class="top-image card m-5" style="max-height: 400px; width: 400px;"><%= image_tag 'gallet1' %>
