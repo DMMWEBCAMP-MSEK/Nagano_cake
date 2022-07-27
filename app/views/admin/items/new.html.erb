@@ -30,9 +30,9 @@
               <td><%= f.label :販売ステータス %></td>
               <td>
                 <%= f.radio_button :sales_status, :sale %>
-                <%= f.label :sales_status_draft, '販売中' %>&emsp;
+                <%= f.label :sales_status_sale, '販売中' %>&emsp;
                 <%= f.radio_button :sales_status, :stop_selling %>
-                <%= f.label :sales_status_on_sale, '販売停止中' %>
+                <%= f.label :sales_status_stop_selling, '販売停止中' %>
               </td>
             </tr>
           </tbody>

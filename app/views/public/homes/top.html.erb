@@ -16,7 +16,7 @@
     </div>
     <div class="col-md-9">
         <% if flash[:notice] %>
-          <p class="text-active"><%= flash[:notice] %></p>
+          <h4 class="font-weight-bold text-danger text-active m-5"><%= flash[:notice] %></h4>
         <% end %>
 
         <div style="background-size: 100% 200px;">
@@ -50,7 +50,7 @@
                 <% end %>
               </div>
             <div class="text-right mb-4 mt-4">
-              <%= link_to "全ての商品を見る＞",  items_path %>
+              <u><%= link_to "全ての商品を見る＞",  items_path %></u>
             </div>
         </div>
       </div>
