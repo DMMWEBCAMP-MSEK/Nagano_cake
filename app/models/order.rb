@@ -3,13 +3,18 @@ class Order < ApplicationRecord
   has_many :order_items,dependent: :destroy
   belongs_to :customer
 
-  with_options presence: true do
-     validates :payment_method
-     validates :post_code, length: { is: 7 }
-     validates :address
-     validates :name
-     validates :total_payment
-  end
+  # with_options presence: true do
+  #   validates :payment_method
+  #   validates :address
+  #   validates :name
+  #   validates :total_payment, on: :create
+  # end
+
+  # with_options on: :new do
+  #   VALID_POSTAL_CODE_REGEX = /\A\d{7}\z/
+  #   validates :post_code, presence: true, format: { with: VALID_POSTAL_CODE_REGEX }
+  # end
+
 
   enum payment_method: { credit_card: 0, transfer: 1 }
   enum status: {

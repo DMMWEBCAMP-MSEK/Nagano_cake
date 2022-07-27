@@ -11,6 +11,10 @@ class Public::ShippingAddressesController < ApplicationController
     @shipping_address.customer_id = current_customer.id
     if @shipping_address.save
       redirect_to shipping_addresses_path
+    else
+      @customer = Customer.find(current_customer.id)
+      @shipping_addresses = @customer.shipping_addresses
+      render :index
     end
   end
 
