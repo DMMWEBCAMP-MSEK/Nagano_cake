@@ -1,15 +1,15 @@
  <div class="container">
    <div>
-      <div class="col-10 mx-auto mt-3 mb-3">
+      <div class="col-11 mx-auto mt-3 mb-3">
         <h3>
           <span class="px-3" style="background-color:lightgray">注文履歴詳細</span>
         </h3>
-     <div class="row">
-  <table class="ml-3">
+     <div class="row mt-3">
+  <table class="ml-3"  style="width:70%">
     <%= render "layouts/errors", obj: @order %>
       <tr>
-        <th class="h5 font-weight-bold">購入者</th>
-        <td class="h5"><%= @order.customer.last_name %> <%= @order.customer.first_name %></td>
+        <th class="h5 font-weight-bold" style="width:25%">購入者</th>
+        <td class="h5" style="width:35%"><%= @order.customer.last_name %> <%= @order.customer.first_name %></td>
       </tr>
       <tr>
         <th class="h5 font-weight-bold">注文日</th>
