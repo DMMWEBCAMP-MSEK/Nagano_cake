@@ -8,7 +8,7 @@
         <thead class="table-dark mb-5 pb-5">
           <tr>
             <th class="align-middle text-center">購入日時</th>
-            <th class="align-middle text-center">購入者</th>
+            <th class="align-middle">購入者</th>
             <th class="align-middle text-center">注文個数</th>
             <th class="align-middle text-center">注文ステータス</th>
           </tr>
@@ -21,7 +21,7 @@
               </td>
               <td class="align-middle"><%= order.customer.last_name %> <%= order.customer.first_name %></td>
               <td class="align-middle text-center"><%= order.items_amount %></td>
-              <td class="align-middle"><%= order.status_i18n %></td>
+              <td class="align-middle text-center"><%= order.status_i18n %></td>
             </tr>
           <% end %>
         </tbody>
