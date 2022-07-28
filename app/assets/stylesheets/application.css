@@ -48,8 +48,7 @@
   border-radius: 100%;
   box-shadow: 2px 2px 4px #343a40;
   border: 0.5px solid;
-  border-color: #808080;
-  text-decoration-color: #ffffff;
+  border-color: #EEEEEE;
   font-size: 24px;
   transition: .3s;
 }
