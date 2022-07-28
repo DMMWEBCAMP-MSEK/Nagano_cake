@@ -8,15 +8,15 @@
   <table class="ml-3"  style="width:70%">
     <%= render "layouts/errors", obj: @order %>
       <tr>
-        <th class="h5 font-weight-bold" style="width:25%">購入者</th>
+        <th class="h5 font-weight-bold" style="width:25%"><u>購入者</u></th>
         <td class="h5" style="width:35%"><%= @order.customer.last_name %> <%= @order.customer.first_name %></td>
       </tr>
       <tr>
-        <th class="h5 font-weight-bold">注文日</th>
+        <th class="h5 font-weight-bold"><u>注文日</u></th>
         <td class="h5"><%= @order.created_at.strftime("%Y/%m/%d") %></td>
       </tr>
       <tr>
-        <th class="h5 font-weight-bold">配送先</th>
+        <th class="h5 font-weight-bold"><u>配送先</u></th>
         <td class="h5">
           <div>
             〒<%= @order.post_code %> <%= @order.address %>
@@ -27,13 +27,13 @@
         </td>
       </tr>
       <tr>
-        <th class="h5 font-weight-bold">支払方法</th>
+        <th class="h5 font-weight-bold"><u>支払方法</u></th>
         <td class="h5">
           <%= @order.payment_method_i18n %>
         </td>
       </tr>
       <tr>
-        <th class="h5 font-weight-bold">注文ステータス</th>
+        <th class="h5 font-weight-bold"><u>注文ステータス</u></th>
         <td>
           <%= form_with model:@order, url: admin_order_path, method: :patch do |f| %>
             <%= f.select :status, Order.statuses.keys.map {|k| [I18n.t("enums.order.status.#{k}"), k]} %>
@@ -54,7 +54,7 @@
                 <th class="align-middle text-center">単価（税込）</th>
                 <th class="align-middle text-center">数量</th>
                 <th class="align-middle text-center">小計</th>
-                <th class="align-middle text-center">制作ステータス</th>
+                <th class="align-middle text-center">製作ステータス</th>
               </tr>
             </thead>
             <tbody>
@@ -75,7 +75,7 @@
             </tbody>
           </table>
         </div>
-        <div class="col-lg-3 col align-self-end mb-3">
+        <div class="col-lg-3 col align-self-end mb-3"style="margin-left: 8vh;">
           <table>
             <tr>
               <th class="h5 font-weight-bold">商品合計</th>
