@@ -1,6 +1,6 @@
- <div class="container">
+ <div class="container"style="margin-left: 26vh;">
    <div>
-      <div class="col-11 mx-auto mt-3 mb-3">
+      <div class="col-12 mx-auto mt-3 mb-3">
         <h3>
           <span class="px-3" style="background-color:#EEEEEE">注文履歴詳細</span>
         </h3>
@@ -54,7 +54,7 @@
                 <th class="align-middle text-center">単価（税込）</th>
                 <th class="align-middle text-center">数量</th>
                 <th class="align-middle text-center">小計</th>
-                <th class="align-middle text-center">製作ステータス</th>
+                <th class="align-middle text-center">制作ステータス</th>
               </tr>
             </thead>
             <tbody>
@@ -79,15 +79,15 @@
           <table>
             <tr>
               <th class="h5 font-weight-bold">商品合計</th>
-              <td class="h5 align-middle"><%= @order.items_price %>円</td>
+              <td class="h5 align-middle">&ensp;&ensp;<%= @order.items_price %>円</td>
             </tr>
             <tr>
               <th class="h5 font-weight-bold">送料</th>
-              <td class="h5 align-middle"><%= @order.shipping_cost.to_s(:delimited) %>円</td>
+              <td class="h5 align-middle">&ensp;&ensp;<%= @order.shipping_cost.to_s(:delimited) %>円</td>
             </tr>
             <tr>
               <th class="h5 font-weight-bold">請求金額合計</th>
-              <td class="h5 align-middle"><%= (@order.total_payment).to_s(:delimited) %>円</td>
+              <td class="h5 align-middle">&ensp;<%= (@order.total_payment).to_s(:delimited) %>円</td>
             </tr>
           </table>
         </div>
