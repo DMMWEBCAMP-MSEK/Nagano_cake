@@ -2,7 +2,7 @@
    <div>
       <div class="col-11 mx-auto mt-3 mb-3">
         <h3>
-          <span class="px-3" style="background-color:lightgray">注文履歴詳細</span>
+          <span class="px-3" style="background-color:#EEEEEE">注文履歴詳細</span>
         </h3>
      <div class="row mt-3">
   <table class="ml-3"  style="width:70%">
@@ -50,11 +50,11 @@
         <table class="table table-bordered mt-3">
             <thead class="table-dark">
               <tr>
-                <th class="align-middle">商品名</th>
-                <th class="align-middle">単価（税込）</th>
+                <th class="align-middle text-center">商品名</th>
+                <th class="align-middle text-center">単価（税込）</th>
                 <th class="align-middle text-center">数量</th>
-                <th class="align-middle">小計</th>
-                <th class="align-middle">制作ステータス</th>
+                <th class="align-middle text-center">小計</th>
+                <th class="align-middle text-center">制作ステータス</th>
               </tr>
             </thead>
             <tbody>
@@ -74,8 +74,8 @@
               <% end %>
             </tbody>
           </table>
-      </div>
-      <div class="col-lg-4 col align-self-end mb-3">
+        </div>
+        <div class="col-lg-3 col align-self-end mb-3">
           <table>
             <tr>
               <th class="h5 font-weight-bold">商品合計</th>
@@ -90,9 +90,8 @@
               <td class="h5 align-middle"><%= (@order.total_payment).to_s(:delimited) %>円</td>
             </tr>
           </table>
-          </div>
         </div>
-       </div>
+      </div>
     </div>
   </div>
-
+</div>
