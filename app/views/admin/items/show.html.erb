@@ -36,7 +36,11 @@
           </tr>
           <tr>
             <th class="col-2 h5 font-weight-bold">販売ステータス</th>
-            <td class="col-4 h5 font-weight-bold text-success"><%= @item.sales_status_i18n %></td>
+            <% if @item.sales_status == "sale"  %>
+              <td><h5 class="text-success font-weight-bold">販売中</h5></td>
+           <% else %>
+              <td><h5 class="font-weight-bold" style="color: lightgray">販売停止</h5></td>
+           <% end %>
           </tr>
         </table>
       </div>
