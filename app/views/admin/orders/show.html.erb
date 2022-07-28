@@ -1,6 +1,6 @@
- <div class="container"style="margin-left: 26vh;">
+ <div class="container">
    <div>
-      <div class="col-12 mx-auto mt-3 mb-3">
+      <div class="col-12 mx-auto mt-3 mb-3" style="margin-left: 20vh;">
         <h3>
           <span class="px-3" style="background-color:#EEEEEE">注文履歴詳細</span>
         </h3>
@@ -60,15 +60,17 @@
             <tbody>
               <% @order.order_items.each do |order_item| %>
                 <tr>
-                  <td class:="align-middle"><%= order_item.item.name %></td>
-                  <td class:="align-middle"><%= order_item.price.to_s(:delimited) %></td>
-                  <td class:="align-middle text-center"><%= order_item.amount %></td>
-                  <td class:="align-middle"><%= order_item.subtotal.to_s(:delimited) %></td>
-                  <td class:="align-middle">
+                  <td class="align-middle"><%= order_item.item.name %></td>
+                  <td class="align-middle"><%= order_item.price.to_s(:delimited) %></td>
+                  <td class="align-middle text-center"><%= order_item.amount %></td>
+                  <td class="align-middle"><%= order_item.subtotal.to_s(:delimited) %></td>
+                  <td class="align-middle">
+                    <h7 class="text-center">
                     <%= form_with model: order_item, url: admin_order_item_path(order_item), method: :patch do |f| %>
                       <%= f.select :production_status, OrderItem.production_statuses.keys.map {|k| [I18n.t("enums.order_item.production_status.#{k}"), k]},class: "m-1" %>
                       <%= f.submit "更新", class: "btn btn-success m-1" %>
                     <% end %>
+                    </h7>
                   </td>
                 </tr>
               <% end %>
