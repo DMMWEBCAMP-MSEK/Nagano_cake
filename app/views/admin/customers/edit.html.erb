@@ -1,85 +1,62 @@
-<% if @customer.errors.any? %>
-  <div id="error_explanation">
-    <h3><%= pluralize(@customer.errors.count, "error") %> prohibited this obj from being saved:</h3>
-    <ul>
-      <% @customer.errors.full_messages.each do |message| %>
-        <li><%= message %></li>
-      <% end %>
-    </ul>
-  </div>
-<% end %>
+<div class="container"></br>
+<h3>
+  <span class="px-3" style="background-color:#EEEEEE">
+    <strong><%= @customer.last_name %> <%= @customer.first_name %></strong>さんの<strong>会員情報編集</strong>
+  </span>
+</h3>
+<div  class="">
+  <%= render 'layouts/errors', obj: @customer %>
+</div>
 
-<h2><%= @customer.first_name %><%= @customer.last_name %>さんの会員情報編集 </h2>
-
-<%= form_with model: @customer, url: admin_customer_path(@customer.id),method: :patch, local: true do |f| %>
- <table>
-  <thead>
-    <th></th>
-    <th></th>
-    <th></th>
-  </thead>
+<%= form_with model: @customer, url: admin_customer_path, method: :patch, local: true do |f| %>
+<table class="table table-borderless align-middle">
   <tbody>
+  <tr>
+    <td>会員ID</td>
+    <td><%= @customer.id %> </td>
+  </tr>
   <tr>
     <td>名前</td>
     <td>
-    <div class="field">
-      <%= f.label :first_name, "(姓)" %>
-      <%= f.text_field :first_name, autofocus: true, class: "name" %>
+      <%= f.text_field :last_name, autofocus: true,class: "form-control" %>
     </td>
     <td>
-      <%= f.label :last_name, "(名)" %>
-      <%= f.text_field :last_name, autofocus: true, class: "name" %>
-    </div>
+      <%= f.text_field :first_name, autofocus: true, class: "form-control" %>
     </td>
   </tr>
   <tr>
     <td>フリガナ</td>
     <td>
-    <div class="field">
-      <%= f.label :first_name_kana, "(セイ)" %>
-      <%= f.text_field :first_name_kana, autofocus: true, class: "name" %>
+
+      <%= f.text_field :last_name_kana, autofocus: true, class: "form-control" %>
     </td>
     <td>
-      <%= f.label :last_name_kana, "(メイ)" %>
-      <%= f.text_field :last_name_kana, autofocus: true, class: "name" %>
+      <%= f.text_field :first_name_kana, autofocus: true, class: "form-control" %>
     </td>
-    </div>
-  </tr>
-  <tr>
-    <td>メールアドレス</td>
-    <td>
-    <div class="field">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
-    </div>
-    </td>
-    <td></td>
   </tr>
   <tr>
     <td>郵便番号(ハイフンなし)</td>
     <td>
-    <div class="form-group">
-      <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code" %>
-    </div>
+      <%= f.text_field :post_code, autofocus: true, autocomplete: "post_code", class: "form-control" %>
 　　</td>
-　　<td></td>
 　</tr>
 　<tr>
     <td>住所</td>
-    <td>
-    <div class="form-group">
-      <%= f.text_field :address, autofocus: true, autocomplete: "address" %>
-    </div>
+    <td colspan=2>
+      <%= f.text_field :address, autofocus: true, autocomplete: "address", class: "form-control" %>
 　　</td>
-　　<td></td>
 　</tr>
 　<tr>
     <td>電話番号(ハイフンなし)</td>
     <td>
-    <div class="form-group>
-      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number" %>
-    </div>
+      <%= f.text_field :phone_number, autofocus: true, autocomplete: "phone_number", class: "form-control" %>
     </td>
-    <td></td>
+  </tr>
+  <tr>
+    <td>メールアドレス</td>
+    <td>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control" %>
+    </td>
   </tr>
   <tr>
     <td>会員ステータス</td>
@@ -96,11 +73,10 @@
   <tr>
     <td></td>
     <td>
-    <div class=form-group">
-    <%= f.submit "変更を保存" %>
+    <div class="form-group">
+    <%= f.submit "変更を保存", class: "btn btn-success px-5" %>
     </div>
     </td>
-    <td></td>
   </tr>
   </tbody>
   </table>

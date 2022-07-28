@@ -1,0 +1,76 @@
+<div class="container">
+  <h3 class="mt-3">
+    <span class="px-3 ml-3" style="background-color:#EEEEEE">注文履歴詳細</span>
+  </h3>
+  <div class="row">
+  　<div class="col-lg-7">
+      <table class="table table-bordered">
+        <h4 class="font-weight-bold mt-2">注文情報</h4>
+        <tr>
+          <th class="table-dark">注文日</th>
+            <td><%= @order.created_at.strftime('%Y/%m/%d') %></td>
+        </tr>
+        <tr>
+          <th class="table-dark align-middle">配送先</th>
+            <td>
+            〒<%= @order.post_code%></br>
+            <%= @order.address %></br>
+            <%= @order.name %>
+            </td>
+        </tr>
+        <tr>
+        <th class="table-dark">支払い方法</th>
+          <td>
+            <%= @order.payment_method_i18n %>
+          </td>
+        </tr>
+        <tr>
+        <th class="table-dark">ステータス</th>
+          <td><%= @order.status_i18n %></td>
+        </tr>
+      </table>
+  　</div>
+    <div class="col-lg-3">
+      <table class="table table-bordered">
+        <h4 class="font-weight-bold mt-2">請求情報</h4>
+        <tr>
+          <th class="table-dark">商品合計</th>
+          <td><%= @order.items_price %></td>
+        </tr>
+        <tr>
+          <th class="table-dark">配送料</th>
+          <td><%= @order.shipping_cost %></td>
+        </tr>
+        <tr>
+          <th class="table-dark"><strong>ご請求額</strong></th>
+          <td><strong><%= @order.total_payment.to_s(:delimited) %></strong></td>
+        </tr>
+      </table>
+    </div>
+  </div>
+  <div class="row ml-1">
+    <div class="col-lg-8">
+      <table class="table table-bordered">
+        <h4 class="font-weight-bold">注文内容</h4>
+        <thead class="thead-dark">
+          <tr>
+            <th class="align-middle text-center">商品</th>
+            <th class="align-middle text-center">単価（税込）</th>
+            <th class="align-middle text-center">個数</th>
+            <th class="align-middle text-center">小計</th>
+          </tr>
+        </thead>
+        <tbody>
+          <% @order.order_items.each do |order_item|%>
+          <tr>
+            <td class="align-middle"><%= order_item.item.name %></td>
+            <td class="align-middle"><%= order_item.price.to_s(:delimited) %></td>
+            <td class="align-middle text-center"><%= order_item.amount %></td>
+            <td class="align-middle"><%= (order_item.price*order_item.amount).to_s(:delimited) %></td>
+          </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</div>

@@ -1,16 +1,8 @@
 class ApplicationController < ActionController::Base
+  before_action :authenticate_customer!, unless: :admin_url
+  before_action :authenticate_admin!, if: :admin_url
 
-  private
-
-  def current_cart
-
-    current_cart = Cart.find_by(id: session[:cart_id])
-
-    current_cart = Cart.create unless current_cart
-
-    session[:cart_id] = current_cart.id
-
-    current_cart
+  def admin_url
+    request.fullpath.include?("/admin")
   end
-
 end

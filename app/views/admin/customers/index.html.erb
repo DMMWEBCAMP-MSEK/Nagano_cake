@@ -1,26 +1,44 @@
-<h2>会員一覧</h2>
-<table>
-  <thead>
-    <tr>
-    <th>会員ID</th>
-    <th>氏名</th>
-    <th>メールアドレス</th>
-    <th>ステータス</th>
-    </tr>
-  </thead>
-  <tbody>
-    <% @customers.each do |customer| %>
-    <tr>
-     <td><%= customer.id %></td>
-     <td>
-       <%= link_to admin_customer_path(customer.id) do %>
-        <%= customer.first_name %><%= customer.last_name %>
-       <% end %>
-     </td>
-     <td><%= customer.email %></td>
-     <td><%= customer.is_deleted ? '退会' : '有効'  %></td>
-    </tr>
-    <% end %>
-  </tbody>
-</table>
-<%#= paginate customers %>
+<div class="container" style="margin-bottom: 6vh;">
+  <div class="row">
+    <div class="col-12 ml-4 mt-3">
+      <h3 class=""style="margin-left: 5vh;">
+        <span class="px-3 ml-4" style="background-color:#EEEEEE">会員一覧</span>
+      </h3>
+    </div>
+  </div>
+  <div class="row">
+    <table class="table col-10 mx-auto mt-3">
+      <thead class="table-dark" >
+        <tr>
+          <th class="align-middle text-center">会員ID</th>
+          <th class="align-middle text-center">氏名</th>
+          <th class="align-middle text-center">メールアドレス</th>
+          <th class="align-middle text-center">ステータス</th>
+        </tr>
+      </thead>
+      <tbody>
+        <% @customers.each do |customer| %>
+        <tr>
+           <td class="align-middle"><%= customer.id %></td>
+           <td>
+             <%= link_to admin_customer_path(customer.id) do %>
+               <u><%= customer.last_name %> <%= customer.first_name %></u>
+             <% end %>
+           </td>
+           <td class="align-middle"><%= customer.email %></td>
+           <% if customer.is_deleted == false %>
+              <td><h5 class="text-success font-weight-bold">有効</h5></td>
+           <% else %>
+              <td><h5 class="font-weight-bold" style="color: lightgray">退会</h5></td>
+           <% end %>
+        </tr>
+        <% end %>
+      </tbody>
+    </div>
+  </table><br>
+  <div class="footer container col-md-6 offset-md-3 py-2">
+    <div class="pagination justify-content-center">
+      <u><%= paginate @customers %></u>
+    </div>
+  </div>
+</div>

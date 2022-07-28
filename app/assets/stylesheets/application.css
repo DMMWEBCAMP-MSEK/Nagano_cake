@@ -13,3 +13,74 @@
  *= require_tree .
  *= require_self
  */
+
+/** {*/
+/*  margin: 0;*/
+/*  padding: 0;*/
+/*  box-sizing: border-box;*/
+/*}*/
+
+
+.bg-top {
+  width: 70%;
+  margin: 20px auto 0 auto;
+  height: 250px;
+  background-image: url(gallet1.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 50px 200px;
+  opacity: 0.5;
+  z-index: 1;
+}
+
+.main-text {
+  font-size: 20px;
+  color: RGBa(0,0,0,1);
+  z-index: 2;
+}
+
+
+.plus-bottom button {
+  text-align-last: center;
+  width: 40px;
+  height: 40px;
+  background: white;
+  border-radius: 100%;
+  box-shadow: 2px 2px 4px #343a40;
+  border: 0.5px solid;
+  border-color: #EEEEEE;
+  font-size: 24px;
+  transition: .3s;
+}
+
+.plus-bottom button:hover {
+  text-decoration-line: none;
+  transform: translate3d(0, 5px, 0);
+  box-shadow: none;
+  text-decoration-color: #ffffff;
+}
+
+.about-image {
+  width: 100%;
+  margin: 0px auto 0 auto;
+  height: 550px;
+  background-image: url(gallet1.jpg);
+  background-size: cover;
+  background-position: center;
+  padding: 50px 200px;
+  opacity: 0.5;
+  z-index: 1;
+  position: relative;
+}
+
+.about-title {
+  margin-top: -500px;
+  z-index: 2;
+  position: absolute;
+}
+
+.about-text {
+  margin: -600px auto 0 auto;
+  z-index: 2;
+  position: absolute;
+}

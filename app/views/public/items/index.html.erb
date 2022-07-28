@@ -1,33 +1,48 @@
-<div class="container ml-4 mt-5">
-  <div class="row">
+<div class="container bg">
+  <div class="row center">
     <!-- ジャンル -->
-    <div class="col-3">
-      <div class="card-header text-white bg-dark ">ジャンル一覧</div>
-        <div class="card-body">
+    <div class="col-md-2 mt-5">
+      <table class="table table-bordered ml-1">
+        <thead>
+          <th>ジャンル一覧</th>
+        </thead>
+        <tbody>
           <% @genres.each do |genre| %>
-            <p class="card-text"><%= genre.name %></p>
+            <tr>
+              <th><%= genre.name %></th>
+            </tr>
+          <% end %>
+        </tbody>
+      </table>
+    </div>
+    <div class="col-md-10 mt-3">
+      <strong class="h2 font-weight-bold">商品一覧</strong><small class="h5">（全<%= @items_count %>件）</small>
+      <div class="container">
+        <div class="row wrapper-grid">
+          <% @selling_items.each do |item| %>
+            <div class="m-3">
+             <div class="card"  style="width: 12rem;">
+               <div class="img mx-auto mt-2">
+                  <%= link_to item_path(item.id) do %>
+                    <%= image_tag item.image, size: "180", class: "index-img" %>
+                  <% end %>
+                  <div class="font-weight-bold ml-1">
+                    <%= item.name%>
+                  </div>
+                  <div class="font-weight-bold ml-1">
+                    ¥<%= item.price %>
+                  </div>
+               </div>
+              </div>
+            </div>
           <% end %>
         </div>
-    </div>
-    <!-- 商品 -->
-    <div class = "col-lg-8">
-      <h3>商品一覧<span>(全<%= @items_count %>件)</span></h3>
-        <div class="wrapper grid">
-            <% @items.each do |item|%>
-              <div class="card" style="width: 16rem;">
-                  <% link_to item_path(item) do %>
-                     <div class="card-img"><%= image_tag item, :image, size: "250", class: "index-img" %></div>
-                  <% end %>
-                  <div class="card-text"><%= item.name %></div>
-                  <p class="text-right lead">¥<%= item.price.to_s(:delimited) %></p>
-              </div>
-        　　　<% end %>
-        </div>
-        　<div class="row justify-content-center">
-            <% paginate @items %>
-        　</div>
+      </div>
     </div>
   </div>
 </div>
-
-
+<div class="footer container col-md-6 offset-md-3 py-2">
+  <div class="pagination justify-content-center">
+    <u><%= paginate @selling_items %></u>
+  </div>
+</div>
