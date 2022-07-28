@@ -1,49 +1,50 @@
 <div class="container">
   <div class="row">
-    <div class="float-left">
-    <div>
+    <div class="col-10 mx-auto">
       <h3 class="mt-4">
-        <span class="px-3" style="background-color:lightgray">商品詳細</span>
+        <span class="px-3 ml-2" style="background-color:#EEEEEE">商品詳細</span>
       </h3>
     </div>
-    <div class="mt-4">
-    <%= image_tag @item.image, size: "200x200"%>
+  </div>
+  <div class="row center-block">
+    <div class="col-5 mt-3 pull-left" style="text-align:right">
+      <%= image_tag @item.image, size: "300x300"%>
     </div>
+    <div class="col-7 mt-3" style="text-left">
+      <div class="" >
+        <table class="table table-borderless">
+          <tr>
+            <th class="col-2 h5 font-weight-bold">商品名</th>
+            <td class="col-4 h5 font-weight-bold"><%= @item.name %></td>
+          </tr>
+          <tr>
+            <th class="col-2 h5 font-weight-bold">商品説明</th>
+            <td class="col-4 h5 font-weight-bold"><%= @item.introduction %></td>
+          </tr>
+          <tr>
+            <th class="col-2 h5 font-weight-bold">ジャンル</th>
+            <td class="col-4 h5 font-weight-bold"><%= @item.genre.name %></td>
+          </tr>
+          <tr>
+            <th class="col-2 h5 font-weight-bold">
+              税込価格<br>
+              （税抜価格）
+            </th>
+            <td class="col-4 h5 font-weight-bold"><%= @item.with_tax_price.to_s(:delimited) %>円<br>
+              （<%= number_with_delimiter(@item.price) %>円）
+            </td>
+          </tr>
+          <tr>
+            <th class="col-2 h5 font-weight-bold">販売ステータス</th>
+            <td class="col-4 h5 font-weight-bold text-success"><%= @item.sales_status_i18n %></td>
+          </tr>
+        </table>
+      </div>
     </div>
-    <div class="mt-4">
-    <table class="h-100 m-5 float-right">
-      <tr class="w-100">
-        <th class="h-15">商品名</th>
-        <td class="w-50 h5"><%= @item.name %></td>
-      </tr>
-      <tr class="w-100">
-        <th class="h-15">商品説明</th>
-        <td class="w-50 h5"><%= @item.introduction %></td>
-      </tr>
-      <tr class="w-100">
-        <th class="h-15">ジャンル</th>
-        <td class="w-50 h5"><%= @item.genre.name %></td>
-      </tr>
-      <tr class="w-100">
-        <th class="h-15">
-          税込価格<br>
-          （税抜価格）
-        </th>
-        <td class="w-50 h5 align-middle"><%= @item.with_tax_price.to_s(:delimited) %>
-          <%#= number_with_delimiter(@item.with_tax_price) %>円<br>
-          （<%= number_with_delimiter(@item.price) %>円）</td>
-      </tr>
-      <tr class="w-100">
-        <th class="h-15">販売ステータス</th>
-        <td class="w-10 h5 font-weight-bold text-success"><%= @item.sales_status_i18n %></td>
-      </tr>
-    </table>
-    </div>
-
-    <div class="footer container mt-5">
-      <div class="text-center">
-    <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-lg btn-success" %>
-    </div>
+  </div>
+  <div class="footer container mt-5">
+    <div class="text-center">
+      <%= link_to "編集する", edit_admin_item_path(@item), class: "btn btn-lg btn-success" %>
     </div>
   </div>
 </div>
