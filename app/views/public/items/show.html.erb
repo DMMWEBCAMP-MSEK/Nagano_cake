@@ -25,7 +25,6 @@
           　<h4><%= @item.introduction %></h4>
           　<div><strong class="h2">¥<%= @item.with_tax_price.to_s(:delimited) %></strong><small>（税込）</small></div>
         　</div>
-
         　<div class="text-danger"><%= notice %></div>
       　　<%= form_with model: @cart_item, url: cart_items_path, method: :post, local:true do |f| %>
           　<%= f.select :amount, options_for_select((1..10).to_a), include_blank: "個数選択" %>
